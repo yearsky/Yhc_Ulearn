@@ -116,7 +116,7 @@
             
             <div class="col-lg-2 col-md-4 col-sm-4 col-6 mt-3">
                 <ul>
-                    <li class="mb-1"><b>Resources</b></li>
+                    <li class="mb-1"><b>Bahan</b></li>
                     <li><a href="{{ route('page.about') }}">About Us</a></li>
                     <li><a href="{{ route('page.contact') }}">Contact Us</a></li>
                     <li><a href="{{ route('register') }}">Register Page</a></li>
