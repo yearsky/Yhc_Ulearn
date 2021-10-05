@@ -20,6 +20,12 @@
                 <span class="site-menu-title">Courses</span>
             </a>
         </li>
+        <li class="site-menu-item {{ request()->is('instructor-absensi-*') ? 'active' : '' }}">
+            <a href="{{ route('instructor.absensi.list') }}">
+                <i class="site-menu-icon fas fa-clipboard-list" aria-hidden="true"></i>
+                <span class="site-menu-title">Absensi</span>
+            </a>
+        </li>
         <!-- <li class="site-menu-item {{ request()->is('instructor-credits') ? 'active' : '' }}">
             <a href="{{ route('instructor.credits') }}">
                 <i class="site-menu-icon fas fa-hand-holding-usd" aria-hidden="true"></i>

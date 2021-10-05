@@ -106,6 +106,10 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('instructor-withdraw-requests', 'InstructorController@listWithdrawRequests')->name('instructor.list.withdraw');
 
+        // Absensi
+        Route::get('instructor-absensi-list','AbsensiController@show')->name('instructor.absensi.list');
+        Route::get('instructor-absensi-add','AbsensiController@add')->name('instructor.absensi.add');
+
         // Save Curriculum
         Route::post('courses/section/save', 'CourseController@postSectionSave');
         Route::post('courses/section/delete', 'CourseController@postSectionDelete');

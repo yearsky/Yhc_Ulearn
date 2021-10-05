@@ -21,12 +21,12 @@
                 <span class="site-menu-title">Categories</span>
             </a>
         </li>
-        <li class="site-menu-item {{ request()->is('admin/withdraw-requests') ? 'active' : '' }}">
+        <!-- <li class="site-menu-item {{ request()->is('admin/withdraw-requests') ? 'active' : '' }}">
             <a href="{{ route('admin.withdraw.requests') }}">
                 <i class="site-menu-icon fas fa-hand-holding-usd" aria-hidden="true"></i>
                 <span class="site-menu-title">Withdraw Requests</span>
             </a>
-        </li>
+        </li> -->
         <li class="site-menu-item {{ request()->is('admin/blog*') ? 'active' : '' }}">
             <a href="{{ route('admin.blogs') }}">
                 <i class="site-menu-icon fas fa-blog" aria-hidden="true"></i>
