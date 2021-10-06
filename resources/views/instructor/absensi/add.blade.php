@@ -34,17 +34,19 @@
                 @endforeach
               </select>
         </div>
+        <div class="form-group col-md-4">
+            <label class="form-control-label">Kelas <span class="required">*</span></label>
+                <select class="form-control" name="" id="kelas" aria-label="Default select example">
+                <option hidden>Choose Room</option>
+                  @foreach($kelas as $kl)
+                <option value="{{$kl->id}}" selected>{{$kl->nama}}</option>
+                @endforeach
+              </select>
+        </div>
 
         <div class="form-group col-md-4">
             <label class="form-control-label">Siswa <span class="required">*</span></label>
-            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-              <datalist id="datalistOptions">
-                @foreach($siswa as $sw)
-                <option value="{{$sw->Siswa}}">
-                
-                @endforeach
-              </datalist>
-            
+            <select class="form-control" name="siswa" id="siswa"></select>
             @if ($errors->has('category_id'))
                 <label class="error" for="category_id">{{ $errors->first('category_id') }}</label>
             @endif 
@@ -66,14 +68,9 @@
 
 
 
-        <div class="form-group col-md-12">
-            <label class="form-control-label">Overview</label>
-            <textarea name="overview">
-            </textarea>
-        </div>
+        
 
       </div>
-      <hr>
       <div class="form-group row">
         <div class="col-md-4">
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -96,6 +93,33 @@
 
     $(document).ready(function()
     { 
+      $('#kelas').on('change', function() {
+               var kelasId = $(this).val();
+               if(kelasId) {
+                   $.ajax({
+                       url: '/getKelas/'+kelasId,
+                       type: "GET",
+                       data : {"_token":"{{ csrf_token() }}"},
+                       dataType: "json",
+                       success:function(data)
+                       {
+                         if(data){
+                            $('#siswa').empty();
+                            $('#siswa').append('<option hidden>Pilih Siswa</option>'); 
+                            $.each(data, function(key, siswa){
+                                $('select[name="siswa"]').append('<option value="'+ key +'">' + siswa.siswa + '</option>');
+                            });
+                        }else{
+                            $('#siswa').empty();
+                        }
+                     }
+                   });
+               }else{
+                 $('#siswa').empty();
+               }
+            });
+
+
         tinymce.init({ 
             selector:'textarea',
             menubar:false,

@@ -110,6 +110,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('instructor-absensi-list','AbsensiController@show')->name('instructor.absensi.list');
         Route::get('instructor-absensi-add','AbsensiController@add')->name('instructor.absensi.add');
 
+        //Kelas
+       Route::get('getKelas/{id}',function($id){
+        $siswa = 
+        DB::table('users')->
+        join('role_user','role_user.user_id','=','users.id')
+        // ->select('users.first_name','users.last_name')
+        ->select('role_user.id',DB::Raw("CONCAT(first_name,' ',last_name)AS siswa"))
+        ->where('kelas_id',$id)
+        ->get();
+        return response()->json($siswa);
+       });
+
         // Save Curriculum
         Route::post('courses/section/save', 'CourseController@postSectionSave');
         Route::post('courses/section/delete', 'CourseController@postSectionDelete');
