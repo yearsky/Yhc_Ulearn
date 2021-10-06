@@ -18,8 +18,15 @@ class AbsensiController extends Controller
 
     public function add()
     {
-        $instructor = \Auth::user()->id;
-        $mapel = DB::SELECT("CALL P_Mapel($instructor)");
+        // $instructor = \Auth::user()->id;
+        // $mapel = DB::SELECT("CALL P_Mapel($instructor)")->get();
+
+        $mapel = DB::table('courses')->
+                    join('instructors','courses.instructor_id','=','instructors.id')
+                    ->join('users','instructors.user_id','=','users.id')
+                    ->select('course_title','instructors.first_name','instructors.last_name')
+                    ->get();
+
         $siswa = DB::SELECT("CALL n_siswa");
         return view('instructor.absensi.add',compact('siswa','mapel'));
         // return $mapel;

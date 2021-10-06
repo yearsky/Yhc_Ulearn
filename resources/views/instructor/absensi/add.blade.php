@@ -28,11 +28,11 @@
       
         <div class="form-group col-md-4">
             <label class="form-control-label">Mata Pelajaran <span class="required">*</span></label>
-            <input type="text" disabled class="form-control" name="course_title" 
-                placeholder="Course Title" value="" />
-                @if ($errors->has('course_title'))
-                    <label class="error" for="course_title">{{ $errors->first('course_title') }}</label>
-                @endif
+                <select class="form-control" aria-label="Default select example">
+                  @foreach($mapel as $mpl)
+                <option value="{{$mpl->course_title}}" selected>{{$mpl->course_title}} </option>
+                @endforeach
+              </select>
         </div>
 
         <div class="form-group col-md-4">
