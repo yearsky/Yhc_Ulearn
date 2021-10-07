@@ -35,6 +35,7 @@
               <tr>
                 <th>No</th>
                 <th>Nama</th>
+                <th>Kelas</th>
                 <th>Mata Pelajaran</th>
                 <th>Keterangan</th>
               </tr>
@@ -44,15 +45,18 @@
               <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{{$abs->Siswa}}</td>
-                <td>{{$abs->course_title}}</td>
+                <td>{{$abs->Kelas}}</td>
+                <td>{{$abs->Mapel}}</td>
                 <td>{{$abs->keterangan}}</td>
                 
                 <td>
-                  <a href="#" class="btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Edit" >
+                  <a href="{{route('instructor.absensi.edit',$abs->id)}}" class="btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Edit" >
                     <i class="icon wb-pencil" aria-hidden="true"></i>
                   </a>
-
-                  <a href="#" class="delete-record btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Delete" >
+                  <!-- <form action="{{ route('instructor.absensi.delete',$abs->id) }}" method="post">
+                  @csrf
+                  @method('DELETE') -->
+                    <a href="{{ route('instructor.absensi.delete',$abs->id) }}" class="delete-record btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Delete" >
                     <i class="icon wb-trash" aria-hidden="true"></i>
                   </a>
                 </td>

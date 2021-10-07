@@ -14,12 +14,18 @@ class KelasTableSeeder extends Seeder
     {
         $is_exist = Kelas::all();
 
-        if (!$is_exist->count()) {
+        
             $kelas = new Kelas();
             $kelas->nama = 'X';
             $kelas->save();
+            $kelas = new Kelas();
+            $kelas->nama = 'XI';
+            $kelas->save();
+            $kelas = new Kelas();
+            $kelas->nama = 'XII';
+            $kelas->save();
 
            
-        }
+        
     }
 }

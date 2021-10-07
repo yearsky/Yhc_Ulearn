@@ -19,6 +19,7 @@ class AbsensiTableSeeder extends Seeder
         $absensi->id_instructor = '1';
         $absensi->id_siswa = '5';
         $absensi->id_course = '2';
+        $absensi->id_kelas = '1';
         $absensi->keterangan = 'Hadir';
         $absensi->save();
     }

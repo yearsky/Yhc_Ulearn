@@ -109,6 +109,9 @@ Route::group(['middleware' => 'auth'], function () {
         // Absensi
         Route::get('instructor-absensi-list','AbsensiController@show')->name('instructor.absensi.list');
         Route::get('instructor-absensi-add','AbsensiController@add')->name('instructor.absensi.add');
+        Route::post('instructor-absensi-save','AbsensiController@store')->name('instructor.absensi.save');
+        Route::get('instructor-absensi-edit/{id}','AbsensiController@edit')->name('instructor.absensi.edit');
+        Route::get('instructor-absensi-delete/{id}','AbsensiController@destroy')->name('instructor.absensi.delete');
 
         //Kelas
        Route::get('getKelas/{id}',function($id){

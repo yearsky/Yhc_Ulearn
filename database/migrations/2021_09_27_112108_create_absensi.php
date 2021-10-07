@@ -18,6 +18,7 @@ class CreateAbsensi extends Migration
             $table->integer('id_instructor')->unsigned();
 			$table->integer('id_siswa')->unsigned();
 			$table->integer('id_course')->unsigned();
+			$table->integer('id_kelas')->unsigned();
 			$table->string('keterangan');
             $table->timestamps();
         });
