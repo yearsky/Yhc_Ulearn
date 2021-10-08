@@ -50,13 +50,13 @@
         </div>
 
         <div class="form-group col-md-4">
-            <label class="form-control-label">Instruction Level <span class="required">*</span></label>
-            <select class="form-control" name="instruction_level_id">
-                <option value="">Select</option>
-                @foreach($instruction_levels as $instruction_level)
-                    <option value="{{ $instruction_level->id }}" 
-                    @if($instruction_level->id == $course->instruction_level_id){{ 'selected' }}@endif>
-                        {{ $instruction_level->level }}
+            <label class="form-control-label">Kelas<span class="required">*</span></label>
+            <select class="form-control" name="kelas">
+                <option hidden value="">Select</option>
+                @foreach($kelas as $kl)
+                    <option value="{{ $kl->id }}" 
+                    @if($kl->id == $course->kelas_id){{ 'selected' }}@endif>
+                        {{ $kl->nama }}
                     </option>
                 @endforeach
             </select>
@@ -66,28 +66,10 @@
             @endif
         </div>
 
-        <div class="form-group col-md-4">
-            <label class="form-control-label">Duration</label>
-            <input type="text" class="form-control" name="duration" 
-                placeholder="Course Duration" value="{{ $course->duration }}" />
-        </div>
-
         <div class="form-group col-md-8">
             <label class="form-control-label">Keywords</label>
             <input type="text" class="form-control tagsinput" name="keywords" 
                 placeholder="Keywords" value="{{ $course->keywords }}" />
-        </div>
-
-        <div class="form-group col-md-4">
-            <label class="form-control-label">Price <i class="fa fa-info-circle" data-toggle="tooltip" data-original-title="Leave blank if the course is free"></i></label>
-            <input type="number" class="form-control" name="price" 
-                placeholder="Course Price" value="{{ $course->price }}" />
-        </div>
-
-        <div class="form-group col-md-4">
-            <label class="form-control-label">Strike Out Price <i class="fa fa-info-circle" data-toggle="tooltip" data-original-title="Applied only for paid courses"></i></label>
-            <input type="text" class="form-control" name="strike_out_price" 
-                placeholder="Strike Out Price" value="{{ $course->strike_out_price }}" />
         </div>
 
         <div class="form-group col-md-4">
@@ -156,7 +138,7 @@
                 category_id: {
                     required: true
                 },
-                instruction_level_id: {
+                kelas: {
                     required: true
                 }
             },
@@ -167,8 +149,8 @@
                 category_id: {
                     required: 'The category field is required.'
                 },
-                instruction_level_id: {
-                    required: 'The instruction level field is required.'
+                kelas: {
+                    required: 'The kelas field is required.'
                 }
             }
         });

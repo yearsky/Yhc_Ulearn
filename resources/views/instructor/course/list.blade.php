@@ -35,9 +35,8 @@
               <tr>
                 <th>Sl.no</th>
                 <th>Title</th>
-                <th>Slug</th>
+                <th>Kelas</th>
                 <th>Category</th>
-                <th>Price</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
@@ -47,9 +46,8 @@
               <tr>
                 <td>{{ $course->id }}</td>
                 <td>{{ $course->course_title }}</td>
-                <td>{{ $course->course_slug }}</td>
+                <td>{{ $course->kelas }}</td>
                 <td>{{ $course->category_name }}</td>
-                <td>{{ $course->price ? $course->price : 'Free' }}</td>
                 <td>
                   @if($course->is_active)
                   <span class="badge badge-success">Active</span>

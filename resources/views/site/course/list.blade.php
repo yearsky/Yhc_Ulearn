@@ -100,32 +100,7 @@
                         @endforeach
                     </ul>
 
-                    <h6 class="mt-3 underline-heading">Price</h6>
-                    <?php $levels = array(
-                                            '0-0' => 'Free',
-                                            '1-50' => 'Less than USD 50',
-                                            '50-99' => 'USD 50 - USD 99',
-                                            '100-199' => 'USD 100 - USD 199',
-                                            '200-299' => 'USD 200 - USD 299',
-                                            '300-399' => 'USD 300 - USD 399',
-                                            '400-499' => 'USD 400 - USD 499',
-                                            '500' => 'More than USD 500',
-                                            );
-                    ?>
-                    <ul class="ul-no-padding">
-                        <?php foreach ($levels as $l_key => $l_value) { ?>
-                        <li> 
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input filter-results" id="{{ $l_key }}" name="price_id[]" value="{{ $l_key }}"
-                                @if(isset($_GET['price_id']))
-                                    {{ in_array($l_key, $_GET['price_id']) ? 'checked' : '' }}
-                                @endif
-                                >
-                                <label class="custom-control-label" for="{{ $l_key }}">{{ $l_value }}</label>
-                            </div>
-                        </li>
-                        <?php }?>
-                    </ul>
+                    
                 </form>
                 </div>
                 <!-- filter end -->
@@ -138,8 +113,7 @@
                         <div class="col-xl-2 offset-xl-4 col-lg-2 offset-lg-4 col-md-3 offset-md-3 col-sm-3 offset-sm-3 col-4">
                             <select class="form-control form-control-sm sort-by">
                                 <option value="">Sort By</option>
-                                <option<?php echo(!empty($_GET['sort_price']) && $_GET['sort_price']=='asc')?' selected="selected"':'';?> value="sort_price=asc">Price (Low to High)</option>
-                                <option<?php echo(!empty($_GET['sort_price']) && $_GET['sort_price']=='desc')?' selected="selected"':'';?>  value="sort_price=desc">Price (High to Low)</option>
+                               
                             </select>
                         </div>
                     </div>
@@ -162,19 +136,7 @@
                                     </div>
                                 </main>
                                 <footer>
-                                    <div class="c-row">
-                                        <div class="col-md-6 col-sm-6 col-6">
-                                            @php $course_price = $course->price ? config('config.default_currency').$course->price : 'Free'; @endphp
-                                            <h5 class="course-price">{{  $course_price }}&nbsp;<s>{{ $course->strike_out_price ? $course->strike_out_price : '' }}</s></h5>
-                                        </div>
-                                        <div class="col-md-5 offset-md-1 col-sm-5 offset-sm-1 col-5 offset-1">
-                                            <star class="course-rating">
-                                            <?php for ($r=1;$r<=5;$r++) { ?>
-                                                <span class="fa fa-star <?php echo $r <= $course->average_rating ? 'checked' : '';?>"></span>
-                                            <?php }?>
-                                            </star>
-                                        </div>
-                                    </div>
+                                    
                                 </footer>
                             </a>    
                             </div>

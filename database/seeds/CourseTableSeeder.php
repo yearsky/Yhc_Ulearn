@@ -20,13 +20,10 @@ class CourseTableSeeder extends Seeder
         $is_exist = Course::all();
 
         $course_names = array(
-                    array('course_title'=>'Photography - Become a Better Photographer',
+                    array('course_title'=>'Bahasa Indonesia',
                       'instructor_id'=>9,
                       'category_id'=>9,
-                      'instruction_level_id'=>4,
-                      'duration'=>'2 days',
-                      'price'=>0,
-                      'strike_out_price'=>159.00,
+                      'kelas_id'=>1,
                     )
             );
 
@@ -36,7 +33,7 @@ class CourseTableSeeder extends Seeder
                 $img_key = $course_key+1;
                 $course->instructor_id = $course_name['instructor_id'];
                 $course->category_id = $course_name['category_id'];
-                $course->instruction_level_id = $course_name['instruction_level_id'];
+                $course->kelas_id = $course_name['kelas_id'];
                 $course->course_title = $course_name['course_title'];
                 $course->course_image = 'course/'.$img_key.'/'.$img_key.'.jpg';
                 $course->thumb_image = 'course/'.$img_key.'/thumb_'.$img_key.'.jpg';
@@ -44,9 +41,6 @@ class CourseTableSeeder extends Seeder
                 $course->keywords = 'Health,History,Coding,GK,Technology,Future,Space,IQ,IT & Software';
                 $course->overview = '<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English.</p>
                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don`t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn`t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>';
-                $course->duration = $course_name['duration'];
-                $course->price = $course_name['price'];
-                $course->strike_out_price = $course_name['strike_out_price'];
                 $course->is_active = 1;
                 $course->save();
 

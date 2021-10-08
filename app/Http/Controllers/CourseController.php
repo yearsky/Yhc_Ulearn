@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Category;
 use App\Models\CourseRating;
 use App\Models\InstructionLevel;
+use App\Models\Kelas;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use Illuminate\Support\Facades\Input;
@@ -209,12 +210,11 @@ class CourseController extends Controller
     {
         $paginate_count = 9;
         $categories = Category::where('is_active', 1)->get();
-        $instruction_levels = InstructionLevel::get();
+        $kelas = Kelas::get();
 
         $category_search = $request->input('category_id');
         $instruction_level_id = $request->input('instruction_level_id');
-        $prices = $request->input('price_id');
-        $sort_price = $request->input('sort_price');
+       
         $keyword = $request->input('keyword');
         
         $query = DB::table('courses')
@@ -238,63 +238,13 @@ class CourseController extends Controller
         }
         
         //filter price as per user selected
-        if($prices)
-        {
-            $price_count = count($prices);
-            $is_greater_500 = false;
-            // echo $price_count;exit;
-            foreach ($prices as $p => $price) {
-                $p++;
-                $price_split = explode('-', $price);
-                
-                if($price_count == 1)
-                {
-                    $from = $price_split[0];
-                    if($price == 500)
-                    {
-                        $is_greater_500 = true;
-                    }
-                    else
-                    {
-                        $to = $price_split[1];
-                    }
-                    
-                }
-                elseif($p==1)
-                {
-                    $from = $price_split[0];
-                }
-                elseif($p==$price_count)
-                {
-                    
-                    if($price == 500)
-                    {
-                        $is_greater_500 = true;
-                    }
-                    else
-                    {
-                        $to = $price_split[1];
-                    }
-                    
-                }
-                
-            }
-            $query->where('courses.price', '>=', $from);
-            if(!$is_greater_500)
-            {
-                $query->where('courses.price', '<=', $to);
-            }
-        }                
-        
 
         //filter categories as per user selected                
-        if($sort_price) {
-            $query->orderBy('courses.price', $sort_price);
-        }                
+                  
 
         $courses = $query->groupBy('courses.id')->paginate($paginate_count);
 
-        return view('site.course.list', compact('courses', 'categories', 'instruction_levels'));
+        return view('site.course.list', compact('courses', 'categories', 'kelas'));
     }
 
     public function checkout($course_slug = '', Request $request)
@@ -349,8 +299,9 @@ class CourseController extends Controller
         }
         else {
             $courses = DB::table('courses')
-                        ->select('courses.*', 'categories.name as category_name')
+                        ->select('courses.*', 'categories.name as category_name','table_kelas.nama as kelas')
                         ->leftJoin('categories', 'categories.id', '=', 'courses.category_id')
+                        ->rightJoin('table_kelas','table_kelas.id','=','courses.kelas_id')
                         ->where('courses.instructor_id', $instructor_id)
                         ->paginate($paginate_count);
         }
@@ -361,13 +312,13 @@ class CourseController extends Controller
     public function instructorCourseInfo($course_id = '',Request $request)
     {   
         $categories = Category::where('is_active', 1)->get();
-        $instruction_levels = InstructionLevel::get();
+        $kelas = Kelas::get();
         if($course_id) {
             $course = Course::find($course_id);
         }else{
             $course = $this->getColumnTable('courses');
         }
-        return view('instructor.course.create_info', compact('course', 'categories', 'instruction_levels'));
+        return view('instructor.course.create_info', compact('course', 'categories', 'kelas'));
     }
 
     public function instructorCourseImage($course_id = '',Request $request)
@@ -466,7 +417,7 @@ class CourseController extends Controller
         $validation_rules = [
             'course_title' => 'required|string|max:50',
             'category_id' => 'required',
-            'instruction_level_id' => 'required',
+            'kelas' => 'required',
         ];
 
         $validator = Validator::make($request->all(),$validation_rules);
@@ -496,14 +447,10 @@ class CourseController extends Controller
         $course->course_title = $request->input('course_title');
         $course->instructor_id = \Auth::user()->instructor->id;
         $course->category_id = $request->input('category_id');
-        $course->instruction_level_id = $request->input('instruction_level_id');
+        $course->kelas_id = $request->input('kelas');
         $course->keywords = $request->input('keywords');
         $course->overview = $request->input('overview');
 
-        $course->duration = $request->input('duration');
-        $course->price = $request->input('price');
-        $course->strike_out_price = $request->input('strike_out_price');
-        
         $course->is_active = $request->input('is_active');
         $course->save();
 

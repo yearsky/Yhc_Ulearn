@@ -49,7 +49,6 @@ class HomeController extends Controller
                     ->where('courses.is_active',1)
                     ->groupBy('courses.id')
                     ->limit(8)
-                    ->where('courses.price', 0)
                     ->get();
 
         $discountTab_courses = DB::table('courses')
@@ -60,7 +59,6 @@ class HomeController extends Controller
                     ->where('courses.is_active',1)
                     ->groupBy('courses.id')
                     ->limit(8)
-                    ->where('courses.strike_out_price', '<>' ,null)
                     ->get();
 
         $instructors = DB::table('instructors')

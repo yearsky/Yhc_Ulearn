@@ -17,7 +17,7 @@ class CreateCoursesTable extends Migration {
 			$table->increments('id');
 			$table->integer('instructor_id')->unsigned();
 			$table->integer('category_id')->unsigned();
-			$table->integer('instruction_level_id')->unsigned();
+			$table->integer('kelas_id')->unsigned();
 			$table->string('course_title');
 			$table->string('course_slug');
 			$table->text('keywords')->nullable();
@@ -25,9 +25,7 @@ class CreateCoursesTable extends Migration {
 			$table->string('course_image')->nullable();
 			$table->string('thumb_image')->nullable();
 			$table->integer('course_video')->unsigned()->nullable();
-			$table->string('duration')->nullable();
-			$table->decimal('price', 8, 2)->nullable();
-			$table->decimal('strike_out_price', 8, 2)->nullable();
+			
 
 			$table->boolean('is_active');
 			$table->timestamps();

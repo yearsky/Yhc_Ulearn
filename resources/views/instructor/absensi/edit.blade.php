@@ -56,9 +56,6 @@
             @endif 
         </div>
 
-        
-
-       
         <div class="form-group col-md-4">
             <label class="form-control-label">Keterangan</label>
             <select class="form-control" name="keterangan" aria-label="Default select example">
@@ -67,12 +64,6 @@
                 <option value="Tidak Hadir">Tidak Hadir</option>
               </select>
         </div>
-
-
-
-
-
-        
 
       </div>
       <div class="form-group row">
