@@ -14,6 +14,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Kelas;
+use App\Models\RoleUser;
+use Illuminate\Support\Facades\DB;
 use App\Models\Role;
 use DataTables;
 use Illuminate\Http\Request;
@@ -71,9 +74,21 @@ class UserController extends Controller
         return view('admin.users.form', compact('user'));
     }
 
-    public function saveUser(Request $request)
+    public function siswaForm($user_id='', Request $request)
     {
-        // echo '<pre>';print_r($_POST);exit;
+        if($user_id)
+        {
+            $user = User::find($user_id);
+        }else{
+            $user = $this->getColumnTable('users');
+            $kelas = Kelas::all();
+        }
+        return view('admin.users.siswaForm',compact('user','kelas'));
+        // return $kelas;
+    }
+
+    public function saveSiswa(Request $request)
+    {
         $user_id = $request->input('user_id');
 
         //validation rules
@@ -82,7 +97,6 @@ class UserController extends Controller
             $validation_rules = [
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
-                'roles' => 'required'
             ];
 
         } else {
@@ -92,7 +106,6 @@ class UserController extends Controller
                 'last_name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:6',
-                'roles' => 'required'
             ];
 
         }
@@ -123,21 +136,19 @@ class UserController extends Controller
             $user->password = bcrypt($password);
         }
         
-
         $user->is_active = $request->input('is_active');
         $user->save();
-
-        if($request->exists('roles')) {
-            $roles = $request->input('roles');
-            foreach ($roles as $role_name) {
-                $role = Role::where('name', $role_name)->first();
-                $user->roles()->attach($role);
-            }
-
-        }
         
+        $roles = 'student';
+        $role = Role::where('name', $roles)->first();
+        $kelas = $request->input('kelas');
+
+        $user->kelas()->attach($kelas);
+        $user->roles()->attach($role);
+
+        // return $role;
+        return $this->return_output('flash', 'success', 'Data berhasil ditambahkan', 'admin/user/siswa/list', '200');
         
-        return $this->return_output('flash', 'success', $success_message, 'admin/users', '200');
     }
 
     public function getData()
@@ -150,6 +161,24 @@ class UserController extends Controller
                                 }
                             )
         ->make(true);
+    }
+
+    public function siswaList()
+    {
+        $paginate_count = 10;
+        // $siswa = User::whereHas('RoleUser', function ($query) {
+        //     $query->where('role_id', '<>', 3)->where('role_id','<>',2);
+        // })->paginate($paginate_count);
+
+        $siswa = DB::table('role_user')->
+                    join('users','role_user.user_id','=','users.id')
+                    ->join('table_kelas','role_user.kelas_Id','=','table_kelas.id')
+                    ->select('role_user.id','table_kelas.nama as kelas','is_active',DB::raw("CONCAT(users.first_name,' ',users.last_name)AS n_siswa"))
+                    ->where('role_id','1')
+                    ->paginate($paginate_count);
+
+        return view('admin.users.siswa',compact('siswa'));
+        // return $siswa;
     }
     
 }

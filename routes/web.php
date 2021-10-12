@@ -114,7 +114,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('instructor-absensi-delete/{id}','AbsensiController@destroy')->name('instructor.absensi.delete');
 
         //Kelas
-       Route::get('getKelas/{id}',function($id){
+       Route::get('guru/getKelas/{id}',function($id){
         $siswa = 
         DB::table('users')->
         join('role_user','role_user.user_id','=','users.id')
@@ -123,6 +123,7 @@ Route::group(['middleware' => 'auth'], function () {
         ->where('kelas_id',$id)
         ->get();
         return response()->json($siswa);
+        return $siswa;
        });
 
         // Save Curriculum
@@ -156,9 +157,14 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('admin/users', 'Admin\UserController@index')->name('admin.users');
         Route::get('admin/user-form', 'Admin\UserController@getForm')->name('admin.getForm');
+        Route::get('admin/user/siswa/form', 'Admin\UserController@siswaForm')->name('siswa.getForm');
         Route::get('admin/user-form/{user_id}', 'Admin\UserController@getForm');
-        Route::post('admin/save-user', 'Admin\UserController@saveUser')->name('admin.saveUser');
+        Route::post('admin/save-user', 'Admin\UserController@saveSiswa')->name('admin.saveSiswa');
         Route::get('admin/users/getData', 'Admin\UserController@getData')->name('admin.users.getData');
+
+        //siswa
+        Route::get('admin/user/siswa/list','Admin\UserController@siswaList')->name('admin.siswa.list');
+        Route::get('admin/user/guru/list','Admin\UserController@guruList')->name('admin.guru.list');
 
         Route::get('admin/categories', 'Admin\CategoryController@index')->name('admin.categories');
         Route::get('admin/category-form', 'Admin\CategoryController@getForm')->name('admin.categoryForm');
@@ -171,6 +177,25 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('admin/blog-form/{blog_id}', 'Admin\BlogController@getForm');
         Route::post('admin/save-blog', 'Admin\BlogController@saveBlog')->name('admin.saveBlog');
         Route::get('admin/delete-blog/{blog_id}', 'Admin\BlogController@deleteBlog');
+
+        //Absensi
+        Route::get('admin/absensi','Admin\AdminAbsensiController@show')->name('admin.absensi.list');
+        Route::get('admin/absensi/add','Admin\AdminAbsensiController@add')->name('admin.absensi.add');
+        Route::post('admin/absensi/save','Admin\AdminAbsensiController@save')->name('admin.absensi.save');
+        Route::get('admin/absensi/edit/{id}','Admin\AdminAbsensiController@edit')->name('admin.absensi.edit');
+        Route::post('admin/absensi/update/{id}','Admin\AdminAbsensiController@update')->name('admin.absensi.update');
+        Route::get('admin/absensi/delete/{id}','Admin\AdminAbsensiController@destroy')->name('admin.absensi.delete');
+
+        Route::get('getKelas/{id}',function($id){
+            $siswa = 
+            DB::table('users')->
+            join('role_user','role_user.user_id','=','users.id')
+            // ->select('users.first_name','users.last_name')
+            ->select('role_user.id',DB::Raw("CONCAT(first_name,' ',last_name)AS siswa"))
+            ->where('kelas_id',$id)
+            ->get();
+            return response()->json($siswa);
+           });
 
         Route::get('admin/withdraw-requests', 'Admin\DashboardController@withdrawRequests')->name('admin.withdraw.requests');
         Route::get('admin/approve-withdraw-request/{request_id}', 'Admin\DashboardController@approveWithdrawRequest')->name('admin.approve.withdraw.request');

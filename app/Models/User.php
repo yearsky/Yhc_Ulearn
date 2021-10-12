@@ -37,6 +37,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function kelas()
+    {
+        return $this->belongsToMany(Kelas::class);
+    }
+
     /**
     * @param string|array $roles
     */
