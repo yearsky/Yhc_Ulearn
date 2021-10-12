@@ -75,6 +75,12 @@
                         </a>
                         @endif
 
+                        @if(Auth::user()->hasRole('student'))
+                        <a class="dropdown-item" href="{{ route('student.dashboard') }}">
+                            <i class="fa fa-sign-out-alt"></i> Dashboard
+                        </a>
+                        @endif
+
                         <a class="dropdown-item" href="{{ route('my.courses') }}">
                             <i class="fa fa-sign-out-alt"></i> My Courses
                         </a>

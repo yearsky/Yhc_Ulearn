@@ -119,6 +119,8 @@
         @include('layouts/backend/admin_sidebar')
     @elseif(Auth::user()->hasRole('instructor'))
         @include('layouts/backend/instructor_sidebar')
+    @elseif(Auth::user()->hasRole('student'))
+        @include('layouts/backend/student_sidebar')
     @endif
   </div>
   
