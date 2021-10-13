@@ -67,15 +67,11 @@
                         <a class="dropdown-item" href="{{ route('instructor.dashboard') }}">
                             <i class="fa fa-sign-out-alt"></i> Dashboard
                         </a>
-                        @endif
-
-                        @if(Auth::user()->hasRole('admin'))
+                        @elseif(Auth::user()->hasRole('admin'))
                         <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
                             <i class="fa fa-sign-out-alt"></i> Dashboard
                         </a>
-                        @endif
-
-                        @if(Auth::user()->hasRole('student'))
+                        @elseif(Auth::user()->hasRole('student'))
                         <a class="dropdown-item" href="{{ route('student.dashboard') }}">
                             <i class="fa fa-sign-out-alt"></i> Dashboard
                         </a>
