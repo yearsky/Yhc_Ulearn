@@ -69,7 +69,7 @@ export default class Resource extends Component {
                   <div className="modal-dialog  modal-lg">
                     <div className="modal-content">
 
-                      
+                      {/* . */}
                       <div className="modal-header">
                         <h4 className="modal-title"><FontAwesomeIcon icon="paperclip" />&nbsp;Lecture Description & Resources</h4>
                         <button type="button" className="close" data-dismiss="modal">&times;</button>

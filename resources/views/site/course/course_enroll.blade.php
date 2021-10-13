@@ -9,6 +9,7 @@
 </head>
 <body class="animsition site-menubar-unfold" cz-shortcut-listen="true">
 <div id="course-enroll-container">
+  <!-- rendering disini , dari app.js -->
     
 </div>
 

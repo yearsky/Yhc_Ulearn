@@ -58,6 +58,7 @@ export default class Master extends Component {
                     <SideBar sections={this.state.sections} />
                 </div>
                 <div className="page">
+                    {/* manggil  CourseContent.js untuk preview*/}
                     <CourseContent lecture={this.state.lecture_detail} />
                 </div>
                 <div className="site-action">

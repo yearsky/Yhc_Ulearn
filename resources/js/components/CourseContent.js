@@ -45,6 +45,7 @@ export default class CourseContent extends Component {
         }
         lectureFile(){
             if(this.props.lecture.media_type == 0)
+            // jika konten vidio
             {
                 return (
                     <div className="col d-flex align-items-center justify-content-center">
@@ -54,6 +55,7 @@ export default class CourseContent extends Component {
                     </div>
                 );
             } else if(this.props.lecture.media_type == 1)
+            // jika konten audio
             {
                 return (
                     <div className="col d-flex align-items-center justify-content-center">
@@ -63,6 +65,7 @@ export default class CourseContent extends Component {
                     </div>
                 ); 
             } else if(this.props.lecture.media_type == 2)
+            // jika konten pdf
             {
                 return (
                     <div className="col mt-4">
@@ -70,6 +73,7 @@ export default class CourseContent extends Component {
                     </div>
                 ); 
             } else if(this.props.lecture.media_type == 3)
+            // jika konten text 
             {
                 return (
                     <div className="col mt-4">

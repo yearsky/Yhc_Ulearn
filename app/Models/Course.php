@@ -436,6 +436,7 @@ class Course extends Model
   }
   public function getFileDetails($id='')
   {
+    // dipanggilsalah satunya untuk preview file
      return \DB::table('course_files')
             ->select('course_files.*', 'curriculum_sections.course_id')
             ->leftJoin('curriculum_lectures_quiz', 'course_files.id', '=', 'curriculum_lectures_quiz.media')

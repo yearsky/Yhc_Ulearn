@@ -150,7 +150,7 @@ class CourseController extends Controller
             $file = Storage::url('course/'.$file_details->course_id.'/'.$file_details->file_name.'.'.$file_details->file_extension);
 
             header('Content-type: application/pdf');
-            header('Content-Disposition: inline; filename=document.pdf');
+            // header('Content-Disposition: inline; filename=document.pdf');
             header('Content-Transfer-Encoding: binary');
             header('Accept-Ranges: bytes');
             @readfile($file);
