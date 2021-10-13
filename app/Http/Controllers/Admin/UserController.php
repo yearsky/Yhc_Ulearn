@@ -127,28 +127,19 @@ class UserController extends Controller
             $success_message = 'User added successfully';
         }
 
-        $user->first_name = $request->input('first_name');
-        $user->last_name = $request->input('last_name');
-        $user->email = $request->input('email');
-
-        $password = $request->input('password');
-        if($password) {
-            $user->password = bcrypt($password);
-        }
-        
-        $user->is_active = $request->input('is_active');
-        $user->save();
-        
-        $roles = 'student';
-        $role = Role::where('name', $roles)->first();
+        $first_name = $request->input('first_name');
+        $last_name = $request->input('last_name');
+        $email = $request->input('email');
+        $password = bcrypt($request->input('password'));
+        $role = 'student';
+        $roles = Role::where('name', $role)->pluck('id')->first();
         $kelas = $request->input('kelas');
 
-        $user->kelas()->attach($kelas);
-        $user->roles()->attach($role);
+        $insert = DB::SELECT('CALL insertUsers(?,?,?,?,?,?,?,?)',array($first_name,$last_name,$email,$password,1,$roles,2,$kelas));
 
         // return $role;
         return $this->return_output('flash', 'success', 'Data berhasil ditambahkan', 'admin/user/siswa/list', '200');
-        
+        // return $roles;
     }
 
     public function getData()
