@@ -74,6 +74,40 @@ class UserController extends Controller
         return view('admin.users.form', compact('user'));
     }
 
+    public function editSiswa($id='')
+    {
+        $user = User::find($id);
+        $kelas = Kelas::all();
+        return view('admin.users.edit',compact('user','kelas'));
+        // return dd($user);
+    }
+
+    public function updateSiswa($id, Request $request)
+    {
+        $user = User::find($id);
+        $user_id = $request->input('user_id');
+        $first_name = $request->input('first_name');
+        $last_name = $request->input('last_name');
+        $password = bcrypt($request->input('password'));
+        $email = $request->input('email');
+        $kelas = $request->input('kelas');
+        $is_active = $request->input('is_active');
+        $role = 'student';
+        $roles = Role::where('name', $role)->pluck('id')->first();
+
+        $query = DB::SELECT('CALL updateSiswa(?,?,?,?,?,?,?,?)',array($first_name,$last_name,$email,$password,$is_active,$roles,$user_id,$kelas));
+        return $this->return_output('flash', 'success', 'Data berhasil Dirubah', 'admin/user/siswa/list', '200');
+        return $user_id;
+    }
+
+    public function deleteSiswa($id)
+    {
+        $user = User::where('id',$id)->pluck('id')->first();
+        // return $user;
+        $query = DB::SELECT("CALL deleteSiswa('$user')");
+        return $this->return_output('flash','success','Data Siswa Berhasil di Hapus','admin/user/siswa/list','200');
+    }
+
     public function siswaForm($user_id='', Request $request)
     {
         if($user_id)
@@ -134,8 +168,9 @@ class UserController extends Controller
         $role = 'student';
         $roles = Role::where('name', $role)->pluck('id')->first();
         $kelas = $request->input('kelas');
+        $is_active = $request->input('is_active');
 
-        $insert = DB::SELECT('CALL insertUsers(?,?,?,?,?,?,?,?)',array($first_name,$last_name,$email,$password,1,$roles,2,$kelas));
+        $insert = DB::SELECT('CALL insertUsers(?,?,?,?,?,?,?,?)',array($first_name,$last_name,$email,$password,$is_active,$roles,2,$kelas));
 
         // return $role;
         return $this->return_output('flash', 'success', 'Data berhasil ditambahkan', 'admin/user/siswa/list', '200');
@@ -161,10 +196,11 @@ class UserController extends Controller
         //     $query->where('role_id', '<>', 3)->where('role_id','<>',2);
         // })->paginate($paginate_count);
 
-        $siswa = DB::table('role_user')->
-                    join('users','role_user.user_id','=','users.id')
+       
+        $siswa = DB::table('users')->
+                    join('role_user','users.id','=','role_user.user_id')
                     ->join('table_kelas','role_user.kelas_Id','=','table_kelas.id')
-                    ->select('role_user.id','table_kelas.nama as kelas','is_active',DB::raw("CONCAT(users.first_name,' ',users.last_name)AS n_siswa"))
+                    ->select('users.id','table_kelas.nama as kelas','is_active',DB::raw("CONCAT(users.first_name,' ',users.last_name)AS n_siswa"))
                     ->where('role_id','1')
                     ->paginate($paginate_count);
 

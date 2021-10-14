@@ -54,10 +54,10 @@
                   @endif
                 </td>
                 <td>
-                  <a href="{{ url('admin/user-form/'.$sw->id) }}" class="btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Edit">
+                  <a href="{{ url('admin/user/siswa/edit/'.$sw->id) }}" class="btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Edit">
                     <i class="icon wb-pencil" aria-hidden="true"></i>
                   </a>
-                  <a href="{{ route('admin.absensi.delete',$sw->id) }}" class="delete-record btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Delete" >
+                  <a href="{{ url('admin/user/siswa/delete/'.$sw->id) }}" class="delete-record btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Delete" >
                     <i class="icon wb-trash" aria-hidden="true"></i>
                 </td>
               </tr>

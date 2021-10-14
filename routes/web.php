@@ -162,6 +162,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('admin/save-user', 'Admin\UserController@saveSiswa')->name('admin.saveSiswa');
         Route::get('admin/users/getData', 'Admin\UserController@getData')->name('admin.users.getData');
 
+        Route::get('admin/user/siswa/edit/{id}','Admin\UserController@editSiswa')->name('admin.editSiswa');
+        Route::post('admin/user/siswa/update/{id}','Admin\UserController@updateSiswa')->name('admin.updateSiswa');
+        Route::get('admin/user/siswa/delete/{id}','Admin\UserController@deleteSiswa');
+
         //siswa
         Route::get('admin/user/siswa/list','Admin\UserController@siswaList')->name('admin.siswa.list');
         Route::get('admin/user/guru/list','Admin\UserController@guruList')->name('admin.guru.list');
