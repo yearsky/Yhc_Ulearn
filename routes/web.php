@@ -162,13 +162,20 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('admin/save-user', 'Admin\UserController@saveSiswa')->name('admin.saveSiswa');
         Route::get('admin/users/getData', 'Admin\UserController@getData')->name('admin.users.getData');
 
+        //siswa
+        Route::get('admin/user/siswa/list','Admin\UserController@siswaList')->name('admin.siswa.list');
         Route::get('admin/user/siswa/edit/{id}','Admin\UserController@editSiswa')->name('admin.editSiswa');
         Route::post('admin/user/siswa/update/{id}','Admin\UserController@updateSiswa')->name('admin.updateSiswa');
         Route::get('admin/user/siswa/delete/{id}','Admin\UserController@deleteSiswa');
-
-        //siswa
-        Route::get('admin/user/siswa/list','Admin\UserController@siswaList')->name('admin.siswa.list');
+        //Guru
         Route::get('admin/user/guru/list','Admin\UserController@guruList')->name('admin.guru.list');
+        Route::get('admin/user/guru/edit/{id}','Admin\UserController@editGuru')->name('admin.editGuru');
+        Route::post('admin/user/guru/update/{id}','Admin\UserController@updateGuru')->name('admin.updateGuru');
+        Route::get('admin/user/guru/delete/{id}','Admin\UserController@deleteGuru');
+        Route::post('admin/save-guru', 'Admin\UserController@saveGuru')->name('admin.saveGuru');
+
+        Route::get('admin/user/guru/form', 'Admin\UserController@guruForm')->name('guru.getForm');
+
 
         Route::get('admin/categories', 'Admin\CategoryController@index')->name('admin.categories');
         Route::get('admin/category-form', 'Admin\CategoryController@getForm')->name('admin.categoryForm');
