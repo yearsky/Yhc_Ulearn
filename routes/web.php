@@ -99,7 +99,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('instructor-course-curriculum/{course_id}', 'CourseController@instructorCourseCurriculum')->name('instructor.course.curriculum.edit');
         Route::post('instructor-course-curriculum-save', 'CourseController@instructorCourseCurriculumSave')->name('instructor.course.curriculum.save');
 
-        Route::get('instructor-course-quiz/{course_id}','CourseController@instructorCourseQuiz')->name('instructor.course.quizz.edit');
 
         Route::get('instructor-credits', 'InstructorController@credits')->name('instructor.credits');
 
@@ -113,6 +112,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('instructor-absensi-save','AbsensiController@store')->name('instructor.absensi.save');
         Route::get('instructor-absensi-edit/{id}','AbsensiController@edit')->name('instructor.absensi.edit');
         Route::get('instructor-absensi-delete/{id}','AbsensiController@destroy')->name('instructor.absensi.delete');
+
+        //EXAM
+        Route::post('instructor-exam-save','ExamController@save')->name('instructor.exam.save');
+        Route::get('instructor-course-quiz/{course_id}','CourseController@instructorCourseQuiz')->name('instructor.course.quizz.edit');
+        Route::post('intructor-review-questions/{course_name}','QuestionsController@showQuestions')->name('instructor.review.question');
+
+        //Question
+        Route::post('instructor-question-save','QuestionsController@save')->name('instructor.question.save');
+        Route::get('review-single-question/{id}','QuestionsController@oneQuest')->name('instructor.question.edit');
+        Route::post('instructor-question-update/{id}','QuestionsController@update')->name('instructor.question.update');
 
         //Kelas
        Route::get('guru/getKelas/{id}',function($id){

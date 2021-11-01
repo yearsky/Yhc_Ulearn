@@ -372,7 +372,8 @@ class CourseController extends Controller
         $coursecurriculum = $this->model->getcurriculuminfo($course_id,$user_id);
 
         $section = $coursecurriculum['sections'];
-        return view('instructor.course.create_quiz',compact('course','section'));
+        return view('instructor.course.create_quiz',compact('course','user_id','section'));
+        // return $course;
     }
 
     public function instructorCourseImageSave(Request $request)

@@ -16,6 +16,7 @@ class CreateExamInfo extends Migration
         Schema::create('exam_info', function (Blueprint $table) {
             $table->increments('id');
             $table->string('instructor_id');
+            $table->string('section_id');
             $table->string('Course');
             $table->integer('question_lenth');
             $table->string('uniqueid');

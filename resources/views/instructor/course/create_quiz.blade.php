@@ -1,5 +1,11 @@
 @extends('layouts.backend.index')
 @section('content')
+<style type="text/css">
+#review{
+    margin-left: 15px;
+}
+</style>    
+
 <div class="page-header">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('instructor.dashboard') }}">Dashboard</a></li>
@@ -18,9 +24,9 @@
     @include('instructor/course/tabs')
     
 
-    <form method="POST" action="{{ route('instructor.course.info.save') }}" id="courseForm">
+    <form method="POST" action="{{ route('instructor.exam.save') }}" id="courseForm">
       {{ csrf_field() }}
-      <input type="hidden" name="course_id" value="{{ $course->id }}">
+      <input type="hidden" name="course_name" value="{{ $course->course_title }}">
       <div class="row">
       
         <div class="form-group col-md-4">
@@ -50,7 +56,7 @@
 
         <div class="form-group col-md-4">
             <label class="form-control-label">Total Soal <span class="required">*</span></label>
-            <input type="text" class="form-control" name="total_soal" 
+            <input type="text" class="form-control" maxlength="2" name="total_soal" 
                 placeholder="Total Soal" value="" />
                 @if ($errors->has('course_title'))
                     <label class="error" for="course_title">{{ $errors->first('course_title') }}</label>
@@ -59,21 +65,32 @@
         <div class="form-group col-md-4">
             <label class="form-control-label">Quiz Duration <span class="required">*</span></label>
             <input type="text" class="form-control" name="durasi" 
-                placeholder="Total Soal" value="" />
+                placeholder="Total durasi (menit)" value="" />
                 @if ($errors->has('course_title'))
                     <label class="error" for="course_title">{{ $errors->first('course_title') }}</label>
                 @endif
         </div>
+        <hr>
+        <div class="form-group">
+            <input type="hidden" value="{{substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", 5)), 0, 5)}}" name="uniqueid" class="form-control" id="formGroupExampleInput2">
+        </div>
+       
       </div>
       <hr>
       <div class="form-group row">
         <div class="col-md-4">
           <button type="submit" class="btn btn-primary">Submit</button>
           <button type="reset" class="btn btn-default btn-outline">Reset</button>
+          
         </div>
       </div>
       
     </form>
+    <form action="{{route('instructor.review.question',$course->course_title)}}" method="post">
+            {{ csrf_field() }}
+                <input type="hidden" name="course_name" value="{{$course->course_title}}"></input>
+                <button type="submit" id="review" class="btn btn-info btn-sm btn-block">Review All Questions</button>
+	</form>
   </div>
 </div>
 
