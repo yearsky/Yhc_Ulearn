@@ -69,7 +69,8 @@ class HomeController extends Controller
                         ->limit(8)
                         ->get();
                         
-        return view('site/home', compact('latestTab_courses', 'freeTab_courses', 'discountTab_courses', 'instructors'));
+        // return view('site/home', compact('latestTab_courses', 'freeTab_courses', 'discountTab_courses', 'instructors'));
+        return view('site/homev2', compact('latestTab_courses', 'freeTab_courses', 'discountTab_courses', 'instructors'));
     }
 
     /**
@@ -159,5 +160,19 @@ class HomeController extends Controller
     {
         $name_site = Config::get_option('settingGeneral','application_name');
         return view('layouts.frontend.index',compact('name_site'));
+    }
+
+    public function pageTeacher(Request $request)
+    {
+        return view('site.pages.teacher');
+    }
+
+    public function pageTestimonial(Request $request)
+    {
+        return view('site.pages.testimonial');
+    }
+    public function pagePicture(Request $request)
+    {
+        return view('site.pages.picture');
     }
 }

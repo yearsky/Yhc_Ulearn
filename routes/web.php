@@ -20,9 +20,16 @@ Route::get('/login/{social}/callback', 'Auth\LoginController@handleProviderCallb
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('about', 'HomeController@pageAbout')->name('page.about');
+// Route::get('about', 'HomeController@pageAbout')->name('page.about');
 Route::get('contact', 'HomeController@pageContact')->name('page.contact');
 Route::get('instructor/{instructor_slug}', 'InstructorController@instructorView')->name('instructor.view');
+
+Route::get('teacher', 'HomeController@pageTeacher')->name('teacher');
+Route::get('gibs-arjuna', 'HomeController@pageGibsarjuna')->name('gibs-arjuna');
+Route::get('about', 'HomeController@pageAbout')->name('page.about');
+// Route::get('contact', 'HomeController@pageContact')->name('page.contact');
+Route::get('testimonial', 'HomeController@pageTestimonial')->name('testimonial');
+Route::get('picture', 'HomeController@pagePicture')->name('picture');
 
 Route::get('getCheckTime', 'HomeController@getCheckTime');
 
