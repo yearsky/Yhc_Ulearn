@@ -65,7 +65,13 @@
 
                         @if(Auth::user()->hasRole('instructor'))
                         <a class="dropdown-item" href="{{ route('instructor.dashboard') }}">
-                            <i class="fa fa-sign-out-alt"></i> Instructor
+                            <i class="fa fa-sign-out-alt"></i> Dashboard
+                        </a>
+                        @endif
+
+                        @if(Auth::user()->hasRole('admin'))
+                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                            <i class="fa fa-sign-out-alt"></i> Dashboard
                         </a>
                         @endif
 

@@ -44,8 +44,7 @@
                             <footer>
                                 <div class="c-row">
                                     <div class="col-md-6 col-sm-6 col-6">
-                                        @php $course_price = $course->price ? config('config.default_currency').$course->price : 'Free'; @endphp
-                                        <h5 class="course-price">{{  $course_price }}&nbsp;<s>{{ $course->strike_out_price ? $course->strike_out_price : '' }}</s></h5>
+                                        
                                     </div>
                                     <div class="col-md-5 offset-md-1 col-sm-5 offset-sm-1 col-5 offset-1">
                                         <star class="course-rating">

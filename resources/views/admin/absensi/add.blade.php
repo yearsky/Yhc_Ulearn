@@ -16,16 +16,24 @@
 
   <ul class="nav nav-tabs mb-4">
     <li class="nav-item">
-        <a class="nav-link py-1 {{ request()->is('instructor-absensi-add*') ? 'active' : '' }}" href="#">Absensi Info</a>
+        <a class="nav-link py-1 {{ request()->is('admin-absensi-add*') ? 'active' : '' }}" href="#">Absensi Info</a>
     </li>
 </ul>
     
 
-    <form method="POST" action="{{route('instructor.absensi.save')}}" id="courseForm">
+    <form method="POST" action="{{route('admin.absensi.save')}}" id="courseForm">
       {{ csrf_field() }}
-      <input type="hidden" name="instructor_id" value="{{$instructor->id}}">
+      <!-- <input type="hidden" name="instructor_id" value=""> -->
       <div class="row">
       
+        <div class="form-group col-md-4">
+            <label class="form-control-label">Guru Mapel <span class="required">*</span></label>
+                <select class="form-control" name="guru" aria-label="Default select example">
+                  @foreach($instructor as $ir)
+                <option value="{{$ir->id}}" selected>{{$ir->guru}} </option>
+                @endforeach
+              </select>
+        </div>
         <div class="form-group col-md-4">
             <label class="form-control-label">Mata Pelajaran <span class="required">*</span></label>
                 <select class="form-control" name="mapel" aria-label="Default select example">
@@ -98,7 +106,7 @@
                var kelasId = $(this).val();
                if(kelasId) {
                    $.ajax({
-                       url: 'guru/getKelas/'+kelasId,
+                       url: '/getKelas/'+kelasId,
                        type: "GET",
                        data : {"_token":"{{ csrf_token() }}"},
                        dataType: "json",
