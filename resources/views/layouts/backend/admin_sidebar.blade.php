@@ -71,9 +71,9 @@
                     <span class="site-menu-title">General</span>
                   </a>
                 </li>
-                <li class="site-menu-item {{ request()->is('admin/config/setting-payment') ? 'active' : '' }}">
-                  <a href="{{ route('admin.settingPayment') }}">
-                    <span class="site-menu-title">Payment</span>
+                <li class="site-menu-item {{ request()->is('admin/config/slider') ? 'active' : '' }}">
+                  <a href="{{ route('admin.settingSlider') }}">
+                    <span class="site-menu-title">Slider</span>
                   </a>
                 </li>
                 <!-- <li class="site-menu-item {{ request()->is('admin/config/setting-email') ? 'active' : '' }}">

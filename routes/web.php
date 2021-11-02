@@ -234,7 +234,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('admin/config/page-contact', 'Admin\ConfigController@pageContact')->name('admin.pageContact');
 
         Route::get('admin/config/setting-general', 'Admin\ConfigController@settingGeneral')->name('admin.settingGeneral');
-        Route::get('admin/config/setting-payment', 'Admin\ConfigController@settingPayment')->name('admin.settingPayment');
+        Route::get('admin/config/setting-slider', 'Admin\ConfigController@settingSlider')->name('admin.settingSlider');
         Route::get('admin/config/setting-email', 'Admin\ConfigController@settingEmail')->name('admin.settingEmail');
     });
 
