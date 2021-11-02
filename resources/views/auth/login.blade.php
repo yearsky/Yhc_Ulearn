@@ -1,14 +1,19 @@
-@extends('layouts.frontend.v2index')
+@extends('layouts.frontend.index')
 
 @section('content')
 <!-- content start -->
-    <div class="container-fluid p-0 home-content-login container-top-border">
+    <div class="container-fluid p-0 home-content container-top-border">
         <!-- account block start -->
         <div class="container">
-            
+            <nav class="navbar clearfix secondary-nav pt-0 pb-0 login-page-seperator">
+                <ul class="list mt-0">
+                     <li><a href="{{ route('login') }}" class="active">Login</a></li>
+                </ul>
+            </nav>
+
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6 vertical-align d-none d-lg-block">
-                    <img class="img-fluid" src="{{ asset('newfrontend/assets/img/bg 2.png') }}" width="500px" height="500px">
+                    <img class="img-fluid" src="{{ asset('frontend/img/fimg.png') }}" width="500px" height="500px">
                 </div>
                 <div class="col-xl-6 offset-xl-0 col-lg-6 offset-lg-0 col-md-8 offset-md-2">
                     <div class="rightRegisterForm">
@@ -16,8 +21,6 @@
                         {{ csrf_field() }}
                         <div class="p-4">
                             <div class="form-group">
-                                <img src="newfrontend/assets/img/logo.png" alt="" class="img-fluid" style="display:block; margin:auto;"><br>
-                                <h4><b>Login<b></h4><br>
                                 <label>Email ID</label>
                                 <input name="email" type="text" class="form-control form-control-sm" placeholder="Email ID" value="{{ old('email') }}">
                                 @if ($errors->has('email'))
@@ -44,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-lg btn-block login-page-button"><b>Login</b></button>
+                                <button type="submit" class="btn btn-lg btn-block login-page-button">Login</button>
                             </div>
 
                             

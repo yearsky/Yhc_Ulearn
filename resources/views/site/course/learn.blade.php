@@ -38,7 +38,17 @@
                     </div>
                     <div class="row cv-header">
                         
-                       
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6  col-6">
+                            <div class="cv-category-icon">
+                                <i class="far fa-bookmark"></i>
+                            </div>
+                            <div class="cv-category-detail">
+                                <span>Category</span>
+                                <br>
+                                {{ $course->category->name }}
+                            </div>
+                        </div>
+
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6  col-6">
                             <div class="cv-category-detail cv-rating float-lg-left float-md-right float-sm-right">
                                 <span>{{ $course->ratings->count('rating') }} Reviews</span>
@@ -51,7 +61,12 @@
                             </div>
                         </div>
 
-                       
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+                            <div class="cv-category-detail cv-price">
+                            	@php $course_price = $course->price ? $course->price : '0.00'; @endphp
+                                <h4>{{  config('config.default_currency').$course_price }}</h4>
+                            </div>
+                        </div>
                         <div class="col-xl-3 col-lg-3 col-md-6 float-md-right col-sm-6 float-sm-right col-6">
                             <div class="cv-category-detail cv-enroll float-lg-right float-md-right float-sm-right">
                                 <a href="javascript::void(0);" class="btn btn-ulearn-cview mt-1" data-toggle="modal" data-target="#rateModal">RATE COURSE</a>
@@ -196,7 +211,14 @@
                 @endif
                 
                 <h6 class="mt-4 underline-heading">COURSE CATEGORIES</h6>
-               
+                <ul class="ul-no-padding">
+                	@php $categories = SiteHelpers::active_categories(); @endphp
+                    @foreach ($categories as $category)
+			            <li class="my-1">
+			                {{ $category->name}}
+			            </li>
+			        @endforeach
+                </ul>
 
                 @if($course->keywords)
                 <section class="tags-container mt-3">

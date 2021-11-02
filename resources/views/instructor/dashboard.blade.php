@@ -65,6 +65,7 @@
                     <th>Title</th>
                     <th>Slug</th>
                     <th>Category</th>
+                    <th>Price</th>
                     <th>Status</th>
                     </tr>
                 </thead>
@@ -75,6 +76,7 @@
                     <td>{{ $course->course_title }}</td>
                     <td>{{ $course->course_slug }}</td>
                     <td>{{ $course->category_name }}</td>
+                    <td>{{ $course->price ? $course->price : 'Free' }}</td>
                     <td>
                         @if($course->is_active)
                         <span class="badge badge-success">Active</span>

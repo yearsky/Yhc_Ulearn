@@ -21,7 +21,7 @@
 </ul>
     
 
-    <form method="POST" action="{{url('instructor/absensi/update/'.$absensi->id)}}" id="courseForm">
+    <form method="POST" action="{{route('instructor.absensi.save')}}" id="courseForm">
       {{ csrf_field() }}
       <input type="hidden" name="instructor_id" value="{{$absensi->id_instructor}}">
       <div class="row">
@@ -93,7 +93,7 @@
                var siswaId = $(this).val();
                if(kelasId) {
                    $.ajax({
-                       url: '/guru/getKelas/'+kelasId,
+                       url: '/getKelas/'+kelasId,
                        type: "GET",
                        data : {"_token":"{{ csrf_token() }}"},
                        dataType: "json",
