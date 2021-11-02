@@ -1,5 +1,5 @@
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'century-gothic-regular',sans-serif;
   color: #000000;
   background-color: #d7e8fc;
 }
@@ -15,7 +15,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", sans-serif;
+  font-family: 'century-gothic-regular',sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -106,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;
-  font-family: "Raleway", sans-serif;
+  font-family: 'century-gothic-regular',sans-serif;
   font-size: 15px;
   color: #000f66;
   white-space: nowrap;
@@ -119,7 +119,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
   color:#02b419;
-  ;
 }
 .navbar .getstarted, .navbar .getstarted:focus {
   background: #02b419;
@@ -280,6 +279,9 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
+
+
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -296,11 +298,14 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 50px;
   font-weight: 500;
   line-height: 56px;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family:  'century-gothic-regular',sans-serif;
 }
 #hero h1 span{
   display: table-cell;
   animation: animate 1s linear infinite;
+  color: white;
+  font-family:  'century-gothic-regular',sans-serif;
+  line-height: 60px;
 }
 #hero h2 {
   color: #ffffff;
@@ -308,11 +313,11 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 16px;
   text-align: justify;
   padding: 1px 0 20px 1;
-  font-family: cursive;
+  font-family: 'century-gothic-regular',sans-serif;
 }
 #hero h4{
   margin-bottom: 70px;
-  font-family: cursive;
+  font-family: 'century-gothic-regular',sans-serif;
   color: white;
   font-size: 20px;
 }
@@ -552,11 +557,8 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 .work img {
-  max-width: 70%;
-  transition: all 0.4s ease-in-out;
-  display: inline-block;
-  padding: 15px 0;
   filter: grayscale(100);
+  width: 100%;
 }
 .work img:hover {
   filter: none;
