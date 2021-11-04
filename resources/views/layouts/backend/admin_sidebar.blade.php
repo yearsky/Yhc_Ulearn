@@ -9,11 +9,25 @@
                 <span class="site-menu-title">Dashboard</span>
             </a>
         </li>
-         <li class="site-menu-item {{ request()->is('admin/user*') ? 'active' : '' }}">
-            <a href="{{ route('admin.users') }}">
-                <i class="site-menu-icon wb-user" aria-hidden="true"></i>
+        <li class="site-menu-item has-sub {{ request()->is('admin/user/*') ? 'active open' : '' }}">
+            <a href="javascript:void(0)">
+                <i class="site-menu-icon wb-file" aria-hidden="true"></i>
                 <span class="site-menu-title">Users Management</span>
+                <span class="site-menu-arrow"></span>
             </a>
+            <ul class="site-menu-sub">
+                <li class="site-menu-item {{ request()->is('admin/user/siswa/*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.siswa.list') }}">
+                    <span class="site-menu-title">Siswa</span>
+                  </a>
+                </li>
+                <li class="site-menu-item {{ request()->is('admin/user/guru/*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.guru.list') }}">
+                    <span class="site-menu-title">Guru</span>
+                  </a>
+                </li>
+               
+            </ul>
         </li>
         <li class="site-menu-item {{ request()->is('admin/categor*') ? 'active' : '' }}">
             <a href="{{ route('admin.categories') }}">
@@ -71,8 +85,8 @@
                     <span class="site-menu-title">General</span>
                   </a>
                 </li>
-                <li class="site-menu-item {{ request()->is('admin/config/slider') ? 'active' : '' }}">
-                  <a href="{{ route('admin.settingSlider') }}">
+                <li class="site-menu-item {{ request()->is('admin/config/*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.showSlider') }}">
                     <span class="site-menu-title">Slider</span>
                   </a>
                 </li>

@@ -57,28 +57,28 @@ figure figcaption {
 <div class="page-header">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('admin.blogs') }}">Blogs</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.showSlider') }}">Slider</a></li>
     <li class="breadcrumb-item active">Add</li>
   </ol>
-  <h1 class="page-title">Add Blog</h1>
+  <h1 class="page-title">Add Slider</h1>
 </div>
 
 <div class="page-content">
 
 <div class="panel">
   <div class="panel-body">
-    <form method="POST" action="{{ route('admin.saveBlog') }}" id="blogForm" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.saveSlider') }}" id="slideForm" enctype="multipart/form-data">
       {{ csrf_field() }}
-      <input type="hidden" name="blog_id" value="{{ $blog->id }}">
-      <input type="hidden" name="old_blog_image" value="{{ $blog->blog_image }}">
+      <input type="hidden" name="slide_id" value="{{ $slider->id }}">
+      <input type="hidden" name="old_slide_image" value="{{ $slider->image }}">
       <div class="row">
       
         <div class="form-group col-md-7">
-          <label class="form-control-label">Blog Title <span class="required">*</span></label>
-          <input type="text" class="form-control" name="blog_title" 
-            placeholder="Blog Title" value="{{ $blog->blog_title }}" />
-            @if ($errors->has('blog_title'))
-                <label class="error" for="blog_title">{{ $errors->first('blog_title') }}</label>
+          <label class="form-control-label">Slide Title <span class="required">*</span></label>
+          <input type="text" class="form-control" name="slide_title" 
+            placeholder="Slide Title" value="{{ $slider->title }}" />
+            @if ($errors->has('slide_title'))
+                <label class="error" for="blog_title">{{ $errors->first('slide_title') }}</label>
             @endif
         </div>
 
@@ -87,11 +87,11 @@ figure figcaption {
         <label class="form-control-label">Status</label>
         <div>
           <div class="radio-custom radio-default radio-inline">
-            <input type="radio" id="inputBasicActive" name="is_active" value="1" @if($blog->is_active) checked @endif />
+            <input type="radio" id="inputBasicActive" name="is_active" value="1" @if($slider->is_active) checked @endif />
             <label for="inputBasicActive">Active</label>
           </div>
           <div class="radio-custom radio-default radio-inline">
-            <input type="radio" id="inputBasicInactive" name="is_active" value="0" @if(!$blog->is_active) checked @endif/>
+            <input type="radio" id="inputBasicInactive" name="is_active" value="0" @if(!$slider->is_active) checked @endif/>
             <label for="inputBasicInactive">Inactive</label>
           </div>
         </div>
@@ -103,21 +103,21 @@ figure figcaption {
             <div class="form-group col-md-7">
                 <label class="form-control-label">Description</label>
                 <textarea name="description">
-                    {{ $blog->description }}
+                    {{ $slider->desc }}
                 </textarea>
             </div>
 
             <div class="form-group col-md-5">
-                <label class="form-control-label">Blog Image</label>
+                <label class="form-control-label">Slide Image</label>
                 
                 <label class="cabinet center-block">
                     <figure class="course-image-container">
-                        <i data-toggle="tooltip" data-original-title="Delete" data-id="blog_image" class="fa fa-trash remove-lp" data-content="{{  Crypt::encryptString(json_encode(array('model'=>'blogs', 'field'=>'blog_image', 'pid' => 'id', 'id' => $blog->id, 'photo'=>$blog->blog_image))) }}" style="display: @if(Storage::exists($blog->blog_image)){{ 'block' }} @else {{ 'none' }} @endif"></i>
-                        <img src="@if(Storage::exists($blog->blog_image)){{ asset('storage/'.$blog->blog_image) }}@else{{ asset('backend/assets/images/blog_image.jpeg') }}@endif" class="gambar img-responsive" id="blog_image-output" name="blog_image-output" />
-                        <input type="file" class="item-img file center-block" name="blog_image" id="blog_image" />
+                        <i data-toggle="tooltip" data-original-title="Delete" data-id="slide_image" class="fa fa-trash remove-lp" data-content="{{  Crypt::encryptString(json_encode(array('model'=>'table_slider', 'field'=>'image', 'pid' => 'id', 'id' => $slider->id, 'photo'=>$slider->image))) }}" style="display: @if(Storage::exists($slider->image)){{ 'block' }} @else {{ 'none' }} @endif"></i>
+                        <img src="@if(Storage::exists($slider->image)){{ asset('storage/'.$slider->image) }}@else{{ asset('backend/assets/images/blog_image.jpeg') }}@endif" class="gambar img-responsive" id="slide_image-output" name="slide_image-output" />
+                        <input type="file" class="item-img file center-block" name="slide_image" id="slide_image" />
                     </figure>
                 </label>
-                <input type="hidden" name="blog_image_base64" id="blog_image_base64">
+                <input type="hidden" name="slide_image_base64" id="slide_image_base64">
                 <span style="font-size: 10px;">
                     Supported File Formats: jpg,jpeg,png 
                     <br>Dimesnion: 825px X 326px
@@ -169,7 +169,7 @@ figure figcaption {
     $(document).ready(function()
     { 
         //image crop start
-        $(".gambar").attr("src", @if(Storage::exists($blog->blog_image))"{{ asset('storage/'.$blog->blog_image) }}" @else "{{ asset('backend/assets/images/blog_image.jpeg') }}" @endif);
+        $(".gambar").attr("src", @if(Storage::exists($slider->image))"{{ asset('storage/'.$slider->image) }}" @else "{{ asset('backend/assets/images/blog_image.jpeg') }}" @endif);
 
         var $uploadCrop,
         tempFilename,
@@ -275,14 +275,14 @@ figure figcaption {
             content_style: "#tinymce p{color:#76838f;}"
         });
 
-        $("#blogForm").validate({
+        $("#slideForm").validate({
             rules: {
-                blog_title: {
+                slide_title: {
                     required: true
                 }
             },
             messages: {
-                blog_title: {
+                slide_title: {
                     required: 'The blog title field is required.'
                 }
             }

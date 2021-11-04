@@ -7,118 +7,29 @@
       <div class="carousel-inner" role="listbox">
 
         <!-- Slide 1 -->
+        @foreach($slider as $sl)
         <div class="carousel-item active">
           <div class="carousel-container">
             <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
               <div>
-              <h1><span> MARILAH</span>
-                  Wujudkan Masa Depan Bersama Global Islamic Boarding School
+              <h1>
+                 {{$sl->title}}
               </h1>
-              <h2>GIBS, sebagai sekolah berasrama, menghadirkan after school program yang dikembangkan<br>
-              demi terciptanya lingkungan pendidikan yang islami yang merupakan pendukung utama<br>
-              dalam mencapai tujuan pendidikan di GIBS 
+              <h2>{!!$sl->desc!!}
               </h2>
-                <a href="#" class="download-btn"><i class="bx bxl-apple"></i> Untuk Guru</a>
-                <a href="#" class="download-btn"><i class="bx bxl-apple"></i> Untuk Siswa</a>
+                <!-- <a href="#" class="download-btn"><i class="bx bxl-apple"></i> Untuk Guru</a>
+                <a href="#" class="download-btn"><i class="bx bxl-apple"></i> Untuk Siswa</a> -->
             </div>
           </div>
             <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
-              <img src="{{asset('newfrontend/assets/img/bg 2.png') }}" width="65%" class="img-fluid animated" alt="" alt="">
+              <img src="{{asset('storage/'.$sl->image) }}" width="65%" class="img-fluid animated" alt="" alt="">
             </div>
           </div>
         </div>
+        @endforeach
 
         <!-- Slide 2 -->
-        <div class="carousel-item">
-          <div class="carousel-container">
-          <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
-            <div>
-              <h1><span>MISSION</span></h1>
-              <h4>
-                  1) Membuat setiap orang bertanggung jawab kepada Allah SWT<br>
-                  2) Membuat setiap orang merasa berharga <br>
-                  3) Membentuk setiap orang terpanggil untuk berprestasi sebagai bentuk pengabdian kepada Allah SWT
-              </h4>
-              <h1><span>CURRICULUM</span></h1>
-              <h4>
-                Global Islamic Boarding School menerapkan kurikulum yang disebut GIBS Outreach Education System (GOES).<br>
-                Kurikulum ini mencakup 3 komponen dasar yakni Academic, Skills and Conducts, dan 9 Pillars.
-              </h4>
-            </div>
-          </div>
-            <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
-              <img src="{{asset('newfrontend/assets/img/bg2.png') }}" width="65%" class="img-fluid animated" alt="" alt="">
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="carousel-item">
-          <div class="carousel-container">
-          <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
-            <div>
-              <h1><span>5 New Stream<br>
-              Perminatan Jurusan
-              </span></h1>
-              <h3>
-                1) Natural Science (NS)<br>
-                2) Social Science (SS) - Academic Stream<br>
-                3) Islamic Scholar<br>
-                4) Professional Skills<br>
-                5) Entrepreneurship
-              </h3>
-            </div>
-          </div>
-            <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
-              <img src="{{asset('newfrontend/assets/img/bg3.png') }}" width="65%" class="img-fluid animated" alt="" alt="">
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 4 -->
-        <div class="carousel-item">
-          <div class="carousel-container">
-          <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
-            <div>
-              <h1><span>5 New Stream<br>
-              Perminatan Jurusan
-              </span></h1>
-              <h3>
-                1) Natural Science (NS)<br>
-                2) Social Science (SS) - Academic Stream
-                3) Islamic Scholar<br>
-                5) Professional Skills<br>
-                6) Entrepreneurship
-              </h3>
-            </div>
-          </div>
-            <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
-              <img src="{{asset('newfrontend/assets/img/bg3.png') }}" width="65%" class="img-fluid animated" alt="" alt="">
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 5 -->
-        <div class="carousel-item">
-          <div class="carousel-container">
-          <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
-            <div>
-              <h1><span>5 New Stream<br>
-              Perminatan Jurusan
-              </span></h1>
-              <h3>
-                1) Natural Science (NS) dan Social Science (SS) - Academic Stream<br>
-                2) Islamic Scholar<br>
-                3) Professional Skills<br>
-                4) Entrepreneurship
-              </h3>
-            </div>
-          </div>
-            <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
-              <img src="{{asset('newfrontend/assets/img/bg3.png') }}" width="65%" class="img-fluid animated" alt="" alt="">
-            </div>
-          </div>
-        </div>
+        
 
       <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>

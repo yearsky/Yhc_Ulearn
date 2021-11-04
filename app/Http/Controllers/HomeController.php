@@ -68,9 +68,11 @@ class HomeController extends Controller
                         ->groupBy('instructors.id')
                         ->limit(8)
                         ->get();
+
+        $slider = DB::table('table_slider')->limit(4)->get();
                         
         // return view('site/home', compact('latestTab_courses', 'freeTab_courses', 'discountTab_courses', 'instructors'));
-        return view('site/homev2', compact('latestTab_courses', 'freeTab_courses', 'discountTab_courses', 'instructors'));
+        return view('site/homev2', compact('latestTab_courses', 'freeTab_courses', 'discountTab_courses', 'instructors','slider'));
     }
 
     /**

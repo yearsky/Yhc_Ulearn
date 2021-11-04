@@ -234,8 +234,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('admin/config/page-contact', 'Admin\ConfigController@pageContact')->name('admin.pageContact');
 
         Route::get('admin/config/setting-general', 'Admin\ConfigController@settingGeneral')->name('admin.settingGeneral');
-        Route::get('admin/config/setting-slider', 'Admin\ConfigController@settingSlider')->name('admin.settingSlider');
         Route::get('admin/config/setting-email', 'Admin\ConfigController@settingEmail')->name('admin.settingEmail');
+
+        //Slider
+        Route::get('admin/config/setting-slider', 'Admin\ConfigController@showSlider')->name('admin.showSlider');
+        Route::get('admin/config/slide-form','Admin\ConfigController@getForm')->name('admin.slideForm');
+        Route::get('admin/config/slide-form/{slide_id}','Admin\ConfigController@getForm');
+        Route::post('admin/save-slider', 'Admin\ConfigController@saveSlider')->name('admin.saveSlider');
+        Route::get('admin/delete-slider/{slide_id}', 'Admin\ConfigController@deleteSlider');
+
+
     });
 
     Route::group(['middleware' => 'subscribed'], function () {
