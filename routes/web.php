@@ -75,6 +75,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('my-courses', 'CourseController@myCourses')->name('my.courses');
         Route::get('course-learn/{course_slug}', 'CourseController@courseLearn')->name('course.learn');
 
+        Route::get('dashboard','DashboardController@studentDashboard')->name('student.dashboard');
+
         Route::post('course-rate', 'CourseController@courseRate')->name('course.rate');
         Route::get('delete-rating/{raing_id}', 'CourseController@deleteRating')->name('delete.rating');
 

@@ -1,4 +1,4 @@
-@extends('layouts.frontend.index')
+@extends('layouts.frontend.v2index')
 @section('content')
 <!-- content start -->
     <div class="container-fluid p-0 home-content">

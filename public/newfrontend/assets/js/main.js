@@ -26,7 +26,7 @@
     }
   }
   /**
-   * Hero carousel indicators
+   * Hero carousel indicators home
    */
  let heroCarouselIndicators = select("#hero-carousel-indicators")
  let heroCarouselItems = select('#heroCarousel .carousel-item', true)
@@ -36,6 +36,7 @@
    heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
      heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
  });
+
 
   /**
    * Gallery slider

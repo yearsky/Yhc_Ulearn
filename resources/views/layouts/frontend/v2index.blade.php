@@ -23,10 +23,13 @@
   <link href="{{asset ('newfrontend/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
   <link href="{{asset ('newfrontend/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
   <link href="{{asset ('newfrontend/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset ('newfrontend/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{asset ('newfrontend/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="{{asset('newfrontend/assets/css/index2Style.css')}}" rel="stylesheet">
+  <link href="{{asset('newfrontend/assets/css/teacherStyle.css')}}" rel="stylesheet">
+  
   <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 
 </head>
@@ -81,7 +84,9 @@
               @elseif(Auth::user()->hasRole('admin'))
                 <li><a href="{{ route('admin.dashboard') }}"> Admin</a></li>
               @elseif(Auth::user()->hasRole('student'))
-                <li><a href="{{ route('my.courses') }}"> Mapel Saya</a></li>
+                <!-- <li><a href="{{ route('my.courses') }}"> Mapel Saya</a></li>
+               -->
+                <li><a href="{{route('student.dashboard')}}"> Dashboard</a></li>
                 <li><a href="#"> Absensi</a></li>
                 <li><a href="#"> Profil</a></li>
               @endif
