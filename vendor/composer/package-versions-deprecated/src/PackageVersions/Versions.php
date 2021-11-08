@@ -155,7 +155,7 @@ final class Versions
   'sebastian/version' => '2.0.1@99732be0ddb3361e16ad77b68ba41efc8e979019',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
   'webmozart/assert' => '1.8.0@ab2cb0b3b559010b75981b1bdce728da3ee90ad6',
-  'ulearnpro/ulearn' => 'dev-main@a9db84f6e7efa86addf04a22e7caf2445564cdea',
+  'ulearnpro/ulearn' => 'dev-main@ae8cfa0fd20b32bf3b1144624b7dfaf3373a07f9',
 );
 
     private function __construct()

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableSlider extends Migration
+class Menupengunjung extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateTableSlider extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('table_slider')){
-        Schema::create('table_slider', function (Blueprint $table) {
+        Schema::create('menupengunjung', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->text('desc');
+            $table->string('judul');
             $table->string('link');
-            $table->string('image');
-            $table->boolean('is_active');
+            $table->integer('urutan');
             $table->timestamps();
         });
-        }
     }
 
     /**
@@ -33,6 +29,7 @@ class CreateTableSlider extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_slider');
+        Schema::dropIfExists('menupengunjung');
+        
     }
 }

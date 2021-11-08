@@ -44,9 +44,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-        <li><a class="nav-link scrollto" href="{{ route('home') }}"><b>HOME</b></a></li>
-          <li><a class="nav-link scrollto active" href="{{ route('home') }}"><b>GIBS ARJUNA</b></a></li>
-          <li><a class="nav-link scrollto" href="{{ route('teacher') }}"><b>TEACHER</b></a></li>
+        <li><a class="nav-link scrollto {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}"><b>HOME</b></a></li>
+          <li><a class="nav-link scrollto {{ request()->is('/gibs-arjuna') ? 'active' : '' }}" href="{{ route('gibs-arjuna') }}"><b>GIBS ARJUNA</b></a></li>
+          <li><a class="nav-link scrollto {{ request()->is('teacher') ? 'active' : '' }}" href="{{ route('teacher') }}"><b>TEACHER</b></a></li>
           <li class="dropdown"><a href="#"><span><b>PROFILE</b></span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#"><b>Fasilitas</b></a></li>
