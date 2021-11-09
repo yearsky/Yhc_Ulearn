@@ -245,7 +245,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('admin/save-slider', 'Admin\ConfigController@saveSlider')->name('admin.saveSlider');
         Route::get('admin/delete-slider/{slide_id}', 'Admin\ConfigController@deleteSlider');
 
+        //Course
+        Route::get('admin-course-list', 'CourseController@adminCourse')->name('admin.course.list');
+        Route::get('admin-course-info', 'CourseController@adminCourseInfo')->name('admin.course.info');
+        Route::get('admin-course-info/{course_id}', 'CourseController@adminCourseInfo')->name('admin.course.info.edit');
+        Route::post('admin-course-info-save', 'CourseController@adminCourseInfoSave')->name('admin.course.info.save');
 
+        //Galery
+        Route::get('admin/gallery','Admin\DashboardController@showGallery')->name('admin.gallery');
+        Route::get('admin/gallery-form','Admin\DashboardController@getForm')->name('admin.galleryForm');
+        Route::get('admin/gallery-form/{galleryId}','Admin\DashboardController@getForm');
+        Route::post('admin/save-gallery', 'Admin\DashboardController@saveGallery')->name('admin.saveGallery');
+        Route::get('admin/delete-gallery/{galleryId}', 'Admin\DashboardController@deleteGallery');
     });
 
     Route::group(['middleware' => 'subscribed'], function () {

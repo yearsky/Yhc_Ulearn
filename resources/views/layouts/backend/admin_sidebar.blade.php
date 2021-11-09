@@ -35,6 +35,12 @@
                 <span class="site-menu-title">Categories</span>
             </a>
         </li>
+        <li class="site-menu-item {{ request()->is('admin-course-*') ? 'active' : '' }}">
+            <a href="{{ route('admin.course.list') }}">
+                <i class="site-menu-icon fas fa-chalkboard" aria-hidden="true"></i>
+                <span class="site-menu-title">Courses</span>
+            </a>
+        </li>
         <!-- <li class="site-menu-item {{ request()->is('admin/withdraw-requests') ? 'active' : '' }}">
             <a href="{{ route('admin.withdraw.requests') }}">
                 <i class="site-menu-icon fas fa-hand-holding-usd" aria-hidden="true"></i>
@@ -68,6 +74,11 @@
                 <li class="site-menu-item {{ request()->is('admin/config/page-contact') ? 'active' : '' }}">
                   <a href="{{ route('admin.pageContact') }}">
                     <span class="site-menu-title">Contact Us</span>
+                  </a>
+                </li>
+                <li class="site-menu-item {{ request()->is('admin/gallery') ? 'active' : '' }}">
+                  <a href="{{ route('admin.gallery') }}">
+                    <span class="site-menu-title">Gallery</span>
                   </a>
                 </li>
             </ul>
