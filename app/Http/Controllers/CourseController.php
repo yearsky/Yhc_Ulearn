@@ -1128,4 +1128,9 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = b
         // echo '<pre>';print_r($courses);exit;
         return view('admin.course.list', compact('courses'));
     }
+
+    public function adminCourseInfo()
+    {
+        
+    }
 }

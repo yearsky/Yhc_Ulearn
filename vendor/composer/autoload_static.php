@@ -605,6 +605,7 @@ class ComposerStaticInitd74fb2b922c536e932fc350c37edce6a
         'App\\Models\\CourseVideos' => __DIR__ . '/../..' . '/app/Models/CourseVideos.php',
         'App\\Models\\Credit' => __DIR__ . '/../..' . '/app/Models/Credit.php',
         'App\\Models\\Exam' => __DIR__ . '/../..' . '/app/Models/Exam.php',
+        'App\\Models\\Gallery' => __DIR__ . '/../..' . '/app/Models/Gallery.php',
         'App\\Models\\InstructionLevel' => __DIR__ . '/../..' . '/app/Models/InstructionLevel.php',
         'App\\Models\\Instructor' => __DIR__ . '/../..' . '/app/Models/Instructor.php',
         'App\\Models\\Kelas' => __DIR__ . '/../..' . '/app/Models/Kelas.php',

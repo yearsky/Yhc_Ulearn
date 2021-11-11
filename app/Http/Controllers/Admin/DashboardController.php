@@ -72,59 +72,59 @@ class DashboardController extends Controller
 
     public function saveGallery($gallery_id='',Request $request)
     {
-// echo '<pre>';print_r($_POST);exit;
-$gallery_id = $request->input('gallery_id');
+        // echo '<pre>';print_r($_POST);exit;
+        $gallery_id = $request->input('gallery_id');
 
-$validation_rules = ['gallery_title' => 'required|string'];
+        $validation_rules = ['gallery_title' => 'required|string'];
 
-$validator = Validator::make($request->all(),$validation_rules);
+        $validator = Validator::make($request->all(),$validation_rules);
 
-// Stop if validation fails
-if ($validator->fails()) {
-    return $this->return_output('error', 'error', $validator, 'back', '422');
-}
+        // Stop if validation fails
+        if ($validator->fails()) {
+            return $this->return_output('error', 'error', $validator, 'back', '422');
+        }
 
-if ($gallery_id) {
-    $gallery = Gallery::find($gallery_id);
-    $success_message = 'Gallery updated successfully';
-} else {
-    $gallery = new Gallery();
-    $success_message = 'Gallery added successfully';
+        if ($gallery_id) {
+            $gallery = Gallery::find($gallery_id);
+            $success_message = 'Gallery updated successfully';
+        } else {
+            $gallery = new Gallery();
+            $success_message = 'Gallery added successfully';
 
-}
+        }
 
-$gallery->title = $request->input('gallery_title');
-$gallery->is_active = $request->input('is_active');
+        $gallery->title = $request->input('gallery_title');
+        $gallery->is_active = $request->input('is_active');
 
-if (Input::hasFile('gallery_image') && Input::has('gallery_image_base64')) {
-    //delete old file
-    $old_image = $request->input('old_gallery_image');
-    if (Storage::exists($old_image)) {
-        Storage::delete($old_image);
-    }
+        if (Input::hasFile('gallery_image') && Input::has('gallery_image_base64')) {
+            //delete old file
+            $old_image = $request->input('old_gallery_image');
+            if (Storage::exists($old_image)) {
+                Storage::delete($old_image);
+            }
 
-    //get filename
-    $file_name   = $request->file('gallery_image')->getClientOriginalName();
+            //get filename
+            $file_name   = $request->file('gallery_image')->getClientOriginalName();
 
-    // returns Intervention\Image\Image
-    $image_make = Image::make($request->input('gallery_image_base64'))->encode('jpg');
+            // returns Intervention\Image\Image
+            $image_make = Image::make($request->input('gallery_image_base64'))->encode('jpg');
 
-    // create path
-    $path = "gallery";
-    
-    //check if the file name is already exists
-    $new_file_name = SiteHelpers::checkFileName($path, $file_name);
+            // create path
+            $path = "gallery";
+            
+            //check if the file name is already exists
+            $new_file_name = SiteHelpers::checkFileName($path, $file_name);
 
-    //save the image using storage
-    Storage::put($path."/".$new_file_name, $image_make->__toString(), 'public');
+            //save the image using storage
+            Storage::put($path."/".$new_file_name, $image_make->__toString(), 'public');
 
-    $gallery->path = $path."/".$new_file_name;
-    
-}
+            $gallery->path = $path."/".$new_file_name;
+            
+        }
 
-$gallery->save();
+        $gallery->save();
 
-return $this->return_output('flash', 'success', $success_message, 'admin/gallery', '200');
+        return $this->return_output('flash', 'success', $success_message, 'admin/gallery', '200');
     }
 
     public function deleteGallery($galleryId)

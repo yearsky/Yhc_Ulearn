@@ -55,6 +55,7 @@ return array(
     'App\\Models\\CourseVideos' => $baseDir . '/app/Models/CourseVideos.php',
     'App\\Models\\Credit' => $baseDir . '/app/Models/Credit.php',
     'App\\Models\\Exam' => $baseDir . '/app/Models/Exam.php',
+    'App\\Models\\Gallery' => $baseDir . '/app/Models/Gallery.php',
     'App\\Models\\InstructionLevel' => $baseDir . '/app/Models/InstructionLevel.php',
     'App\\Models\\Instructor' => $baseDir . '/app/Models/Instructor.php',
     'App\\Models\\Kelas' => $baseDir . '/app/Models/Kelas.php',

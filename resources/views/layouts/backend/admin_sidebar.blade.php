@@ -41,6 +41,18 @@
                 <span class="site-menu-title">Courses</span>
             </a>
         </li>
+        <li class="site-menu-item {{ request()->is('admin/penjadwalan/*') ? 'active' : '' }}">
+            <a href="{{ route('admin.penjadwalan.list') }}">
+                <i class="site-menu-icon fas fa-chalkboard" aria-hidden="true"></i>
+                <span class="site-menu-title">Penjadwalan </span>
+            </a>
+        </li>
+        <li class="site-menu-item {{ request()->is('admin/absensi/*') ? 'active' : '' }}">
+            <a href="{{ route('admin.absensi.list') }}">
+                <i class="site-menu-icon fas fa-chalkboard" aria-hidden="true"></i>
+                <span class="site-menu-title">Absensi </span>
+            </a>
+        </li>
         <!-- <li class="site-menu-item {{ request()->is('admin/withdraw-requests') ? 'active' : '' }}">
             <a href="{{ route('admin.withdraw.requests') }}">
                 <i class="site-menu-icon fas fa-hand-holding-usd" aria-hidden="true"></i>
