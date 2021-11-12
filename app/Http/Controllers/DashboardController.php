@@ -49,6 +49,14 @@ class DashboardController extends Controller
                     ->leftJoin('course_ratings', 'course_ratings.course_id', '=', 'courses.id')
                     ->join('instructors', 'instructors.id', '=', 'courses.instructor_id')
                     ->where('courses.is_active',1);
-        return view('site.student.dashboard',compact('courses'));
+
+        $penjadwalan = DB::select(DB::raw('CALL GetJadwal()')); 
+        return view('site.student.dashboard',compact('courses','penjadwalan'));
+        // return $penjadwalan;
+    }
+
+    public function studentProfile()
+    {
+        return view('site.student.profile');
     }
 }

@@ -1,0 +1,1339 @@
+.desktop1280dashboard {
+    align-items: flex-start;
+    background-color: var(--hint-of-red);
+    display: flex;
+    width: 1280px;
+  }
+  
+  .desktop1280dashboard .side-bar-desktop {
+    display: flex;
+    height: 914px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 80px;
+  }
+  
+  .desktop1280dashboard .side-bar-desktop-1 {
+    align-items: center;
+    background-color: var(--aqua-deep);
+    display: flex;
+    flex-direction: column;
+    min-height: 914px;
+    padding: 40px 0;
+    width: 80px;
+  }
+  
+  .desktop1280dashboard .dashboard-icon {
+    align-items: flex-start;
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---dashboard--dashboard-icon--58E6F266-FFE1-464A-B8B6-326233D16BD6.svg);
+    background-size: 100% 100%;
+    cursor: pointer;
+    display: flex;
+    min-width: 40px;
+  }
+  
+  .desktop1280dashboard .hover-bg {
+    background-color: var(--white);
+    border-radius: 5px;
+    height: 39px;
+    opacity: 0.25;
+    pointer-events: auto;
+    transition: all 0.2s ease-in-out;
+    width: 39px;
+  }
+  
+  .desktop1280dashboard .hover-bg:hover {
+    opacity: 0.25;
+  }
+  
+  .desktop1280dashboard .classes-icon {
+    align-items: flex-start;
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---dashboard--classes-icon-5BB13739-4006-4A3C-9CC6-826FBD93559C.svg);
+    background-size: 100% 100%;
+    cursor: pointer;
+    display: flex;
+    margin-top: 40px;
+    min-width: 40px;
+  }
+  
+  .desktop1280dashboard .hover-bg-1 {
+    background-color: var(--white);
+    border-radius: 5px;
+    height: 39px;
+    opacity: 0;
+    pointer-events: auto;
+    transition: all 0.2s ease-in-out;
+    width: 39px;
+  }
+  
+  .desktop1280dashboard .hover-bg-1:hover {
+    opacity: 0.25;
+  }
+  
+  .desktop1280dashboard .contacts-icon {
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---dashboard--contacts-icon-DD263BDA-D038-490B-A95F-5C37C6DDEF67.svg);
+    background-size: 100% 100%;
+    height: 39px;
+    margin-top: 40px;
+    width: 40px;
+  }
+  
+  .desktop1280dashboard .calendar-icon {
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---classes--calendar-icon-701EBDD5-2E74-44C6-8677-2F08A2D7E4EC@2x.svg);
+    background-size: 100% 100%;
+    height: 39px;
+    margin-top: 40px;
+    width: 40px;
+  }
+  
+  .desktop1280dashboard .setting-icons {
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---dashboard--setting-icons-CD3C9501-F8E1-4712-893E-BFD9968F02E1@2x.svg);
+    background-size: 100% 100%;
+    height: 39px;
+    margin-top: 40px;
+    width: 40px;
+  }
+  
+  .desktop1280dashboard .flex-col-1 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 80px;
+    min-height: 874px;
+    width: 1200px;
+  }
+  
+  .desktop1280dashboard .top-bar-desktop {
+    background-color: var(--white);
+    display: flex;
+    height: 64px;
+    justify-content: space-between;
+    width: 1200px;
+  }
+  
+  .desktop1280dashboard .search-tab {
+    align-items: flex-start;
+    display: flex;
+    margin-left: 40px;
+    min-width: 804px;
+  }
+  
+  .desktop1280dashboard .search-tab-1 {
+    align-items: center;
+    background-color: var(--hint-of-red);
+    border-radius: 5px;
+    display: flex;
+    height: 40px;
+    justify-content: flex-end;
+    min-width: 804px;
+    padding: 4px 16px;
+  }
+  
+  .desktop1280dashboard .search-icon {
+    align-items: flex-end;
+    display: flex;
+    height: 15px;
+    margin-top: 1.0px;
+    min-width: 11px;
+    opacity: 0.5;
+    transform: rotate(-43deg);
+  }
+  
+  .desktop1280dashboard .overlap-group-1 {
+    height: 16px;
+    margin-bottom: -0.5px;
+    position: relative;
+    width: 11px;
+  }
+  
+  .desktop1280dashboard .oval-2 {
+    height: 11px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 11px;
+  }
+  
+  .desktop1280dashboard .path {
+    height: 7px;
+    left: 4px;
+    position: absolute;
+    top: 8px;
+    width: 3px;
+  }
+  
+  .desktop1280dashboard .text-search {
+    align-self: flex-end;
+    background-color: transparent;
+    border: 0;
+    height: 30px;
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-left: 9px;
+    opacity: 0.5;
+    padding: 0;
+    width: 744px;
+  }
+  
+  .desktop1280dashboard .text-search::placeholder {
+    color: #00000099;
+  }
+  
+  .desktop1280dashboard .avatar {
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---dashboard--avatar-B8210B8A-4145-44E5-A881-F2A4B9ACFC32@3x.png);
+    background-size: 100% 100%;
+    cursor: pointer;
+    height: 30px;
+    margin-right: 40px;
+    width: 30px;
+  }
+  
+  .desktop1280dashboard .dashboard {
+    align-items: flex-end;
+    display: flex;
+    height: 770px;
+    justify-content: center;
+    margin-top: 40px;
+    min-width: 1120px;
+  }
+  
+  .desktop1280dashboard .flex-col-2 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -20px;
+    min-height: 790px;
+    width: 834px;
+  }
+  
+  .desktop1280dashboard .dashboard-1 {
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-left: 15px;
+    min-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .desktop1280dashboard .welcome-tab-desktop {
+    align-items: flex-start;
+    display: flex;
+    margin-top: 5px;
+    min-width: 834px;
+  }
+  
+  .desktop1280dashboard .welcome-card-desktop {
+    align-items: flex-start;
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---dashboard--mask-bg-A9FC1F84-D034-445B-B8EA-F6858ECB743D.png);
+    background-size: 100% 100%;
+    border-radius: 5px;
+    display: flex;
+    height: 286px;
+    overflow: hidden;
+    padding: 10px 28px;
+    width: 834px;
+  }
+  
+  .desktop1280dashboard .overlap-group1 {
+    height: 256px;
+    margin-left: 27px;
+    position: relative;
+    width: 751px;
+  }
+  
+  .desktop1280dashboard .overlap-group-2 {
+    height: 256px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 751px;
+  }
+  
+  .desktop1280dashboard .illustration {
+    height: 256px;
+    left: 352px;
+    position: absolute;
+    top: 0;
+    width: 399px;
+  }
+  
+  .desktop1280dashboard .subtitle {
+    font-weight: 300;
+    left: 0;
+    letter-spacing: 0;
+    line-height: 28px;
+    position: absolute;
+    top: 107px;
+    width: 411px;
+  }
+  
+  .desktop1280dashboard .title-2 {
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    top: 40px;
+    white-space: nowrap;
+  }
+  
+  .desktop1280dashboard .flex-row {
+    align-items: flex-start;
+    display: flex;
+    min-width: 834px;
+  }
+  
+  .desktop1280dashboard .daily-target-tab {
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---dashboard--daily-target-card-desktop-2D0F492F-A6DF-4644-B889-036BBB18D0EC@2x.png);
+    background-size: 100% 100%;
+    height: 190px;
+    width: 278px;
+  }
+  
+  .desktop1280dashboard .weekly-target-tab {
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---dashboard--weekly-target-card-desktop-2975A40D-E41E-40B4-80A9-7868C73488D4@2x.png);
+    background-size: 100% 100%;
+    height: 190px;
+    width: 278px;
+  }
+  
+  .desktop1280dashboard .workout-classes-tab {
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---dashboard--workout-classes-card-desktop-43F1BFF4-6DE8-4605-B506-3C3E991072FD@2x.png);
+    background-size: 100% 100%;
+    height: 190px;
+    width: 278px;
+  }
+  
+  .desktop1280dashboard .weekly-activity-card-desktop {
+    align-items: flex-start;
+    display: flex;
+    min-width: 559px;
+  }
+  
+  .desktop1280dashboard .overlap-group3 {
+    height: 285px;
+    position: relative;
+    width: 559px;
+  }
+  
+  .desktop1280dashboard .weekly-activity-card-desktop-1 {
+    align-items: flex-start;
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---dashboard--bg--9506CAF3-CD5E-4190-AC23-23DE89223C7C.png);
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    min-height: 285px;
+    padding: 30px 0;
+    position: absolute;
+    top: 0;
+    width: 559px;
+  }
+  
+  .desktop1280dashboard .title-3 {
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-left: 36px;
+    min-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .desktop1280dashboard .graph-parameters-1 {
+    align-self: center;
+    height: 150px;
+    margin-top: 8px;
+    width: 487px;
+  }
+  
+  .desktop1280dashboard .graph-parameters-2 {
+    align-items: center;
+    display: flex;
+    height: 16px;
+    margin-left: 36px;
+    margin-top: 17px;
+    min-width: 136px;
+  }
+  
+  .desktop1280dashboard .rectangle-1 {
+    background-color: var(--denim);
+    border-radius: 1px;
+    height: 9px;
+    margin-top: 1.0px;
+    width: 9px;
+  }
+  
+  .desktop1280dashboard .this-week {
+    letter-spacing: 0;
+    line-height: 16px;
+    margin-left: 5px;
+    min-height: 16px;
+    min-width: 42px;
+    opacity: 0.5;
+    white-space: nowrap;
+  }
+  
+  .desktop1280dashboard .rectangle-2 {
+    background-color: var(--denim);
+    border-radius: 1px;
+    height: 9px;
+    margin-left: 13px;
+    margin-top: 1.0px;
+    opacity: 0.4;
+    width: 9px;
+  }
+  
+  .desktop1280dashboard .last-week {
+    align-self: flex-end;
+    letter-spacing: 0;
+    line-height: 16px;
+    margin-left: 5px;
+    min-height: 15px;
+    opacity: 0.5;
+    white-space: nowrap;
+    width: 53px;
+  }
+  
+  .desktop1280dashboard .group-6 {
+    height: 96px;
+    left: 481px;
+    opacity: 0;
+    pointer-events: auto;
+    position: absolute;
+    top: 80px;
+    transition: all 0.1s ease-in-out;
+    width: 46px;
+  }
+  
+  .desktop1280dashboard .group-6:hover {
+    opacity: 1;
+  }
+  
+  .desktop1280dashboard .overlap-group {
+    height: 31px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 46px;
+  }
+  
+  .desktop1280dashboard .rectangle {
+    background-color: var(--denim);
+    border-radius: 5px;
+    height: 25px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 46px;
+  }
+  
+  .desktop1280dashboard .triangle {
+    height: 9px;
+    left: 14px;
+    position: absolute;
+    top: 22px;
+    transform: rotate(-180deg);
+    width: 18px;
+  }
+  
+  .desktop1280dashboard .title {
+    left: 10px;
+    letter-spacing: 0;
+    line-height: 24px;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+  }
+  
+  .desktop1280dashboard .path-6 {
+    height: 5px;
+    left: -4px;
+    position: absolute;
+    top: 67px;
+    transform: rotate(90.84deg);
+    width: 54px;
+  }
+  
+  .desktop1280dashboard .oval {
+    height: 10px;
+    left: 18px;
+    position: absolute;
+    top: 41px;
+    width: 10px;
+  }
+  
+  .desktop1280dashboard .bubble-5 {
+    height: 147px;
+    left: 345px;
+    opacity: 0;
+    pointer-events: auto;
+    position: absolute;
+    top: 29px;
+    transition: all 0.1s ease-in-out;
+    width: 46px;
+  }
+  
+  .desktop1280dashboard .bubble-5:hover {
+    opacity: 1;
+  }
+  
+  .desktop1280dashboard .title-1 {
+    left: 7px;
+    letter-spacing: 0;
+    line-height: 24px;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+  }
+  
+  .desktop1280dashboard .path-6-copy {
+    height: 6px;
+    left: -29px;
+    position: absolute;
+    top: 92px;
+    transform: rotate(90.84deg);
+    width: 104px;
+  }
+  
+  .desktop1280dashboard .bubble-4 {
+    height: 121px;
+    left: 276px;
+    opacity: 0;
+    pointer-events: auto;
+    position: absolute;
+    top: 55px;
+    transition: all 0.1s ease-in-out;
+    width: 46px;
+  }
+  
+  .desktop1280dashboard .bubble-4:hover {
+    opacity: 1;
+  }
+  
+  .desktop1280dashboard .path-6-copy-2 {
+    height: 7px;
+    left: -14px;
+    position: absolute;
+    top: 80px;
+    transform: rotate(90.84deg);
+    width: 76px;
+  }
+  
+  .desktop1280dashboard .oval-1 {
+    height: 10px;
+    left: 19px;
+    position: absolute;
+    top: 41px;
+    width: 10px;
+  }
+  
+  .desktop1280dashboard .bubble-3 {
+    height: 95px;
+    left: 208px;
+    opacity: 0;
+    pointer-events: auto;
+    position: absolute;
+    top: 81px;
+    transition: all 0.1s ease-in-out;
+    width: 46px;
+  }
+  
+  .desktop1280dashboard .bubble-3:hover {
+    opacity: 1;
+  }
+  
+  .desktop1280dashboard .path-6-copy-3 {
+    height: 5px;
+    left: -3px;
+    position: absolute;
+    top: 66px;
+    transform: rotate(90.84deg);
+    width: 54px;
+  }
+  
+  .desktop1280dashboard .bubble-2 {
+    height: 72px;
+    left: 141px;
+    opacity: 0;
+    pointer-events: auto;
+    position: absolute;
+    top: 104px;
+    transition: all 0.1s ease-in-out;
+    width: 46px;
+  }
+  
+  .desktop1280dashboard .bubble-2:hover {
+    opacity: 1;
+  }
+  
+  .desktop1280dashboard .path-6-copy-4 {
+    height: 6px;
+    left: 10px;
+    position: absolute;
+    top: 56px;
+    transform: rotate(90.84deg);
+    width: 26px;
+  }
+  
+  .desktop1280dashboard .bubble-1 {
+    height: 98px;
+    left: 74px;
+    opacity: 0;
+    pointer-events: auto;
+    position: absolute;
+    top: 78px;
+    transition: all 0.1s ease-in-out;
+    width: 46px;
+  }
+  
+  .desktop1280dashboard .bubble-1:hover {
+    opacity: 1;
+  }
+  
+  .desktop1280dashboard .path-6-copy-5 {
+    height: 6px;
+    left: -5px;
+    position: absolute;
+    top: 69px;
+    transform: rotate(90.84deg);
+    width: 54px;
+  }
+  
+  .desktop1280dashboard .oval-1-1 {
+    height: 10px;
+    left: 17px;
+    position: absolute;
+    top: 41px;
+    width: 10px;
+  }
+  
+  .desktop1280dashboard .bubble-6 {
+    height: 121px;
+    left: 413px;
+    opacity: 0;
+    pointer-events: auto;
+    position: absolute;
+    top: 54px;
+    transition: all 0.2s ease-in-out;
+    width: 46px;
+  }
+  
+  .desktop1280dashboard .bubble-6:hover {
+    opacity: 1;
+  }
+  
+  .desktop1280dashboard .overlap-group2 {
+    height: 31px;
+    position: relative;
+  }
+  
+  .desktop1280dashboard .title-4 {
+    left: 6px;
+    letter-spacing: 0;
+    line-height: 24px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+  }
+  
+  .desktop1280dashboard .weight-update-tab {
+    align-items: flex-start;
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---dashboard--bg--11B66CCB-DD70-414A-B84C-27DEB5B45814@2x.png);
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 285px;
+    padding: 30px 35px;
+    width: 275px;
+  }
+  
+  .desktop1280dashboard .title-5 {
+    letter-spacing: 0;
+    line-height: 24px;
+    min-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .desktop1280dashboard .gif {
+    align-self: center;
+    height: 182px;
+    margin-left: 1.0px;
+    margin-top: 14px;
+    width: 182px;
+  }
+  
+  .desktop1280dashboard .my-profile-tab-desktop {
+    align-items: flex-start;
+    display: flex;
+    height: 761px;
+    margin-bottom: -20px;
+    margin-left: 10px;
+    min-width: 306px;
+  }
+  
+  .desktop1280dashboard .my-profile-card-desktop {
+    align-items: flex-end;
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/desktop-1280---dashboard--bg-FA675E32-5551-48D1-B117-3E12179A9EDC.png);
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 761px;
+    padding: 30px 34px;
+    width: 306px;
+  }
+  
+  .desktop1280dashboard .title-6 {
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-right: 31px;
+    min-height: 24px;
+    white-space: nowrap;
+    width: 206px;
+  }
+  
+  .desktop1280dashboard .my-profile {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-right: 35px;
+    margin-top: 18px;
+    min-height: 225px;
+    width: 167px;
+  }
+  
+  .desktop1280dashboard .overlap-group1-1 {
+    align-items: center;
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/5ff580a06cbff7a8c507dde3/releases/5ff580f36cbff7a8c507dde4/img/tablet-768---dashboard--progress-0823B120-A840-446A-A223-45D05442764D@2x.png);
+    background-size: 100% 100%;
+    display: flex;
+    height: 127px;
+    margin-right: 1.0px;
+    margin-top: -2px;
+    min-width: 127px;
+    padding: 0 13.5px;
+  }
+  
+  .desktop1280dashboard .profile-picture {
+    height: 100px;
+    width: 100px;
+  }
+  
+  .desktop1280dashboard .title-7 {
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-right: 1.0px;
+    margin-top: 16px;
+    min-height: 24px;
+    text-align: center;
+    white-space: nowrap;
+    width: 160px;
+  }
+  
+  .desktop1280dashboard .hight-weight {
+    align-items: flex-start;
+    display: flex;
+    height: 41px;
+    margin-top: 20px;
+    min-width: 167px;
+  }
+  
+  .desktop1280dashboard .hight {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    min-height: 41px;
+    width: 72px;
+  }
+  
+  .desktop1280dashboard .flex-row-2 {
+    align-items: center;
+    display: flex;
+    margin-left: 4px;
+    margin-top: 6px;
+    min-width: 64px;
+  }
+  
+  .desktop1280dashboard .text-165 {
+    background-color: transparent;
+    border: 0;
+    height: 30px;
+    letter-spacing: 0;
+    line-height: 27px;
+    padding: 0;
+    text-align: center;
+    white-space: nowrap;
+    width: 43px;
+  }
+  
+  .desktop1280dashboard .text-165::placeholder {
+    color: #1d483599;
+  }
+  
+  .desktop1280dashboard .cm {
+    letter-spacing: 0;
+    line-height: 12px;
+    margin-left: 3px;
+    margin-top: 6.0px;
+    min-height: 12px;
+    min-width: 18px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .desktop1280dashboard .path-2 {
+    height: 2px;
+    margin-left: 0.5px;
+    margin-top: 4px;
+    opacity: 0.2;
+    width: 71px;
+  }
+  
+  .desktop1280dashboard .weight {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 23px;
+    min-height: 41px;
+    width: 72px;
+  }
+  
+  .desktop1280dashboard .flex-row-3 {
+    align-items: center;
+    display: flex;
+    margin-left: 6.0px;
+    margin-top: 6px;
+    min-width: 48px;
+  }
+  
+  .desktop1280dashboard .text-55 {
+    background-color: transparent;
+    border: 0;
+    height: 30px;
+    letter-spacing: 0;
+    line-height: 27px;
+    padding: 0;
+    text-align: center;
+    white-space: nowrap;
+    width: 29px;
+  }
+  
+  .desktop1280dashboard .text-55::placeholder {
+    color: #1d483599;
+  }
+  
+  .desktop1280dashboard .kg {
+    letter-spacing: 0;
+    line-height: 12px;
+    margin-left: 4px;
+    margin-top: 6.0px;
+    min-height: 12px;
+    min-width: 15px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .desktop1280dashboard .path-2-1 {
+    height: 2px;
+    margin-top: 4px;
+    opacity: 0.2;
+    width: 71px;
+  }
+  
+  .desktop1280dashboard .recommended-trainers {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-top: 57px;
+    min-height: 366px;
+    width: 237px;
+  }
+  
+  .desktop1280dashboard .flex-row-4 {
+    align-items: center;
+    display: flex;
+    height: 24px;
+    min-width: 237px;
+  }
+  
+  .desktop1280dashboard .text-1 {
+    letter-spacing: 0;
+    line-height: 24px;
+    min-height: 24px;
+    white-space: nowrap;
+    width: 181px;
+  }
+  
+  .desktop1280dashboard .overlap-group-3 {
+    height: 16px;
+    margin-left: 40px;
+    margin-top: 1.1px;
+    position: relative;
+    width: 16px;
+  }
+  
+  .desktop1280dashboard .oval-3 {
+    height: 11px;
+    left: 2px;
+    position: absolute;
+    top: 3px;
+    transform: rotate(-43deg);
+    width: 12px;
+  }
+  
+  .desktop1280dashboard .path-1 {
+    height: 6px;
+    left: 12px;
+    position: absolute;
+    top: 10px;
+    transform: rotate(-43deg);
+    width: 3px;
+  }
+  
+  .desktop1280dashboard .trainer-1-desktop {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    position: relative;
+    width: 236px;
+  }
+  
+  .desktop1280dashboard .flex-row-1 {
+    align-items: center;
+    display: flex;
+    height: 37px;
+    min-width: 216px;
+  }
+  
+  .desktop1280dashboard .avatar-1 {
+    height: 35px;
+    width: 35px;
+  }
+  
+  .desktop1280dashboard .flex-col {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    min-height: 37px;
+    width: 166px;
+  }
+  
+  .desktop1280dashboard .name {
+    letter-spacing: 0;
+    line-height: 18px;
+    min-height: 18px;
+    white-space: nowrap;
+  }
+  
+  .desktop1280dashboard .kickboxing {
+    letter-spacing: 0;
+    line-height: 18px;
+    margin-top: 1px;
+    min-height: 18px;
+    opacity: 0.4;
+    white-space: nowrap;
+  }
+  
+  .emptycheckbox6 {
+    height: 20px;
+    opacity: 1;
+    width: 20px;
+  }
+  
+  .emptycheckbox6 .empty-checkbox-TLUca4 {
+    height: 20px;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  
+  .fulltabcopy26 {
+    height: 20px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  
+  .desktop1280dashboard .trainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 19px;
+    position: relative;
+    width: 236px;
+  }
+  
+  .desktop1280dashboard .jonathan-van-ness {
+    letter-spacing: 0;
+    line-height: 18px;
+    min-height: 18px;
+    white-space: nowrap;
+  }
+  
+  .emptycheckbox5 {
+    height: 20px;
+    opacity: 1;
+    width: 20px;
+  }
+  
+  .emptycheckbox5 .empty-checkbox-A2skB2 {
+    height: 20px;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  
+  .fulltabcopy25 {
+    height: 20px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  
+  .desktop1280dashboard .jonathan-van-ness-1 {
+    letter-spacing: 0;
+    line-height: 18px;
+    min-height: 18px;
+    white-space: nowrap;
+  }
+  
+  .emptycheckbox4 {
+    height: 20px;
+    opacity: 1;
+    width: 20px;
+  }
+  
+  .emptycheckbox4 .empty-checkbox-f5LoDy {
+    height: 20px;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  
+  .fulltabcopy24 {
+    height: 20px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  
+  .desktop1280dashboard .jonathan-van-ness-2 {
+    letter-spacing: 0;
+    line-height: 18px;
+    min-height: 18px;
+    white-space: nowrap;
+  }
+  
+  .emptycheckbox3 {
+    height: 20px;
+    opacity: 1;
+    width: 20px;
+  }
+  
+  .emptycheckbox3 .empty-checkbox-8RXgxT {
+    height: 20px;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  
+  .fulltabcopy23 {
+    height: 20px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  
+  .desktop1280dashboard .jonathan-van-ness-3 {
+    letter-spacing: 0;
+    line-height: 18px;
+    min-height: 18px;
+    white-space: nowrap;
+  }
+  
+  .emptycheckbox2 {
+    height: 20px;
+    opacity: 1;
+    width: 20px;
+  }
+  
+  .emptycheckbox2 .empty-checkbox-UaWDXR {
+    height: 20px;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  
+  .fulltabcopy22 {
+    height: 20px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  
+  .desktop1280dashboard .jonathan-van-ness-4 {
+    letter-spacing: 0;
+    line-height: 18px;
+    min-height: 18px;
+    white-space: nowrap;
+  }
+  
+  .emptycheckbox {
+    height: 20px;
+    opacity: 1;
+    width: 20px;
+  }
+  
+  .emptycheckbox .empty-checkbox-mYx1iB {
+    height: 20px;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  
+  .fulltabcopy2 {
+    height: 20px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  .emptycheckbox6 .empty-checkbox-TLUca4 {
+    background-color: transparent;
+    height: 20px;
+    left: 0px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+  }
+  
+  .fulltabcopy26 {
+    background-color: transparent;
+    height: 20px;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+  }
+  
+  .emptycheckbox5 .empty-checkbox-A2skB2 {
+    background-color: transparent;
+    height: 20px;
+    left: 0px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+  }
+  
+  .fulltabcopy25 {
+    background-color: transparent;
+    height: 20px;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+  }
+  
+  .emptycheckbox4 .empty-checkbox-f5LoDy {
+    background-color: transparent;
+    height: 20px;
+    left: 0px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+  }
+  
+  .fulltabcopy24 {
+    background-color: transparent;
+    height: 20px;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+  }
+  
+  .emptycheckbox3 .empty-checkbox-8RXgxT {
+    background-color: transparent;
+    height: 20px;
+    left: 0px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+  }
+  
+  .fulltabcopy23 {
+    background-color: transparent;
+    height: 20px;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+  }
+  
+  .emptycheckbox2 .empty-checkbox-UaWDXR {
+    background-color: transparent;
+    height: 20px;
+    left: 0px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+  }
+  
+  .fulltabcopy22 {
+    background-color: transparent;
+    height: 20px;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+  }
+  
+  .emptycheckbox .empty-checkbox-mYx1iB {
+    background-color: transparent;
+    height: 20px;
+    left: 0px;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+  }
+  
+  .fulltabcopy2 {
+    background-color: transparent;
+    height: 20px;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+  }
+  
+  
+  @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+  
+  @import url("https://fonts.googleapis.com/css?family=Lato:400,300|Castoro:400|Mulish:400");
+  
+  .component-wrapper a {
+    display: contents;
+    pointer-events: auto;
+    text-decoration: none;
+  }
+  
+  .component-wrapper * {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+  
+  .component-wrapper a *,
+  .component-wrapper input,
+  .component-wrapper video,
+  .component-wrapper iframe {
+    pointer-events: auto;
+  }
+  
+  .component-wrapper.not-ready,
+  .component-wrapper.not-ready * {
+    visibility: hidden !important;
+  }
+  
+  .screen a {
+    display: contents;
+    text-decoration: none;
+  }
+  
+  .full-height-a {
+    height: 100%;
+  }
+  
+  .container-center-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    pointer-events: none;
+    width: 100%;
+  }
+  
+  .container-center-horizontal > * {
+    flex-shrink: 0;
+    pointer-events: auto;
+  }
+  
+  .overlay {
+    display: none;
+    height: 100%;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  .overlay.animate-appear {
+    animation: reveal 0.3s ease-in-out 1 normal forwards;
+    display: block;
+    opacity: 0;
+  }
+  
+  .overlay.animate-disappear {
+    animation: reveal 0.3s ease-in-out 1 reverse forwards;
+    display: block;
+    opacity: 1;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  
+  .listeners-active,
+  .listeners-active * {
+    pointer-events: auto;
+  }
+  
+  .hidden,
+  .hidden * {
+    pointer-events: none;
+    visibility: hidden;
+  }
+  
+  .smart-layers-pointers,
+  .smart-layers-pointers * {
+    pointer-events: auto;
+    visibility: visible;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  

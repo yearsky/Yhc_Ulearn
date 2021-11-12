@@ -82,6 +82,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('course-enroll-api/{course_slug}/{lecture_slug}/{is_sidebar}', 'CourseController@courseEnrollAPI');
         Route::get('readPDF/{file_id}', 'CourseController@readPDF');
+
+        Route::get('profile','DashboardController@studentProfile')->name('student.profile');
     });
 
     //Functions accessed by both student and instructor
@@ -285,6 +287,12 @@ Route::group(['middleware' => 'auth'], function () {
             ->get();
             return response()->json($guru);
            });
+
+        Route::get('admin/kelas/list','Admin\KelasController@list')->name('admin.kelas.list');
+        Route::get('admin/kelas/kelas-form','Admin\KelasController@getForm')->name('admin.kelasForm');
+        Route::get('admin/kelas/kelas-form/{id}','Admin\KelasController@getForm');
+        Route::post('admin/save-kelas','Admin\KelasController@saveKelas')->name('admin.saveKelas');
+        Route::get('admin/delete-kelas/{id}','Admin\KelasController@deleteKelas');
     });
 
     Route::group(['middleware' => 'subscribed'], function () {

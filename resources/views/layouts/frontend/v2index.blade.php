@@ -13,6 +13,7 @@
   <!-- Favicons -->
   <!-- <link href="assets/img/favicon.png" rel="icon"> -->
   <link href="{{asset('newfrontend/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <script>document.getElementsByTagName("html")[0].className += " js";</script>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -29,6 +30,9 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('newfrontend/assets/css/index2Style.css')}}" rel="stylesheet">
   <link href="{{asset('newfrontend/assets/css/teacherStyle.css')}}" rel="stylesheet">
+  <link href="{{asset('newfrontend/assets/css/schedule.css')}}" rel="stylesheet">
+  <link href="{{asset('newfrontend/assets/css/onComing.css')}}" rel="stylesheet">
+  <link href="{{asset('newfrontend/assets/css/profile.css')}}" rel="stylesheet">
   
   <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 
@@ -88,7 +92,7 @@
                -->
                 <li><a href="{{route('student.dashboard')}}"> Dashboard</a></li>
                 <li><a href="#"> Absensi</a></li>
-                <li><a href="#"> Profil</a></li>
+                <li><a href="{{route('student.profile')}}"> Profil</a></li>
               @endif
               <li><a href="{{ route('logOut') }}"> Logout</a></li>
             </ul>
@@ -174,6 +178,8 @@
   <!-- Template Main JS File -->
   <script src="{{asset('newfrontend/assets/js/main.js')}}"></script>
   <script src="{{asset('newfrontend/assets/js/blog.js')}}"></script>
+  <script src="{{asset('newfrontend/assets/js/util.js')}}"></script>
+  <script src="{{asset('newfrontend/assets/js/schedule.js')}}"></script>
   <script src="{{asset('newfrontend/assets/js/blogJava.js')}}"></script>
   
 
