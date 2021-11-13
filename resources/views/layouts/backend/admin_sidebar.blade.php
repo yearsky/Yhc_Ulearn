@@ -35,6 +35,12 @@
                 <span class="site-menu-title">Categories</span>
             </a>
         </li>
+        <li class="site-menu-item {{ request()->is('admin/kelas/*') ? 'active' : '' }}">
+            <a href="{{ route('admin.kelas.list') }}">
+                <i class="site-menu-icon fas fa-chalkboard" aria-hidden="true"></i>
+                <span class="site-menu-title">Kelas </span>
+            </a>
+        </li>
         <li class="site-menu-item {{ request()->is('admin-course-*') ? 'active' : '' }}">
             <a href="{{ route('admin.course.list') }}">
                 <i class="site-menu-icon fas fa-chalkboard" aria-hidden="true"></i>

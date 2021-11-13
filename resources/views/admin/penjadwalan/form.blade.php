@@ -22,7 +22,9 @@
         <div class="form-group col-md-4">
             <label class="form-control-label">Kelas <span class="required">*</span></label>
                 <select class="form-control" name="kelas" id="kelas" aria-label="Default select example">
-                <option value="{{$kl->id}}" selected>{{$kl->nama}} </option>
+                @foreach($kelas as $kl)
+                <option value="{{$kl->id}}" selected>{{$kl->nama}}</option>
+                @endforeach
               </select>
         </div>
         

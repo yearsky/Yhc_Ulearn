@@ -35,7 +35,8 @@ class PenjadwalanController extends Controller
         }else{
             $penjadwalan = $this->getColumnTable('penjadwalan');
         }
-        return view('admin.penjadwalan.form', compact('penjadwalan'));
+        $kelas = Kelas::all();
+        return view('admin.penjadwalan.form', compact('penjadwalan','kelas'));
     }
 
     public function saveJadwal($pwId='', Request $request)

@@ -285,6 +285,12 @@ Route::group(['middleware' => 'auth'], function () {
             ->get();
             return response()->json($guru);
            });
+
+        // Kelas
+        Route::get('admin/kelas/list','Admin\KelasController@index')->name('admin.kelas.list');
+        Route::post('admin/save-kelas','Admin\KelasController@store')->name('admin.kelas.save');
+        Route::post('admin/update-kelas/{id}','Admin\KelasController@update')->name('admin.kelas.update');
+        Route::get('admin/delete-kelas/{id}','Admin\KelasController@destroy')->name('admin.kelas.delete');;
     });
 
     Route::group(['middleware' => 'subscribed'], function () {
