@@ -327,6 +327,7 @@ class CourseController extends Controller
         return view('instructor.course.create_image', compact('course'));
     }
 
+
     public function instructorCourseVideo($course_id = '',Request $request)
     {   
         $course = Course::find($course_id);
@@ -361,6 +362,18 @@ class CourseController extends Controller
         $this->data['userresources'] = $coursecurriculum['userresources'];
 
         return view('instructor.course.create_curriculum', $this->data);
+        // print($this->data['sections']= $coursecurriculum['sections']);
+    }
+
+    public function instructorCourseQuiz($course_id = '',Request $request)
+    {
+        $course = Course::find($course_id);
+        $user_id = \Auth::user()->instructor->id;
+        $coursecurriculum = $this->model->getcurriculuminfo($course_id,$user_id);
+
+        $section = $coursecurriculum['sections'];
+        return view('instructor.course.create_quiz',compact('course','user_id','section'));
+        // return $course;
     }
 
     public function instructorCourseImageSave(Request $request)

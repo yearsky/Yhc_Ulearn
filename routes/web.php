@@ -20,9 +20,16 @@ Route::get('/login/{social}/callback', 'Auth\LoginController@handleProviderCallb
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('about', 'HomeController@pageAbout')->name('page.about');
+// Route::get('about', 'HomeController@pageAbout')->name('page.about');
 Route::get('contact', 'HomeController@pageContact')->name('page.contact');
 Route::get('instructor/{instructor_slug}', 'InstructorController@instructorView')->name('instructor.view');
+
+Route::get('teacher', 'HomeController@pageTeacher')->name('teacher');
+Route::get('gibs-arjuna', 'HomeController@pageGibsarjuna')->name('gibs-arjuna');
+Route::get('about', 'HomeController@pageAbout')->name('page.about');
+// Route::get('contact', 'HomeController@pageContact')->name('page.contact');
+Route::get('testimonial', 'HomeController@pageTestimonial')->name('testimonial');
+Route::get('picture', 'HomeController@pagePicture')->name('picture');
 
 Route::get('getCheckTime', 'HomeController@getCheckTime');
 
@@ -68,6 +75,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('my-courses', 'CourseController@myCourses')->name('my.courses');
         Route::get('course-learn/{course_slug}', 'CourseController@courseLearn')->name('course.learn');
 
+        Route::get('dashboard','DashboardController@studentDashboard')->name('student.dashboard');
+
         Route::post('course-rate', 'CourseController@courseRate')->name('course.rate');
         Route::get('delete-rating/{raing_id}', 'CourseController@deleteRating')->name('delete.rating');
 
@@ -112,6 +121,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('instructor-absensi-save','AbsensiController@store')->name('instructor.absensi.save');
         Route::get('instructor-absensi-edit/{id}','AbsensiController@edit')->name('instructor.absensi.edit');
         Route::get('instructor-absensi-delete/{id}','AbsensiController@destroy')->name('instructor.absensi.delete');
+
+        //EXAM
+        Route::post('instructor-exam-save','ExamController@save')->name('instructor.exam.save');
+        Route::get('instructor-course-quiz/{course_id}','CourseController@instructorCourseQuiz')->name('instructor.course.quizz.edit');
+        Route::post('intructor-review-questions/{course_name}','QuestionsController@showQuestions')->name('instructor.review.question');
+
+        //Question
+        Route::post('instructor-question-save','QuestionsController@save')->name('instructor.question.save');
+        Route::get('review-single-question/{id}','QuestionsController@oneQuest')->name('instructor.question.edit');
+        Route::post('instructor-question-update/{id}','QuestionsController@update')->name('instructor.question.update');
 
         //Kelas
        Route::get('guru/getKelas/{id}',function($id){
@@ -217,8 +236,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('admin/config/page-contact', 'Admin\ConfigController@pageContact')->name('admin.pageContact');
 
         Route::get('admin/config/setting-general', 'Admin\ConfigController@settingGeneral')->name('admin.settingGeneral');
-        Route::get('admin/config/setting-payment', 'Admin\ConfigController@settingPayment')->name('admin.settingPayment');
         Route::get('admin/config/setting-email', 'Admin\ConfigController@settingEmail')->name('admin.settingEmail');
+
+        //Slider
+        Route::get('admin/config/setting-slider', 'Admin\ConfigController@showSlider')->name('admin.showSlider');
+        Route::get('admin/config/slide-form','Admin\ConfigController@getForm')->name('admin.slideForm');
+        Route::get('admin/config/slide-form/{slide_id}','Admin\ConfigController@getForm');
+        Route::post('admin/save-slider', 'Admin\ConfigController@saveSlider')->name('admin.saveSlider');
+        Route::get('admin/delete-slider/{slide_id}', 'Admin\ConfigController@deleteSlider');
+
+
     });
 
     Route::group(['middleware' => 'subscribed'], function () {

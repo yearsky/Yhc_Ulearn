@@ -98,7 +98,7 @@
                var kelasId = $(this).val();
                if(kelasId) {
                    $.ajax({
-                       url: 'guru/getKelas/'+kelasId,
+                       url: '/getKelas/'+kelasId,
                        type: "GET",
                        data : {"_token":"{{ csrf_token() }}"},
                        dataType: "json",

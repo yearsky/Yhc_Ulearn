@@ -14,6 +14,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 /**
  * Class contain functions for admin
@@ -40,4 +41,14 @@ class DashboardController extends Controller
         return view('instructor.dashboard');
     }
     
+    public function studentDashboard()
+    {
+        $courses = DB::table('courses')
+                    ->select('courses.*', 'instructors.first_name', 'instructors.last_name')
+                    ->selectRaw('AVG(course_ratings.rating) AS average_rating')
+                    ->leftJoin('course_ratings', 'course_ratings.course_id', '=', 'courses.id')
+                    ->join('instructors', 'instructors.id', '=', 'courses.instructor_id')
+                    ->where('courses.is_active',1);
+        return view('site.student.dashboard',compact('courses'));
+    }
 }

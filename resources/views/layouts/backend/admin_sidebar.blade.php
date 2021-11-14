@@ -9,12 +9,6 @@
                 <span class="site-menu-title">Dashboard</span>
             </a>
         </li>
-         <!-- <li class="site-menu-item {{ request()->is('admin/user*') ? 'active' : '' }}">
-            <a href="{{ route('admin.users') }}">
-                <i class="site-menu-icon wb-user" aria-hidden="true"></i>
-                <span class="site-menu-title">Users Management</span>
-            </a>
-        </li> -->
         <li class="site-menu-item has-sub {{ request()->is('admin/user/*') ? 'active open' : '' }}">
             <a href="javascript:void(0)">
                 <i class="site-menu-icon wb-file" aria-hidden="true"></i>
@@ -51,12 +45,6 @@
             <a href="{{ route('admin.blogs') }}">
                 <i class="site-menu-icon fas fa-blog" aria-hidden="true"></i>
                 <span class="site-menu-title">Blogs</span>
-            </a>
-        </li>
-        <li class="site-menu-item {{ request()->is('admin/absensi*') ? 'active' : '' }}">
-            <a href="{{ route('admin.absensi.list') }}">
-                <i class="site-menu-icon fas fa-clipboard-list" aria-hidden="true"></i>
-                <span class="site-menu-title">Absensi</span>
             </a>
         </li>
 
@@ -97,9 +85,9 @@
                     <span class="site-menu-title">General</span>
                   </a>
                 </li>
-                <li class="site-menu-item {{ request()->is('admin/config/setting-payment') ? 'active' : '' }}">
-                  <a href="{{ route('admin.settingPayment') }}">
-                    <span class="site-menu-title">Payment</span>
+                <li class="site-menu-item {{ request()->is('admin/config/*') ? 'active' : '' }}">
+                  <a href="{{ route('admin.showSlider') }}">
+                    <span class="site-menu-title">Slider</span>
                   </a>
                 </li>
                 <!-- <li class="site-menu-item {{ request()->is('admin/config/setting-email') ? 'active' : '' }}">

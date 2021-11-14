@@ -7,10 +7,15 @@
       <div class="carousel-inner" role="listbox">
 
         <!-- Slide 1 -->
+<<<<<<< HEAD
+=======
+        @foreach($slider as $sl)
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
         <div class="carousel-item active">
           <div class="carousel-container">
             <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
               <div>
+<<<<<<< HEAD
               <h1><span> MARILAH</span>
                   Wujudkan Masa Depan Bersama Global Islamic Boarding School
               </h1>
@@ -119,6 +124,26 @@
             </div>
           </div>
         </div>
+=======
+              <h1>
+                 {{$sl->title}}
+              </h1>
+              <h2>{!!$sl->desc!!}
+              </h2>
+                <!-- <a href="#" class="download-btn"><i class="bx bxl-apple"></i> Untuk Guru</a>
+                <a href="#" class="download-btn"><i class="bx bxl-apple"></i> Untuk Siswa</a> -->
+            </div>
+          </div>
+            <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
+              <img src="{{asset('storage/'.$sl->image) }}" width="65%" class="img-fluid animated" alt="" alt="">
+            </div>
+          </div>
+        </div>
+        @endforeach
+
+        <!-- Slide 2 -->
+        
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
 
       <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>

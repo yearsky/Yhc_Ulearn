@@ -1,4 +1,4 @@
-@extends('layouts.frontend.index')
+@extends('layouts.frontend.v2index')
 @section('content')
 <?php 
     $get = '';
@@ -38,26 +38,39 @@
     endforeach;
 ?>
 <!-- content start -->
-    <div class="container-fluid p-0 home-content">
+    <div class="container-fluid p-0 home-content-course">
         <!-- banner start -->
-        <div class="subpage-slide-blue">
+        <div class="subpage-slide-blue-course">
             <div class="container">
                 <h1>Course List</h1>
+                <a href="#!" class="button1"><b>My Class</b></a>
+                <a href="#!" class="button1"><b>Help</b></a>
             </div>
-        </div>
-        <!-- banner end -->
-
-        <!-- breadcrumb start -->
-            <div class="breadcrumb-container">
+            <div class="breadcrumb-container-course">
                 <div class="container">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Course List</li>
                   </ol>
                 </div>
             </div>
+        </div>
+        <!-- banner end -->
+<br>
+            <form class="breadcrumb-item-search">               
+                <input class="search" type="search" placeholder="Search...">               
+                <input class="button" type="submit" value="Search">       
+            </form>  
+            <form name="daftarisi" style="margin-left: 188px;margin-top: -60px;">
+                <select name="menu" style="width:180px; height: 45px;border:2px solid #FF0075;">
+                    <option value="url link menu 1">Menu 1</option>
+                    <option value="url link menu 2">Menu 2</option>
+                    <option value="url link menu 2">Menu 2</option>
+                    <option selected> — Pilih Courses — </option>
+                </select>
+                <input type="button" onClick="location=document.daftarisi.menu.options[document.daftarisi.menu.selectedIndex].value;" value="OK" style="width:50px; height: 45px; border:2px solid #FF0075; background-color: #FF0075; color: white; margin: 0.1px;">
+            </form>
         
-        <!-- breadcrumb end -->
         <div class="container mt-5">
             <div class="row">
                 <!-- filter start -->
@@ -67,45 +80,19 @@
                     @if($_GET)
                     <a href="{{ route('course.list') }}" class="clear-filters"><i class="fa fa-sync"></i>&nbsp;Clear filters</a>
                     @endif
-                    <h6 class="mt-2 underline-heading">Categories</h6>
-                    <ul class="ul-no-padding">
-                        @foreach ($categories as $category)
-                        <li> 
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input filter-results" id="{{ 'cat-'.$category->id }}" name="category_id[]" value="{{ $category->id }}" 
-                                @if(isset($_GET['category_id']))
-                                    {{ in_array($category->id, $_GET['category_id']) ? 'checked' : '' }}
-                                @endif
-                                 >
-                                <label class="custom-control-label" for="{{ 'cat-'.$category->id }}">{{ $category->name }}</label>
-                            </div>
-                        </li>
-                        @endforeach
-                    </ul>
-
-                    <h6 class="mt-3 underline-heading">Level</h6>
                     
-                    <ul class="ul-no-padding">
-                        @foreach ($instruction_levels as $instruction_level)
-                        <li> 
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input filter-results" id="{{ 'ins-level-'.$instruction_level->id }}" name="instruction_level_id[]" value="{{ $instruction_level->id }}"
-                                @if(isset($_GET['instruction_level_id']))
-                                    {{ in_array($instruction_level->id, $_GET['instruction_level_id']) ? 'checked' : '' }}
-                                @endif
-                                >
-                                <label class="custom-control-label" for="{{ 'ins-level-'.$instruction_level->id }}">{{ $instruction_level->level }}</label>
-                            </div>
-                        </li>
-                        @endforeach
-                    </ul>
 
                     
+
+                    
+                    <!-- <ul class="ul-no-padding">
+                        
+                    </ul> -->
                 </form>
                 </div>
                 <!-- filter end -->
                 <!-- course block start -->
-                <div class="col-xl-10 col-lg-10 col-md-9">
+                <!-- <div class="col-xl-10 col-lg-10 col-md-9">
                     <div class="row px-2">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-8">
                             <span >Showing {{ $courses->currentPage() }} of {{ $courses->lastPage() }} page(s)</span>
@@ -113,10 +100,11 @@
                         <div class="col-xl-2 offset-xl-4 col-lg-2 offset-lg-4 col-md-3 offset-md-3 col-sm-3 offset-sm-3 col-4">
                             <select class="form-control form-control-sm sort-by">
                                 <option value="">Sort By</option>
-                               
+                                <option<?php echo(!empty($_GET['sort_price']) && $_GET['sort_price']=='asc')?' selected="selected"':'';?> value="sort_price=asc">Price (Low to High)</option>
+                                <option<?php echo(!empty($_GET['sort_price']) && $_GET['sort_price']=='desc')?' selected="selected"':'';?>  value="sort_price=desc">Price (High to Low)</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
                     
                     <!-- course start -->
                     <div class="row">
@@ -136,7 +124,19 @@
                                     </div>
                                 </main>
                                 <footer>
-                                    
+                                    <div class="c-row">
+                                        <div class="col-md-6 col-sm-6 col-6">
+                                            @php $course_price = $course->price ? config('config.default_currency').$course->price : 'Free'; @endphp
+                                            <h5 class="course-price">{{  $course_price }}&nbsp;<s>{{ $course->strike_out_price ? $course->strike_out_price : '' }}</s></h5>
+                                        </div>
+                                        <div class="col-md-5 offset-md-1 col-sm-5 offset-sm-1 col-5 offset-1">
+                                            <star class="course-rating">
+                                            <?php for ($r=1;$r<=5;$r++) { ?>
+                                                <span class="fa fa-star <?php echo $r <= $course->average_rating ? 'checked' : '';?>"></span>
+                                            <?php }?>
+                                            </star>
+                                        </div>
+                                    </div>
                                 </footer>
                             </a>    
                             </div>
@@ -153,6 +153,68 @@
                 <!-- course block end -->
             </div>
         </div>
+
+        <!-- footer course -->
+<footer id="footer-course" class="footer-course">
+
+
+<div class="footer-course-top">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-3 col-md-6 footer-course-contact">
+        <h3><b>SMP/SMA Global Islamic School</b></h3>
+        <p>Jl. Trans Kalimantan, Sungai Lumbah <br>
+        Alalak, Barito Kuala<br>
+        Kalimantan Selatan 70582 <br><br>
+          <strong>Phone:</strong> +1 5589 55488 55<br>
+          <strong>Email:</strong> info@example.com<br>
+        </p>
+      </div>
+
+      <div class="col-lg-3 col-md-6 footer-course-links">
+        <h4><b>Organisasi</b></h4>
+        <ul>
+          <li><i class="bx bx-chevron-right"></i> <a href="#">SOGIBS</a></li>
+          <li><i class="bx bx-chevron-right"></i> <a href="#">CRC</a></li>
+          <li><i class="bx bx-chevron-right"></i> <a href="#">CBT</a></li>
+
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6 footer-course-links">
+        <h4><b>Co Curricular</b></h4>
+        <ul>
+          <li><i class="bx bx-chevron-right"></i> <a href="#">Karate</a></li>
+          <li><i class="bx bx-chevron-right"></i> <a href="#">Silat</a></li>
+          <li><i class="bx bx-chevron-right"></i> <a href="#">Panahan</a></li>
+          <li><i class="bx bx-chevron-right"></i> <a href="#">Basket Ball</a></li>
+          <li><i class="bx bx-chevron-right"></i> <a href="#">Volley Ball</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6 footer-course-links">
+        <h4><b>Sosial Media</b></h4>
+        <div class="social-links mt-3">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container py-4">
+  <div class="copyright" style="text-align: center;">
+    &copy; Copyright @2021 <strong><span>GLOBAL ISLAMIC BOARDING SCHOOL</span></strong>. All Rights Reserved
+  </div>
+</div>
+</footer>
+<!-- footer end -->
         
     <!-- content end -->
 @endsection

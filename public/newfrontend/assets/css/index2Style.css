@@ -1,5 +1,9 @@
 body {
+<<<<<<< HEAD
   font-family: 'century-gothic-regular',sans-serif;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
   color: #000000;
   background-color: #d7e8fc;
 }
@@ -15,7 +19,11 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
+<<<<<<< HEAD
   font-family: 'century-gothic-regular',sans-serif;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
 }
 
 /*--------------------------------------------------------------
@@ -292,6 +300,69 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   position: relative;
 }
+<<<<<<< HEAD
+=======
+#hero-profile {
+  width: 100%;
+  height: 150px;
+  background-color: #161E54;
+  overflow: hidden;
+}
+
+/* breadcrumb */
+.breadcrumb{
+  padding: 0.75rem 0rem;
+  font-size: 0.9rem;
+}
+.breadcrumb  li.breadcrumb-item-profile.active{
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+.breadcrumb-item-profile + .breadcrumb-item-profile::before {
+ content: "»";
+ padding-right: 0.2rem;
+ color: rgb(255, 255, 255);
+}
+.breadcrumb-item-profile + .breadcrumb-item-profile {
+  padding-left: 0.2rem;
+  color: rgb(255, 255, 255);
+}
+.breadcrumb-item-profile a{
+  color: #ffffff;
+  text-decoration: none;
+}
+.breadcrumb-item-profile a:hover{
+  color: #2a6496;
+}
+.breadcrumb-container-profile{
+  height: 50px;
+  background-color: #72147E;
+}
+
+
+
+.breadcrumbs {
+  margin-top: 73px;
+  text-align: center;
+  background: #5fcf80;
+  padding: 30px 0;
+  color: #fff;
+}
+@media (max-width: 992px) {
+  .breadcrumbs {
+    margin-top: 63px;
+  }
+}
+.breadcrumbs h2 {
+  font-size: 32px;
+  font-weight: 500;
+}
+.breadcrumbs p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
 #hero h1{
   margin-bottom: 20px;
   color:#e6d600;
@@ -323,7 +394,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 #hero h3{
   margin-bottom: 200px;
+<<<<<<< HEAD
   font-family: cursive;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
   color: white;
   font-size: 20px;
 }
@@ -421,7 +496,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 #hero .btn-get-started {
+<<<<<<< HEAD
   font-family: "Roboto", sans-serif;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 1px;
@@ -524,7 +603,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 #hero .download-btn {
+<<<<<<< HEAD
   font-family: "Raleway", sans-serif;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
   font-weight: 500;
   font-size: 15px;
   display: inline-block;
@@ -583,13 +666,21 @@ h1, h2, h3, h4, h5, h6 {
 .video h2{
   text-align: center;
   color: #000f66;
+<<<<<<< HEAD
   font-family: Impact;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
 }
 .video p{
   text-align: center;
 }
 .video h1{
+<<<<<<< HEAD
   font-family: Impact;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
   color: #000f66;
 }
 
@@ -599,7 +690,11 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 .picture h2{
   text-align: center;
+<<<<<<< HEAD
   font-family: cursive;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
 }
 .picture p{
 text-align: center;
@@ -624,13 +719,21 @@ transform: scale(1.1);
 
 /* Tips belajar Section (Content 5)
 --------------------------------*/
+<<<<<<< HEAD
 #features {
+=======
+/* #features {
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
   display: inline-block;
   height: 100%;
   width: 100%;
 }
 #features h2{
+<<<<<<< HEAD
   font-family: cursive;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
 }
 #features .feature-block {
   background: #fff none repeat scroll 0 0;
@@ -715,10 +818,54 @@ transform: scale(1.1);
 }
 .features .swiper-pagination .swiper-pagination-bullet-active {
   background-color: #5777ba;
+<<<<<<< HEAD
+=======
+} */
+
+/*--------------------------------------------------------------
+# Features
+--------------------------------------------------------------*/
+.features {
+  margin-top: 50px;
+  padding-top: 0px;
+}
+.features .icon-box {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  transition: 0.3s;
+  border: 1px solid #ffffff;
+}
+.features .icon-box i {
+  font-size: 32px;
+  padding-right: 10px;
+  line-height: 1;
+}
+.features .icon-box h3 {
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 16px;
+}
+.features .icon-box h3 a {
+  color: #37423b;
+  transition: 0.3s;
+}
+.features .icon-box:hover {
+  border-color: #5fcf80;
+}
+.features .icon-box:hover h3 a {
+  color: #5fcf80;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
 }
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
 /*--------------------------------------------------------------
 # Counts Section (Content 6)
 --------------------------------------------------------------*/
@@ -735,7 +882,11 @@ transform: scale(1.1);
 .counts .counters p {
   padding: 0;
   margin: 0 0 20px 0;
+<<<<<<< HEAD
   font-family: "Raleway", sans-serif;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
   font-size: 15px;
   font-weight: 600;
   color: #ffffff;
@@ -749,7 +900,11 @@ transform: scale(1.1);
 }
 .gallery h2{
   text-align: center;
+<<<<<<< HEAD
   font-family: cursive;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
 }
 .gallery p{
   text-align: center;
@@ -793,6 +948,66 @@ transform: scale(1.1);
 }
 
 /*--------------------------------------------------------------
+<<<<<<< HEAD
+=======
+# Courses
+--------------------------------------------------------------*/
+.courses .course-item {
+  border-radius: 5px;
+  border: 1px solid #eef0ef;
+}
+.courses .course-content {
+  padding: 15px;
+}
+.courses .course-content h3 {
+  font-weight: 700;
+  font-size: 20px;
+}
+.courses .course-content h3 a {
+  color: #37423b;
+  transition: 0.3s;
+}
+.courses .course-content h3 a:hover {
+  color: #5fcf80;
+}
+.courses .course-content p {
+  font-size: 14px;
+  color: #777777;
+}
+.courses .course-content h4 {
+  font-size: 14px;
+  background: #5fcf80;
+  padding: 7px 14px;
+  color: #fff;
+  margin: 0;
+}
+.courses .course-content .price {
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: #37423b;
+}
+.courses .trainer {
+  padding-top: 15px;
+  border-top: 1px solid #eef0ef;
+}
+.courses .trainer .trainer-profile img {
+  max-width: 50px;
+  border-radius: 50px;
+}
+.courses .trainer .trainer-profile span {
+  padding-left: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #5a6c60;
+}
+.courses .trainer .trainer-rank {
+  font-size: 18px;
+  color: #657a6d;
+}
+
+/*--------------------------------------------------------------
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
 # Testimonials (Content 8)
 --------------------------------------------------------------*/
 .testimonials {
@@ -800,7 +1015,11 @@ transform: scale(1.1);
   text-align: center;
 }
 .testimonials h2{
+<<<<<<< HEAD
   font-family: cursive;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
 }
 .testimonials .testimonials-carousel, .testimonials .testimonials-slider {
   overflow: hidden;
@@ -955,7 +1174,11 @@ transform: scale(1.1);
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
+<<<<<<< HEAD
   font-family: "Raleway", sans-serif;
+=======
+  font-family: 'century-gothic-regular', sans-serif;
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
   color: #000000;
 }
 #footer .footer-top h4 {
@@ -1034,4 +1257,9 @@ transform: scale(1.1);
     text-align: center;
     padding: 5px 0;
   }
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> ebebc9c178a4028303846bec054375420815a705

@@ -113,7 +113,7 @@ figure figcaption {
                 <label class="cabinet center-block">
                     <figure class="course-image-container">
                         <i data-toggle="tooltip" data-original-title="Delete" data-id="blog_image" class="fa fa-trash remove-lp" data-content="{{  Crypt::encryptString(json_encode(array('model'=>'blogs', 'field'=>'blog_image', 'pid' => 'id', 'id' => $blog->id, 'photo'=>$blog->blog_image))) }}" style="display: @if(Storage::exists($blog->blog_image)){{ 'block' }} @else {{ 'none' }} @endif"></i>
-                        <img src="@if(Storage::exists($blog->blog_image)){{ Storage::url($blog->blog_image) }}@else{{ asset('backend/assets/images/blog_image.jpeg') }}@endif" class="gambar img-responsive" id="blog_image-output" name="blog_image-output" />
+                        <img src="@if(Storage::exists($blog->blog_image)){{ asset('storage/'.$blog->blog_image) }}@else{{ asset('backend/assets/images/blog_image.jpeg') }}@endif" class="gambar img-responsive" id="blog_image-output" name="blog_image-output" />
                         <input type="file" class="item-img file center-block" name="blog_image" id="blog_image" />
                     </figure>
                 </label>
@@ -169,7 +169,7 @@ figure figcaption {
     $(document).ready(function()
     { 
         //image crop start
-        $(".gambar").attr("src", @if(Storage::exists($blog->blog_image))"{{ Storage::url($blog->blog_image) }}" @else "{{ asset('backend/assets/images/blog_image.jpeg') }}" @endif);
+        $(".gambar").attr("src", @if(Storage::exists($blog->blog_image))"{{ asset('storage/'.$blog->blog_image) }}" @else "{{ asset('backend/assets/images/blog_image.jpeg') }}" @endif);
 
         var $uploadCrop,
         tempFilename,

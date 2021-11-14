@@ -23,10 +23,19 @@
   <link href="{{asset ('newfrontend/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
   <link href="{{asset ('newfrontend/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
   <link href="{{asset ('newfrontend/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+<<<<<<< HEAD
+=======
+  <link href="{{asset ('newfrontend/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
   <link href="{{asset ('newfrontend/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="{{asset('newfrontend/assets/css/index2Style.css')}}" rel="stylesheet">
+<<<<<<< HEAD
+=======
+  <link href="{{asset('newfrontend/assets/css/teacherStyle.css')}}" rel="stylesheet">
+  
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
   <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 
 </head>
@@ -44,9 +53,15 @@
 
       <nav id="navbar" class="navbar">
         <ul>
+<<<<<<< HEAD
         <li><a class="nav-link scrollto" href="{{ route('home') }}"><b>HOME</b></a></li>
           <li><a class="nav-link scrollto active" href="{{ route('home') }}"><b>GIBS ARJUNA</b></a></li>
           <li><a class="nav-link scrollto" href="{{ route('teacher') }}"><b>TEACHER</b></a></li>
+=======
+        <li><a class="nav-link scrollto {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}"><b>HOME</b></a></li>
+          <li><a class="nav-link scrollto {{ request()->is('/gibs-arjuna') ? 'active' : '' }}" href="{{ route('gibs-arjuna') }}"><b>GIBS ARJUNA</b></a></li>
+          <li><a class="nav-link scrollto {{ request()->is('teacher') ? 'active' : '' }}" href="{{ route('teacher') }}"><b>TEACHER</b></a></li>
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
           <li class="dropdown"><a href="#"><span><b>PROFILE</b></span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#"><b>Fasilitas</b></a></li>
@@ -81,7 +96,13 @@
               @elseif(Auth::user()->hasRole('admin'))
                 <li><a href="{{ route('admin.dashboard') }}"> Admin</a></li>
               @elseif(Auth::user()->hasRole('student'))
+<<<<<<< HEAD
                 <li><a href="{{ route('my.courses') }}"> Mapel Saya</a></li>
+=======
+                <!-- <li><a href="{{ route('my.courses') }}"> Mapel Saya</a></li>
+               -->
+                <li><a href="{{route('student.dashboard')}}"> Dashboard</a></li>
+>>>>>>> ebebc9c178a4028303846bec054375420815a705
                 <li><a href="#"> Absensi</a></li>
                 <li><a href="#"> Profil</a></li>
               @endif
