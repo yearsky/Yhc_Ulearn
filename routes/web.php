@@ -253,6 +253,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('admin-course-info/{course_id}', 'CourseController@adminCourseInfo')->name('admin.course.info.edit');
         Route::post('admin-course-info-save', 'CourseController@adminCourseInfoSave')->name('admin.course.info.save');
 
+        Route::get('admin-course-image', 'CourseController@adminCourseImage')->name('admin.course.image');
+        Route::get('admin-course-image/{course_id}', 'CourseController@adminCourseImage')->name('admin.course.image.edit');
+        Route::post('admin-course-image-save', 'CourseController@adminCourseImageSave')->name('admin.course.image.save');
+
+        Route::get('admin-course-delete/{course_id}','CourseController@adminDeleteCourse');
+
         //Galery
         Route::get('admin/gallery','Admin\DashboardController@showGallery')->name('admin.gallery');
         Route::get('admin/gallery-form','Admin\DashboardController@getForm')->name('admin.galleryForm');
@@ -290,7 +296,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('admin/kelas/list','Admin\KelasController@list')->name('admin.kelas.list');
         Route::get('admin/kelas/kelas-form','Admin\KelasController@getForm')->name('admin.kelasForm');
-        Route::get('admin/kelas/kelas-form/{id}','Admin\KelasController@getForm');
+        Route::get('admin/kelas-form/{id}','Admin\KelasController@getForm');
         Route::post('admin/save-kelas','Admin\KelasController@saveKelas')->name('admin.saveKelas');
         Route::get('admin/delete-kelas/{id}','Admin\KelasController@deleteKelas');
     });

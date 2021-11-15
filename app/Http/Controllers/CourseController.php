@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\CourseRating;
 use App\Models\InstructionLevel;
 use App\Models\Kelas;
+use App\Models\Instructor;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use Illuminate\Support\Facades\Input;
@@ -1129,8 +1130,132 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = b
         return view('admin.course.list', compact('courses'));
     }
 
-    public function adminCourseInfo()
+    public function adminCourseInfo($course_id='',Request $request)
     {
-        
+        $categories = Category::where('is_active', 1)->get();
+        $instructor = Instructor::all();
+        $kelas = Kelas::get();
+
+        if($course_id) {
+            $course = Course::find($course_id);
+            $instructor_id = Course::find($course_id)->pluck('instructor_id'); 
+            $guru = Instructor::where('id',$instructor_id)->first();
+        }else{
+            $guru = Instructor::first();
+            $course = $this->getColumnTable('courses');
+        }
+        return view('admin.course.create_info', compact('course', 'categories','guru','instructor' ,'kelas'));
+        // return $guru;
+    }
+
+    public function adminCourseInfoSave(Request $request)
+    {
+        $course_id = $request->input('course_id');
+        $instructor_id = $request->input('instructor_id');
+        // echo '<pre>';print_r($_POST);exit;
+        $validation_rules = [
+            'course_title' => 'required|string|max:50',
+            'category_id' => 'required',
+            'kelas' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(),$validation_rules);
+
+        // Stop if validation fails
+        if ($validator->fails()) {
+            return $this->return_output('error', 'error', $validator, 'back', '422');
+        }
+
+        if ($course_id) {
+            $course = Course::find($course_id);
+            $success_message = 'Course updated successfully';
+        } else {
+            $course = new Course();
+            $success_message = 'Course added successfully';
+
+            //create slug only while add
+            $slug = $request->input('course_title');
+            $slug = str_slug($slug, '-');
+
+            $results = DB::select(DB::raw("SELECT count(*) as total from courses where course_slug REGEXP '^{$slug}(-[0-9]+)?$' "));
+
+            $finalSlug = ($results['0']->total > 0) ? "{$slug}-{$results['0']->total}" : $slug;
+            $course->course_slug = $finalSlug;
+        }
+
+        $course->course_title = $request->input('course_title');
+        if($instructor_id){
+            $course->instructor_id = $request->input('instructor_id');
+        }else{
+            $course->instructor_id = $request->input('instructor');
+        }
+        $course->category_id = $request->input('category_id');
+        $course->kelas_id = $request->input('kelas');
+        $course->keywords = $request->input('keywords');
+        $course->overview = $request->input('overview');
+
+        $course->is_active = $request->input('is_active');
+        $course->save();
+
+        $course_id = $course->id;
+
+        return $this->return_output('flash', 'success', $success_message, 'admin-course-info/'.$course_id, '200');
+    }
+
+    public function adminCourseImage($course_id='',Request $request)
+    {
+        $course = Course::find($course_id);
+        return view('admin.course.create_image', compact('course'));
+    }
+
+    public function adminCourseImageSave(Request $request)
+    {
+        $course_id = $request->input('course_id');
+        $input = $request->all();
+        if (Input::hasFile('course_image') && Input::has('course_image_base64')) {
+            //delete old file
+            if (Storage::exists($input['old_course_image'])) {
+                Storage::delete($input['old_course_image']);
+            }
+
+            if (Storage::exists($input['old_thumb_image'])) {
+                Storage::delete($input['old_thumb_image']);
+            }
+
+            //get filename
+            $file_name   = $request->file('course_image')->getClientOriginalName();
+
+            // returns Intervention\Image\Image
+            $image_make = Image::make($request->input('course_image_base64'))->encode('jpg');
+
+            // create path
+            $path = "course/".$course_id;
+            
+            //check if the file name is already exists
+            $new_file_name = SiteHelpers::checkFileName($path, $file_name);
+
+            //save the image using storage
+            Storage::put($path."/".$new_file_name, $image_make->__toString(), 'public');
+
+            //resize image for thumbnail
+            $thumb_image = "thumb_".$new_file_name;
+            $resize = Image::make($request->input('course_image_base64'))->resize(258, 172)->encode('jpg');
+            Storage::put($path."/".$thumb_image, $resize->__toString(), 'public');
+            
+            $course = Course::find($course_id);
+            $course->course_image = $path."/".$new_file_name;
+            $course->thumb_image = $path."/".$thumb_image;
+
+            $course->save();
+        }
+
+        return $this->return_output('flash', 'success', 'Course image updated successfully', 'instructor-course-image/'.$course_id, '200');
+    }
+
+    public function adminDeleteCourse($course_id='')
+    {
+        Course::destroy($course_id);
+        return $this->return_output('flash', 'success', 'Course deleted successfully', 'admin-course-list', '200');
+
     }
 }

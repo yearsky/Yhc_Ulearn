@@ -44,7 +44,7 @@
             <tbody>
               @foreach($courses as $course)
               <tr>
-                <td>{{ $course->id }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $course->course_title }}</td>
                 <td>{{ $course->kelas }}</td>
                 <td>{{ $course->category_name }}</td>
@@ -56,7 +56,7 @@
                   @endif
                 </td>
                 <td>
-                  <a href="{{ url('admin-course-info-edit', $course->id) }}" class="btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Edit" >
+                  <a href="{{ url('admin-course-info', $course->id) }}" class="btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Edit" >
                     <i class="icon wb-pencil" aria-hidden="true"></i>
                   </a>
 

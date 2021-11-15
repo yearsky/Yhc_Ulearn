@@ -35,30 +35,22 @@
               <tr>
                 <th>Sl.no</th>
                 <th>Kelas</th>
-                <th>Siswa</th>
-                <th>Status</th>
+               
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($gallery as $gl)
+              @foreach($kelas as $kl)
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $gl->title }}</td>
-                <td>{{ $gl->path }}</td>
+                <td>{{ $kl->nama }}</td>
+               
                 <td>
-                  @if($gl->is_active)
-                  <span class="badge badge-success">Active</span>
-                  @else
-                  <span class="badge badge-danger">Inactive</span>
-                  @endif
-                </td>
-                <td>
-                  <a href="{{ url('admin/gallery-form/'.$gl->id) }}" class="btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Edit" >
+                  <a href="{{ url('admin/kelas-form/'.$kl->id) }}" class="btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Edit" >
                     <i class="icon wb-pencil" aria-hidden="true"></i>
                   </a>
 
-                  <a href="{{ url('admin/delete-gallery/'.$gl->id) }}" class="delete-record btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Delete" >
+                  <a href="{{ url('admin/delete-kelas/'.$kl->id) }}" class="delete-record btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Delete" >
                     <i class="icon wb-trash" aria-hidden="true"></i>
                   </a>
                 </td>
