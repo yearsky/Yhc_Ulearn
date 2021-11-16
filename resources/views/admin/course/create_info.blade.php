@@ -36,7 +36,7 @@
         <div class="form-group col-md-4">
             <label class="form-control-label">Category <span class="required">*</span></label>
             <select class="form-control" name="category_id">
-                <option value="">Select</option>
+                <option value="" hidden>Select</option>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}"
                     @if($category->id == $course->category_id){{ 'selected' }}@endif>
@@ -49,7 +49,7 @@
                 <label class="error" for="category_id">{{ $errors->first('category_id') }}</label>
             @endif
         </div>
-
+      
         <div class="form-group col-md-4">
             <label class="form-control-label">Kelas<span class="required">*</span></label>
             <select class="form-control" name="kelas">
@@ -68,13 +68,15 @@
         </div>
         <div class="form-group col-md-4">
             <label class="form-control-label">Instructor<span class="required">*</span></label>
-                <input class="form-control" value="@if($guru->id == $course->instructor_id){{$guru->first_name.' '.$guru->last_name}} @endif" list="instructor" id="instructor" placeholder="Search Instructors...">
-                <datalist id="instructor">
-                    @foreach($instructor as $is)
-                    <option data-value="{{$is->id}}" value="@if($is->id == $course->instructor_id){{$is->first_name.' '.$is->last_name}} @endif" >{{$is->first_name.' '.$is->last_name}}</option>
-                    @endforeach
-                </datalist>
-                <input type="hidden" name="instructor" id="instructor-hidden">
+            <select class="form-control" name="instructor">
+                <option hidden value="">Select</option>
+                @foreach($instructor as $is)
+                    <option value="{{ $is->id }}" 
+                    @if($is->id == $course->instructor_id){{ 'selected' }}@endif>
+                        {{ $is->first_name.' '.$is->last_name }}
+                    </option>
+                @endforeach
+            </select>
             
             @if ($errors->has('instruction_level_id'))
                 <label class="error" for="instruction_level_id">{{ $errors->first('instruction_level_id') }}</label>
@@ -145,26 +147,7 @@
 
         $(".tagsinput").tagsinput();
 
-        document.querySelector('input[list]').addEventListener('input', function(e) {
-            var input = e.target,
-                list = input.getAttribute('list'),
-                options = document.querySelectorAll('#' + list + ' option'),
-                hiddenInput = document.getElementById(input.getAttribute('id') + '-hidden'),
-                label = input.value;
-
-            hiddenInput.value = label;
-
-            for(var i = 0; i < options.length; i++) {
-                var option = options[i];
-
-                if(option.innerText === label) {
-                    hiddenInput.value = option.getAttribute('data-value');
-                    break;
-                }
-            }
-            var value = document.getElementById('instructor-hidden').value;
-            return value;
-        });
+        
        
         $("#courseForm").validate({
             rules: {

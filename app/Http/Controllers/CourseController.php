@@ -1136,19 +1136,19 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = b
         $instructor = Instructor::all();
         $kelas = Kelas::get();
 
-        if($course_id) {
+        if($course_id>0) {
             $course = Course::find($course_id);
             $instructor_id = Course::find($course_id)->pluck('instructor_id'); 
             $guru = Instructor::where('id',$instructor_id)->first();
         }else{
-            $guru = Instructor::first();
+            $guru = $this->getColumnTable('instructors');
             $course = $this->getColumnTable('courses');
         }
         return view('admin.course.create_info', compact('course', 'categories','guru','instructor' ,'kelas'));
-        // return $guru;
+        // return $instructor;
     }
 
-    public function adminCourseInfoSave(Request $request)
+    public function adminCourseInfoSave($instructor_id='',Request $request)
     {
         $course_id = $request->input('course_id');
         $instructor_id = $request->input('instructor_id');
@@ -1184,11 +1184,8 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = b
         }
 
         $course->course_title = $request->input('course_title');
-        if($instructor_id){
-            $course->instructor_id = $request->input('instructor_id');
-        }else{
-            $course->instructor_id = $request->input('instructor');
-        }
+       
+        $course->instructor_id = $request->input('instructor');
         $course->category_id = $request->input('category_id');
         $course->kelas_id = $request->input('kelas');
         $course->keywords = $request->input('keywords');
@@ -1200,6 +1197,7 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = b
         $course_id = $course->id;
 
         return $this->return_output('flash', 'success', $success_message, 'admin-course-info/'.$course_id, '200');
+        // return dd($request->all());
     }
 
     public function adminCourseImage($course_id='',Request $request)
