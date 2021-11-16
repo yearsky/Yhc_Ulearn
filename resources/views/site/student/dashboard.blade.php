@@ -95,27 +95,27 @@
       <div  class="container" data-aos="fade-up">
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-
+          @foreach($courses as $course)
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
               <img src="{{asset('newfrontend/assets/img/article.png')}}" class="img-fluid" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Web Development</h4>
+                  <h4>{{$course->category}}</h4>
                 </div>
 
-                <h3><a href="">Website Design</a></h3>
+                <h3><a href="">{{$course->course_title}}</a></h3>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                    <span>Antonio</span>
+                    <span>{{$course->guru}}</span>
                   </div>
                  
                 </div>
               </div>
             </div>
           </div> <!-- End Course Item-->
-
+          @endforeach
            <!-- End Course Item-->
 
         </div>
