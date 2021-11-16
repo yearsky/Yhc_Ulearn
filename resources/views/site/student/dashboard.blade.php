@@ -62,26 +62,40 @@
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
       
         <div class="courses-container">
-        @foreach($penjadwalan as $pw)
+        @if(!$penjadwalan>0)  
         <div class="course">
-          <div class="course-preview">
-            <h6>Course</h6>
-            <h2 style="color:#fff;">{{$pw->mapel}}</h2>
-            <h7>Ms. {{$pw->n_guru}}</h7>
-          </div>
-          <div class="course-info">
-            <!-- <div class="progress-container">
-              <div class="progress"></div>
-              <span class="progress-text">
-                6/9 Challenges
-              </span>
-            </div> -->
-            <h6>Course Info</h6>
-            <h2>Course Open In {{$pw->jam_mulai}}</h2>
-            <button type="button" class="btncourse" disabled>View All Chapters</button>
-          </div>
+        <div class="course-info">
+              <!-- <div class="progress-container">
+                <div class="progress"></div>
+                <span class="progress-text">
+                  6/9 Challenges
+                </span>
+              </div> -->
+              <h6>No Schedule Today!</h6>
         </div>
-        @endforeach
+        </div>
+        @else
+        @foreach($penjadwalan as $pw)
+          <div class="course">
+            <div class="course-preview">
+              <h6>Course</h6>
+              <h2 style="color:#fff;">{{$pw->mapel}}</h2>
+              <h7>Ms. {{$pw->guru}}</h7>
+            </div>
+            <div class="course-info">
+              <!-- <div class="progress-container">
+                <div class="progress"></div>
+                <span class="progress-text">
+                  6/9 Challenges
+                </span>
+              </div> -->
+              <h6>Course Info</h6>
+              <h2>Course Open In {{$pw->jam_mulai}}</h2>
+              <button type="button" class="btncourse" disabled>View All Chapters</button>
+            </div>
+          </div>
+          @endforeach
+        @endif
 </div>
 
         </div>
@@ -98,7 +112,7 @@
           @foreach($courses as $course)
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
-              <img src="{{asset('newfrontend/assets/img/article.png')}}" class="img-fluid" alt="...">
+              <img src="@if(Storage::exists($course->course_image)){{ asset('storage/'.$course->course_image) }}@else{{ asset('backend/assets/images/course_detail.jpg') }}@endif" class="img-fluid" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                   <h4>{{$course->category}}</h4>

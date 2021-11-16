@@ -1215,7 +1215,7 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = b
             if (Storage::exists($input['old_course_image'])) {
                 Storage::delete($input['old_course_image']);
             }
-
+ 
             if (Storage::exists($input['old_thumb_image'])) {
                 Storage::delete($input['old_thumb_image']);
             }
@@ -1247,7 +1247,7 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = b
             $course->save();
         }
 
-        return $this->return_output('flash', 'success', 'Course image updated successfully', 'instructor-course-image/'.$course_id, '200');
+        return $this->return_output('flash', 'success', 'Course image updated successfully', 'admin-course-image/'.$course_id, '200');
     }
 
     public function adminDeleteCourse($course_id='')

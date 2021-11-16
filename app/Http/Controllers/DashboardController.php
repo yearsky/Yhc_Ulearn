@@ -58,9 +58,19 @@ class DashboardController extends Controller
                    ->join('instructors','courses.instructor_id','=','instructors.id')
                    ->join('categories','courses.category_id','=','categories.id')
                    ->where('courses.kelas_id',$studentClass)->get();
-        $penjadwalan = DB::select(DB::raw('CALL GetJadwal()')); 
+
+
+        // $penjadwalan = DB::select(DB::raw('CALL GetJadwal()')); 
+        $penjadwalan = DB::table('penjadwalan')
+                       ->select('penjadwalan.*',DB::RAW("CONCAT(instructors.first_name,' ',instructors.last_name)AS guru"),'courses.course_title as mapel','table_kelas.nama as kelas')
+                       ->join('courses','penjadwalan.course_id','=','courses.id')
+                       ->join('instructors','penjadwalan.instructor_id','=','instructors.id')
+                       ->join('table_kelas','penjadwalan.kelas_id','=','table_kelas.id')
+                       ->where('penjadwalan.kelas_id',$studentClass)->get();
+
+
         return view('site.student.dashboard',compact('courses','penjadwalan'));
-        // return $courses;
+        // return $penjadwalan;
     }
 
     public function studentProfile()
