@@ -17,12 +17,12 @@
             </div>
           
           <div class="panel-actions">
-          <form method="GET" action="{{ route('admin.gallery') }}">
+          <form method="GET" action="{{ route('admin.pageGallery') }}">
               <div class="input-group">
                 <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ Request::input('search') }}">
                 <span class="input-group-btn">
                   <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-original-title="Search"><i class="icon wb-search" aria-hidden="true"></i></button>
-                  <a href="{{ route('admin.gallery') }}" class="btn btn-danger" data-toggle="tooltip" data-original-title="Clear Search"><i class="icon wb-close" aria-hidden="true"></i></a>
+                  <a href="{{ route('admin.pageGallery') }}" class="btn btn-danger" data-toggle="tooltip" data-original-title="Clear Search"><i class="icon wb-close" aria-hidden="true"></i></a>
                 </span>
               </div>
           </form>

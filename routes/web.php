@@ -252,9 +252,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('admin-course-info-save', 'CourseController@adminCourseInfoSave')->name('admin.course.info.save');
 
         //Galery
-        Route::get('admin/gallery','Admin\DashboardController@showGallery')->name('admin.gallery');
-        Route::get('admin/gallery-form','Admin\DashboardController@getForm')->name('admin.galleryForm');
-        Route::get('admin/gallery-form/{galleryId}','Admin\DashboardController@getForm');
+        Route::get('admin/config/page-gallery','Admin\DashboardController@showGallery')->name('admin.pageGallery');
+        Route::get('admin/config/page-gallery-form','Admin\DashboardController@getForm')->name('admin.galleryForm');
+        Route::get('admin/config/page-gallery-form/{galleryId}','Admin\DashboardController@getForm');
         Route::post('admin/save-gallery', 'Admin\DashboardController@saveGallery')->name('admin.saveGallery');
         Route::get('admin/delete-gallery/{galleryId}', 'Admin\DashboardController@deleteGallery');
 

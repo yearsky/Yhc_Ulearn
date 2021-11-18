@@ -94,8 +94,8 @@
                     <span class="site-menu-title">Contact Us</span>
                   </a>
                 </li>
-                <li class="site-menu-item {{ request()->is('admin/gallery') ? 'active' : '' }}">
-                  <a href="{{ route('admin.gallery') }}">
+                <li class="site-menu-item {{ request()->is('admin/config/page-gallery') ? 'active' : '' }}">
+                  <a href="{{ route('admin.pageGallery') }}">
                     <span class="site-menu-title">Gallery</span>
                   </a>
                 </li>
