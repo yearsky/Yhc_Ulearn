@@ -35,6 +35,30 @@
                 <span class="site-menu-title">Categories</span>
             </a>
         </li>
+        <li class="site-menu-item {{ request()->is('admin/kelas/*') ? 'active' : '' }}">
+            <a href="{{ route('admin.kelas.list') }}">
+                <i class="site-menu-icon fas fa-chalkboard" aria-hidden="true"></i>
+                <span class="site-menu-title">Kelas </span>
+            </a>
+        </li>
+        <li class="site-menu-item {{ request()->is('admin-course-*') ? 'active' : '' }}">
+            <a href="{{ route('admin.course.list') }}">
+                <i class="site-menu-icon fas fa-chalkboard" aria-hidden="true"></i>
+                <span class="site-menu-title">Courses</span>
+            </a>
+        </li>
+        <li class="site-menu-item {{ request()->is('admin/penjadwalan/*') ? 'active' : '' }}">
+            <a href="{{ route('admin.penjadwalan.list') }}">
+                <i class="site-menu-icon fas fa-chalkboard" aria-hidden="true"></i>
+                <span class="site-menu-title">Penjadwalan </span>
+            </a>
+        </li>
+        <li class="site-menu-item {{ request()->is('admin/absensi/*') ? 'active' : '' }}">
+            <a href="{{ route('admin.absensi.list') }}">
+                <i class="site-menu-icon fas fa-chalkboard" aria-hidden="true"></i>
+                <span class="site-menu-title">Absensi </span>
+            </a>
+        </li>
         <!-- <li class="site-menu-item {{ request()->is('admin/withdraw-requests') ? 'active' : '' }}">
             <a href="{{ route('admin.withdraw.requests') }}">
                 <i class="site-menu-icon fas fa-hand-holding-usd" aria-hidden="true"></i>
@@ -68,6 +92,11 @@
                 <li class="site-menu-item {{ request()->is('admin/config/page-contact') ? 'active' : '' }}">
                   <a href="{{ route('admin.pageContact') }}">
                     <span class="site-menu-title">Contact Us</span>
+                  </a>
+                </li>
+                <li class="site-menu-item {{ request()->is('admin/config/page-gallery') ? 'active' : '' }}">
+                  <a href="{{ route('admin.pageGallery') }}">
+                    <span class="site-menu-title">Gallery</span>
                   </a>
                 </li>
             </ul>

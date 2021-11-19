@@ -21,8 +21,8 @@ class CourseTableSeeder extends Seeder
 
         $course_names = array(
                     array('course_title'=>'Bahasa Indonesia',
-                      'instructor_id'=>9,
-                      'category_id'=>9,
+                      'instructor_id'=>1,
+                      'category_id'=>1,
                       'kelas_id'=>1,
                     )
             );

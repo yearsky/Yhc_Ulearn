@@ -1098,4 +1098,39 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = b
         echo $vidoes->video_title;exit();
     }
     /* Curriculum end */
+
+    // ADMIN COURSE INFO
+
+    public function adminCourse(Request $request)
+    {
+        $paginate_count = 10;
+
+        
+        // $instructor_id = \Auth::user()->instructor->id;
+        if($request->has('search')){
+            $search = $request->input('search');
+
+            $courses = DB::table('courses')
+                        ->select('courses.*', 'categories.name as category_name')
+                        ->leftJoin('categories', 'categories.id', '=', 'courses.category_id')
+                        ->where('courses.course_title', 'LIKE', '%' . $search . '%')
+                        ->orWhere('courses.course_slug', 'LIKE', '%' . $search . '%')
+                        ->orWhere('categories.name', 'LIKE', '%' . $search . '%')
+                        ->paginate($paginate_count);
+        }
+        else {
+            $courses = DB::table('courses')
+                        ->select('courses.*', 'categories.name as category_name','table_kelas.nama as kelas')
+                        ->leftJoin('categories', 'categories.id', '=', 'courses.category_id')
+                        ->leftJoin('table_kelas','courses.kelas_id','=','table_kelas.id')
+                        ->paginate($paginate_count);
+        }
+        // echo '<pre>';print_r($courses);exit;
+        return view('admin.course.list', compact('courses'));
+    }
+
+    public function adminCourseInfo()
+    {
+        
+    }
 }

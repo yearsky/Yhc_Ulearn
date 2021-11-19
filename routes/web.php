@@ -245,7 +245,52 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('admin/save-slider', 'Admin\ConfigController@saveSlider')->name('admin.saveSlider');
         Route::get('admin/delete-slider/{slide_id}', 'Admin\ConfigController@deleteSlider');
 
+        //Course
+        Route::get('admin-course-list', 'CourseController@adminCourse')->name('admin.course.list');
+        Route::get('admin-course-info', 'CourseController@adminCourseInfo')->name('admin.course.info');
+        Route::get('admin-course-info/{course_id}', 'CourseController@adminCourseInfo')->name('admin.course.info.edit');
+        Route::post('admin-course-info-save', 'CourseController@adminCourseInfoSave')->name('admin.course.info.save');
 
+        //Galery
+        Route::get('admin/config/page-gallery','Admin\DashboardController@showGallery')->name('admin.pageGallery');
+        Route::get('admin/config/page-gallery-form','Admin\DashboardController@getForm')->name('admin.galleryForm');
+        Route::get('admin/config/page-gallery-form/{galleryId}','Admin\DashboardController@getForm');
+        Route::post('admin/save-gallery', 'Admin\DashboardController@saveGallery')->name('admin.saveGallery');
+        Route::get('admin/delete-gallery/{galleryId}', 'Admin\DashboardController@deleteGallery');
+
+        //Penjadwalan
+        Route::get('admin/penjadwalan/list','Admin\PenjadwalanController@list')->name('admin.penjadwalan.list');
+        Route::get('admin/penjadwalan/pw-form','Admin\PenjadwalanController@getForm')->name('admin.penjadwalanForm');
+        Route::get('admin/penjadwalan/pw-form/{pwId}','Admin\PenjadwalanController@getForm');
+        Route::post('admin/save-penjadwalan','Admin\PenjadwalanController@saveJadwal')->name('admin.saveJadwal');
+        Route::get('admin/delete-pw/{pwId}','Admin\PenjadwalanController@deleteJadwal');
+
+        Route::get('getMapelByKelas/{id}',function($id){
+            $kelas = 
+            DB::table('table_kelas')->
+            join('courses','table_kelas.id','=','courses.kelas_id')
+            // ->select('users.first_name','users.last_name')
+            ->select('courses.id','courses.course_title')
+            ->where('kelas_id',$id)
+            ->get();
+            return response()->json($kelas);
+           });
+        Route::get('getGuruByMapel/{id}',function($id){
+            $guru = 
+            DB::table('courses')->
+            join('instructors','courses.instructor_id','=','instructors.id')
+            // ->select('users.first_name','users.last_name')
+            ->select('instructors.id',DB::raw("CONCAT(instructors.first_name,' ',instructors.last_name)AS n_guru"))
+            ->where('instructor_id',$id)
+            ->get();
+            return response()->json($guru);
+           });
+
+        // Kelas
+        Route::get('admin/kelas/list','Admin\KelasController@index')->name('admin.kelas.list');
+        Route::post('admin/save-kelas','Admin\KelasController@store')->name('admin.kelas.save');
+        Route::post('admin/update-kelas/{id}','Admin\KelasController@update')->name('admin.kelas.update');
+        Route::get('admin/delete-kelas/{id}','Admin\KelasController@destroy')->name('admin.kelas.delete');;
     });
 
     Route::group(['middleware' => 'subscribed'], function () {
