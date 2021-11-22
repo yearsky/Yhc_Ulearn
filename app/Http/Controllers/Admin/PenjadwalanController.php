@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Penjadwalan;
 use App\Models\Kelas;
+use App\Models\Course;
 use Illuminate\Support\Facades\Validator;
 
 use App\Http\Controllers\Controller;
@@ -22,10 +23,11 @@ class PenjadwalanController extends Controller
                            ->paginate($paginate_count);
         }
         else {
+            $kelas = Kelas::all();
             $penjadwalan = DB::select(DB::raw('CALL GetJadwal()')); 
         }
         // $penjadwalan = Penjadwalan::all();
-        return view('admin.penjadwalan.list',compact('penjadwalan'));
+        return view('admin.penjadwalan.list',compact('penjadwalan','kelas'));
     }
 
     public function getForm($pwId='')
@@ -36,7 +38,8 @@ class PenjadwalanController extends Controller
             $penjadwalan = $this->getColumnTable('penjadwalan');
         }
         $kelas = Kelas::all();
-        return view('admin.penjadwalan.form', compact('penjadwalan','kelas'));
+        $course = Course::all();
+        return view('admin.penjadwalan.form', compact('penjadwalan','kelas','course'));
     }
 
     public function saveJadwal($pwId='', Request $request)
@@ -66,28 +69,28 @@ class PenjadwalanController extends Controller
          $penjadwalan->course_id = $request->input('mapel');
          $penjadwalan->kelas_id = $request->input('kelas');
          $jam = $request->input('jam');
-         if($jam = 'jam1')
+         if($jam == 'jam1')
          {
             $penjadwalan->jam_mulai = '08.00';
             $penjadwalan->jam_akhir = '08.35';
-         }elseif($jam = 'jam2')
+         }elseif($jam == 'jam2')
          {
              $penjadwalan->jam_mulai = '08.35';
              $penjadwalan->jam_akhir = '09.10';
-         }elseif($jam = 'jam3')
+         }elseif($jam == 'jam3')
          {
              $penjadwalan->jam_mulai = '09.10';
              $penjadwalan->jam_akhir = '09.45';
-         }elseif($jam = 'jam4')
+         }elseif($jam == 'jam4')
          {
              $penjadwalan->jam_mulai = '10.15';
              $penjadwalan->jam_akhir = '10.50';
-         }elseif($jam = 'jam5')
+         }elseif($jam == 'jam5')
          {
              $penjadwalan->jam_mulai = '10.50';
              $penjadwalan->jam_akhir = '11.25';
          }
-         elseif($jam= 'jam6')
+         elseif($jam == 'jam6')
          {
              $penjadwalan->jam_mulai = '11.40';
              $penjadwalan->jam_akhir = '12.15';
@@ -107,6 +110,7 @@ class PenjadwalanController extends Controller
 
     public function deleteJadwal($pwId='')
     {
-
+        Penjadwalan::destroy($pwId);
+        return $this->return_output('flash', 'success', 'Penjadwalan deleted successfully', 'admin/penjadwalan/list', '200');
     }
 }

@@ -82,6 +82,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('course-enroll-api/{course_slug}/{lecture_slug}/{is_sidebar}', 'CourseController@courseEnrollAPI');
         Route::get('readPDF/{file_id}', 'CourseController@readPDF');
+
+        Route::get('profile','DashboardController@studentProfile')->name('student.profile');
     });
 
     //Functions accessed by both student and instructor
@@ -255,6 +257,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('admin/config/page-gallery','Admin\DashboardController@showGallery')->name('admin.pageGallery');
         Route::get('admin/config/page-gallery-form','Admin\DashboardController@getForm')->name('admin.galleryForm');
         Route::get('admin/config/page-gallery-form/{galleryId}','Admin\DashboardController@getForm');
+        Route::get('admin-course-image', 'CourseController@adminCourseImage')->name('admin.course.image');
+        Route::get('admin-course-image/{course_id}', 'CourseController@adminCourseImage')->name('admin.course.image.edit');
+        Route::post('admin-course-image-save', 'CourseController@adminCourseImageSave')->name('admin.course.image.save');
+
+        Route::get('admin-course-delete/{course_id}','CourseController@adminDeleteCourse');
+
         Route::post('admin/save-gallery', 'Admin\DashboardController@saveGallery')->name('admin.saveGallery');
         Route::get('admin/delete-gallery/{galleryId}', 'Admin\DashboardController@deleteGallery');
 

@@ -204,7 +204,7 @@ class CourseTableSeeder extends Seeder
         }
 
         
-        $user_id = $course_id = 1;
+        $user_id = $course_id = $kelas_id = 1;
         $course = Course::find($course_id);
         $instructor_id = $course->instructor_id;
 
@@ -213,6 +213,7 @@ class CourseTableSeeder extends Seeder
           $course_taken = new CourseTaken();
           $course_taken->user_id = $user_id;
           $course_taken->course_id = $course_id;
+          $course_taken->kelas_id = $kelas_id;
           $course_taken->save();
         }
 

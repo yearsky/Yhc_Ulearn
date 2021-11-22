@@ -3,9 +3,9 @@
 <div class="page-header">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item active">Courses</li>
+    <li class="breadcrumb-item active">Kelas</li>
   </ol>
-  <h1 class="page-title">Courses</h1>
+  <h1 class="page-title">Kelas</h1>
 </div>
 
 <div class="page-content">
@@ -13,16 +13,16 @@
 <div class="panel">
         <div class="panel-heading">
             <div class="panel-title">
-              <a href="{{ route('admin.course.info') }}" class="btn btn-success btn-sm"><i class="icon wb-plus" aria-hidden="true"></i> Add Course</a>
+              <a href="{{ route('admin.kelasForm') }}" class="btn btn-success btn-sm"><i class="icon wb-plus" aria-hidden="true"></i> Add Kelas</a>
             </div>
           
           <div class="panel-actions">
-          <form method="GET" action="{{ route('admin.course.list') }}">
+          <form method="GET" action="{{ route('admin.kelas.list') }}">
               <div class="input-group">
                 <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ Request::input('search') }}">
                 <span class="input-group-btn">
                   <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-original-title="Search"><i class="icon wb-search" aria-hidden="true"></i></button>
-                  <a href="{{ route('admin.course.list') }}" class="btn btn-danger" data-toggle="tooltip" data-original-title="Clear Search"><i class="icon wb-close" aria-hidden="true"></i></a>
+                  <a href="{{ route('admin.kelas.list') }}" class="btn btn-danger" data-toggle="tooltip" data-original-title="Clear Search"><i class="icon wb-close" aria-hidden="true"></i></a>
                 </span>
               </div>
           </form>
@@ -34,33 +34,23 @@
             <thead>
               <tr>
                 <th>Sl.no</th>
-                <th>Title</th>
                 <th>Kelas</th>
-                <th>Category</th>
-                <th>Status</th>
+               
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($courses as $course)
+              @foreach($kelas as $kl)
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $course->course_title }}</td>
-                <td>{{ $course->kelas }}</td>
-                <td>{{ $course->category_name }}</td>
+                <td>{{ $kl->nama }}</td>
+               
                 <td>
-                  @if($course->is_active)
-                  <span class="badge badge-success">Active</span>
-                  @else
-                  <span class="badge badge-danger">Inactive</span>
-                  @endif
-                </td>
-                <td>
-                  <a href="{{ url('admin-course-info', $course->id) }}" class="btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Edit" >
+                  <a href="{{ url('admin/kelas-form/'.$kl->id) }}" class="btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Edit" >
                     <i class="icon wb-pencil" aria-hidden="true"></i>
                   </a>
 
-                  <a href="{{ url('admin-course-delete/'.$course->id) }}" class="delete-record btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Delete" >
+                  <a href="{{ url('admin/delete-kelas/'.$kl->id) }}" class="delete-record btn btn-xs btn-icon btn-inverse btn-round" data-toggle="tooltip" data-original-title="Delete" >
                     <i class="icon wb-trash" aria-hidden="true"></i>
                   </a>
                 </td>
@@ -70,7 +60,6 @@
           </table>
           
           <div class="float-right">
-            {{ $courses->appends(['search' => Request::input('search')])->links() }}
           </div>
           
           

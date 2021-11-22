@@ -610,22 +610,23 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # WORK (Content 2)
 --------------------------------------------------------------*/
-.work{
+.program{
   background-color: #5ca8ff;
   padding: 12px 0;
   text-align: center;
   align-items: center;
+  display: block;
 }
-.work img {
+.program img {
   filter: grayscale(100);
-  width: 100%;
+  max-width: 50%;
 }
-.work img:hover {
+.program img:hover {
   filter: none;
   transform: scale(1.1);
 }
 @media (max-width: 768px) {
-  .work img {
+  .program img {
   max-width: 40%;
   }
 }

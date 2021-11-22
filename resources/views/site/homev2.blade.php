@@ -47,7 +47,7 @@
 <main id="main">
 
   <!-- ======= work Section (Content 2)======= -->
-  <section id="work" class="work">
+  <section id="program" class="program">
     <div class="container">
     <div class="row" data-aos="zoom-in">
       <div class="col-lg-3 col-6 text-center">

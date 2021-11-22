@@ -23,7 +23,7 @@
             <label class="form-control-label">Kelas <span class="required">*</span></label>
                 <select class="form-control" name="kelas" id="kelas" aria-label="Default select example">
                 @foreach($kelas as $kl)
-                <option value="{{$kl->id}}" selected>{{$kl->nama}}</option>
+                <option value="{{$kl->id}}" @if($kl->id == $penjadwalan->kelas_id){{'selected'}} @endif>{{$kl->nama}}</option>
                 @endforeach
               </select>
         </div>
@@ -46,12 +46,35 @@
         <div class="form-group col-md-4">
             <label class="form-control-label">Mengajar Pada Jam? <span class="required">*</span></label>
                 <select class="form-control" name="jam" id="jam" aria-label="Default select example">
+                @if($penjadwalan->jam_mulai == 08.00 && $penjadwalan->jam_akhir == 08.35)
+                <option value="jam1" selected>Jam Ke-1 </option>
+                @endif
+                @if($penjadwalan->jam_mulai == 08.35 && $penjadwalan->jam_akhir == 09.10)
+                <option value="jam2" selected>Jam Ke-2 </option>
+                @endif
+                @if($penjadwalan->jam_mulai == 09.10 && $penjadwalan->jam_akhir == 09.45)
+                <option value="jam3" selected>Jam Ke-3 </option>
+                @endif
+                @if($penjadwalan->jam_mulai == 10.15 && $penjadwalan->jam_akhir == 10.50)
+                <option value="jam4" selected>Jam Ke-4 </option>
+                @endif
+                @if($penjadwalan->jam_mulai == 10.50 && $penjadwalan->jam_akhir == 11.25)
+                <option value="jam5" selected>Jam Ke-5 </option>
+                @endif
+                @if($penjadwalan->jam_mulai == 11.40 && $penjadwalan->jam_akhir == 12.15)
+                <option value="jam6" selected>Jam Ke-6 </option>
+                @endif
+                @if($penjadwalan->jam_mulai == 12.15 && $penjadwalan->jam_akhir == 12.50)
+                <option value="jam7" selected>Jam Ke-7 </option>
+                @endif
                 <option value="jam1" >Jam Ke-1 </option>
                 <option value="jam2" >Jam Ke-2 </option>
                 <option value="jam3" >Jam Ke-3 </option>
                 <option value="jam4" >Jam Ke-4 </option>
                 <option value="jam5" >Jam Ke-5 </option>
                 <option value="jam6" >Jam Ke-6 </option>
+                <option value="jam7" >Jam Ke-7 </option>
+
               </select>
         </div>
         <div class="form-group col-md-4">
@@ -90,6 +113,7 @@
 
     $(document).ready(function()
     { 
+      $("kelas select").val(1).change();  
       $('#kelas').on('change', function() {
                var kelasId = $(this).val();
                if(kelasId) {
@@ -104,7 +128,7 @@
                             $('#mapel').empty();
                             $('#mapel').append('<option hidden>Pilih Mapel</option>'); 
                             $.each(data, function(key, mapel){
-                                $('select[name="mapel"]').append('<option value="'+ mapel.id +'">' + mapel.course_title + '</option>');
+                                $('select[name="mapel"]').append('<option value="'+ mapel.id +'"selected>' + mapel.course_title + '</option>').change();
                             });
                         }else{
                             $('#mapel').empty();
@@ -129,7 +153,7 @@
                             $('#guru').empty();
                             $('#guru').append('<option hidden>Pilih Guru</option>'); 
                             $.each(data, function(key, guru){
-                                $('select[name="guru"]').append('<option value="'+ guru.id +'">' + guru.n_guru + '</option>');
+                                $('select[name="guru"]').append('<option value="'+ guru.id +'"selected>' + guru.n_guru + '</option>').change();
                             });
                         }else{
                             $('#guru').empty();
