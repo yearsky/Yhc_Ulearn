@@ -62,7 +62,7 @@ class DashboardController extends Controller
 
         // $penjadwalan = DB::select(DB::raw('CALL GetJadwal()')); 
         $penjadwalan = DB::table('penjadwalan')
-                       ->select('penjadwalan.*',DB::RAW("CONCAT(instructors.first_name,' ',instructors.last_name)AS guru"),'courses.course_title as mapel','table_kelas.nama as kelas')
+                       ->select('penjadwalan.*','courses.*','table_kelas.id as id_kelas',DB::RAW("CONCAT(instructors.first_name,' ',instructors.last_name)AS guru"),'courses.course_title as mapel','table_kelas.nama as kelas')
                        ->join('courses','penjadwalan.course_id','=','courses.id')
                        ->join('instructors','penjadwalan.instructor_id','=','instructors.id')
                        ->join('table_kelas','penjadwalan.kelas_id','=','table_kelas.id')

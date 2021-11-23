@@ -91,7 +91,7 @@
               </div> -->
               <h6>Course Info</h6>
               <h2>Course Open In {{$pw->jam_mulai}}</h2>
-              <button type="button" class="btncourse" disabled>View All Chapters</button>
+              <a href="{{url('course-learn/'.$pw->id_kelas.'/'.$pw->course_slug)}}"><button type="button" class="btn btncourse">View All</button></a>
             </div>
           </div>
           @endforeach

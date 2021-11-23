@@ -11,6 +11,7 @@
 |
 */
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home','HomeController@index');
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout')->name('logOut');
 
@@ -73,7 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('download-resource/{resource_id}/{course_slug}', 'CourseController@getDownloadResource');
 
         Route::get('my-courses', 'CourseController@myCourses')->name('my.courses');
-        Route::get('course-learn/{course_slug}', 'CourseController@courseLearn')->name('course.learn');
+        Route::get('course-learn/{kelas}/{course_slug}', 'CourseController@courseLearn')->name('course.learn');
 
         Route::get('dashboard','DashboardController@studentDashboard')->name('student.dashboard');
 
