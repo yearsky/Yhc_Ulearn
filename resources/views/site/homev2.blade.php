@@ -47,33 +47,32 @@
 <main id="main">
 
   <!-- ======= work Section (Content 2)======= -->
-  <section id="program" class="program">
+  <section id="work" class="work">
     <div class="container">
     <div class="row" data-aos="zoom-in">
       <div class="col-lg-3 col-6 text-center">
-      <a href="#!"><img src="{{asset('newfrontend/assets/img/icon1.png') }}" class="img-fluid" alt=""><br></a>
+      <img src="newfrontend/assets/img/icon1.png" class="img-fluid" alt=""><br>
         <h5><b>Program Islamic</b></h5>
       </div>
   
       <div class="col-lg-3 col-6 text-center">
-        <a href="#!"><img src="{{asset('newfrontend/assets/img/icon2.png') }}" class="img-fluid" alt=""></a>
+        <img src="newfrontend/assets/img/icon2.png" class="img-fluid" alt="">
         <h5><b>Program & Keunggulan GIBS</b></h5>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-      <a href="#!"><img src="{{asset('newfrontend/assets/img/icon3.png') }}" class="img-fluid" alt=""></a>
+      <img src="newfrontend/assets/img/icon3.png" class="img-fluid" alt="">
         <h5><b>Program Departemen SES</b></h5>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-      <a href="#!"><img src="{{asset('newfrontend/assets/img/icon4.png') }}" class="img-fluid" alt=""></a>
+      <img src="newfrontend/assets/img/icon4.png" class="img-fluid" alt="">
         <h5><b>Ekstrakurikuler & Intra-kurikuler</b></h5>
       </div>
 
     </div>
     </div>
-  </section>  <!-- End work section -->
-
+  </section>  <!-- End 
 
     <!-- ======= video Section (content 3)======= -->
     <section id="video" class="video" style="text-align: center;">
@@ -88,7 +87,6 @@
         </div>
       </div>
     </section><!-- End video Section -->
-<br>
     <!-- ======= Picture Section (content 4) ======= -->
     <section id="picture" class="picture">
 
@@ -173,72 +171,9 @@
       </div>
     </section><!-- End picture Section -->
 
-<br>
 
 <!-- ======= Materi belajar Section (content 5) ======= -->
-  <section id="features" class="padd-section text-center">
-    <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Materi Pelajaran</h2>
-          <br>
-        </div>
-      <div class="features-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="feature-item">
-                  <div class="feature-block">
-                    <img src="{{asset('newfrontend/assets/img/tips/st1.png')}}" alt="img">
-                    <h4>BIOLOGI</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                  </div>
-                </div>
-              </div>
-          
-              <div class="swiper-slide">
-                <div class="feature-item">
-                  <div class="feature-block">
-                    <img src="{{asset('newfrontend/assets/img/tips/st2.png')}}" alt="img">
-                    <h4>KIMIA</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="feature-item">
-                  <div class="feature-block">
-                    <img src="{{asset('newfrontend/assets/img/tips/st3.png')}}" alt="img">
-                    <h4>Bahasa Inggris</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="feature-item">
-                  <div class="feature-block">
-                    <img src="{{asset('newfrontend/assets/img/tips/st4.png')}}" alt="img">
-                    <h4>Matematika</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="feature-item">
-                  <div class="feature-block">
-                    <img src="{{asset('newfrontend/assets/img/tips/st4.png')}}" alt="img">
-                    <h4>Sejarah</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <div class="swiper-pagination"></div>
-      </div>
-    </div>
-  </section><!-- End tips belajar Section -->
-
+  
     <!-- count section (content 6) -->
     <section id="counts" class="counts section-bg">
       <div class="container">
@@ -301,11 +236,11 @@
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
+                <h3>Radina Nur Syafa </h3>
+                <h4>VIII &amp; Girls</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  I am learning, I am participating, I am progressing
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -313,12 +248,12 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="{{asset('newfrontend/assets/img/testimonials/testimonials-2.jpg')}}" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
+                <img src="newfrontend/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <h3>Naufal Wijaya</h3>
+                <h4>XI Social Science Boys</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  Where Everyone is Exceptional
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +12,9 @@
   <!-- Favicons -->
   <!-- <link href="assets/img/favicon.png" rel="icon"> -->
   <link href="{{asset('newfrontend/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
-  <script>document.getElementsByTagName("html")[0].className += " js";</script>
+  <script>
+    document.getElementsByTagName("html")[0].className += " js";
+  </script>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -28,15 +29,17 @@
   <link href="{{asset ('newfrontend/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
+  <link href="{{ asset('frontend/css/style.css')}}" rel="stylesheet">
   <link href="{{asset('newfrontend/assets/css/index2Style.css')}}" rel="stylesheet">
   <link href="{{asset('newfrontend/assets/css/teacherStyle.css')}}" rel="stylesheet">
   <link href="{{asset('newfrontend/assets/css/schedule.css')}}" rel="stylesheet">
   <link href="{{asset('newfrontend/assets/css/onComing.css')}}" rel="stylesheet">
   <link href="{{asset('newfrontend/assets/css/profile.css')}}" rel="stylesheet">
-  
-  <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
+  <link href="{{asset('newfrontend/assets/css/dashboard.css')}}" rel="stylesheet">
+
 
 </head>
+
 <body>
 
   <!-- ======= Header ======= -->
@@ -51,54 +54,43 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-        <li><a class="nav-link scrollto {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}"><b>HOME</b></a></li>
+          <li><a class="nav-link scrollto {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}"><b>HOME</b></a></li>
           <li><a class="nav-link scrollto {{ request()->is('/gibs-arjuna') ? 'active' : '' }}" href="{{ route('gibs-arjuna') }}"><b>GIBS ARJUNA</b></a></li>
-          <li><a class="nav-link scrollto {{ request()->is('teacher') ? 'active' : '' }}" href="{{ route('teacher') }}"><b>TEACHER</b></a></li>
-          <li class="dropdown"><a href="#"><span><b>PROFILE</b></span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a class="{{ request()->is('teacher') ? 'active' : '' }}" href="#"><span><b>PROFILE</b></span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#"><b>Fasilitas</b></a></li>
-              <li><a href="#"><b>Sejarah</b></a></li>
-              <li><a href="#"><b>Program Unggulan</b></a></li>
+              <li><a href="#"><b>About</b></a></li>
+              <li><a href="#"><b>Programs</b></a></li>
               <li><a href="#"><b>Gallery</b></a></li>
+              <li><a class="{{ request()->is('teacher') ? 'active' : '' }}" href="{{ route('teacher') }}"><b>Academic</b></a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#"><span><b>STUDY</b></span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li class="dropdown"><a href="#"><span>Jurusan</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Academic</a></li>
-                  <li><a href="#">9 Pillar</a></li>
-                  <li><a href="#">Skills & Conduct</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
+
           <li><a class="nav-link scrollto" href="#contact"><b>CONTACT US</b></a></li>
-          
+
 
           @guest
           <li><a class="getstarted scrollto" href="{{ route('login') }}"><b>Login / Sign Up</b></a></li>
           @else
           <li class="dropdown"><a href="#"><span>
-            {{ Auth::user()->first_name }} &nbsp;
-          </span> <i class="bi bi-chevron-down"></i></a>
+                {{ Auth::user()->first_name }} &nbsp;
+              </span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               @if(Auth::user()->hasRole('instructor'))
-                <li><a href="{{ route('instructor.dashboard') }}"> Instructor</a></li>
+              <li><a href="{{ route('instructor.dashboard') }}"> Instructor</a></li>
               @elseif(Auth::user()->hasRole('admin'))
-                <li><a href="{{ route('admin.dashboard') }}"> Admin</a></li>
+              <li><a href="{{ route('admin.dashboard') }}"> Admin</a></li>
               @elseif(Auth::user()->hasRole('student'))
-                <!-- <li><a href="{{ route('my.courses') }}"> Mapel Saya</a></li>
+              <!-- <li><a href="{{ route('my.courses') }}"> Mapel Saya</a></li>
                -->
-                <li><a href="{{route('student.dashboard')}}"> Dashboard</a></li>
-                <li><a href="#"> Absensi</a></li>
-                <li><a href="{{route('student.profile')}}"> Profil</a></li>
+              <li><a href="{{route('student.dashboard')}}"> Dashboard</a></li>
+              <li><a href="#"> Absensi</a></li>
+              <li><a href="{{route('student.profile')}}"> Profil</a></li>
               @endif
               <li><a href="{{ route('logOut') }}"> Logout</a></li>
             </ul>
           </li>
           @endguest
-          
+
           <!-- <li><a class="getstarted scrollto" href="#features">Login/Logut</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -108,13 +100,12 @@
   </header><!-- End Header -->
 
   <!-- Section Hero -->
-  
+
 
   <main id="main">
     @yield('content')
   </main><!-- End #main -->
 
-  <hr size="12px">
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
@@ -123,9 +114,9 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>SMP/SMA Global Islamic School</h3>
             <p>
-            Jl. Trans Kalimantan, Sungai Lumbah <br>
-            Alalak, Barito Kuala<br>
-            Kalimantan Selatan 70582 <br><br>
+              Jl. Trans Kalimantan, Sungai Lumbah <br>
+              Alalak, Barito Kuala<br>
+              Kalimantan Selatan 70582 <br><br>
               <strong>Phone:</strong> +1 5589 55488 55<br>
               <strong>Email:</strong> info@example.com<br>
             </p>
@@ -181,7 +172,34 @@
   <script src="{{asset('newfrontend/assets/js/util.js')}}"></script>
   <script src="{{asset('newfrontend/assets/js/schedule.js')}}"></script>
   <script src="{{asset('newfrontend/assets/js/blogJava.js')}}"></script>
-  
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+    import {
+      getAnalytics
+    } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyA37Yu8yvwwm_eUVy05i5SIvlzkwXf_lac",
+      authDomain: "yhc-lms.firebaseapp.com",
+      projectId: "yhc-lms",
+      storageBucket: "yhc-lms.appspot.com",
+      messagingSenderId: "178468623678",
+      appId: "1:178468623678:web:915d63d36e0956435e086f",
+      measurementId: "G-GYDTN1204G"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 
 </body>
 
