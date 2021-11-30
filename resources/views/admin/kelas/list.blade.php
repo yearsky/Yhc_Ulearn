@@ -52,7 +52,7 @@
         
         
         <div class="panel-body">
-          <table id="example1" class="table table-hover table-striped w-full">
+          <table id="example1" class="table table-striped table-bordered">
             <thead>
               <tr>
                 <th>No</th>

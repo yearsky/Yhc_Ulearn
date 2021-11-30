@@ -4,43 +4,54 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="{{ route('admin.users') }}">Users Management</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('admin.guru.list') }}">Guru</a></li>
-    <li class="breadcrumb-item active">Add</li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.siswa.list') }}">Siswa</a></li>
+    <li class="breadcrumb-item active">Edit</li>
   </ol>
-  <h1 class="page-title">Add Data Guru</h1>
+  <h1 class="page-title">Edit Data Siswa</h1>
 </div>
 
 <div class="page-content">
   <div class="panel">
     <div class="panel-body">
-      <form method="POST" action="{{ route('admin.saveGuru') }}" id="userForm">
+      <form method="POST" action="{{ route('admin.updateSiswa',$user->id) }}" id="userForm">
         {{ csrf_field() }}
-        <input type="hidden" name="user_id"/>
+        <input type="hidden" name="user_id" value="{{ $user->id }}">
         <div class="row">
           <div class="form-group col-md-4">
             <label class="form-control-label">First Name</label>
-            <input type="text" class="form-control" name="first_name" placeholder="First Name" required/>
+            <input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ $user->first_name }}" required/>
             @if ($errors->has('first_name'))
             <label class="error" for="first_name">{{ $errors->first('first_name') }}</label>
             @endif
           </div>
-        
+          
           <div class="form-group col-md-4">
             <label class="form-control-label">Last Name</label>
-            <input type="text" class="form-control" name="last_name" placeholder="Last Name" required/>
+            <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ $user->last_name }}" required/>
             @if ($errors->has('last_name'))
             <label class="error" for="last_name">{{ $errors->first('last_name') }}</label>
             @endif
           </div>
-      
+          
+          <div class="form-group col-md-4">
+            <label class="form-control-label">Kelas <span class="required">*</span></label>
+            <select class="form-control" name="kelas" id="kelas" aria-label="Default select example">
+              <option hidden>Pilih Kelas</option>
+              <option value="{{$kelas_take->id}}" selected>{{$kelas_take->nama}}</option>
+              @foreach($kelas as $kl)
+              <option value="{{$kl->id}}">{{$kl->nama}}</option>
+              @endforeach
+            </select>
+          </div>
+        
           <div class="form-group col-md-4">
             <label class="form-control-label">Email Address</label>
-            <input type="text" class="form-control" name="email" placeholder="Email Address" required/>
+            <input type="text" class="form-control" name="email" placeholder="Email Address" value="{{ $user->email }}" required/>
             @if ($errors->has('email'))
             <label class="error" for="email">{{ $errors->first('email') }}</label>
             @endif
           </div>
-      
+          
           <div class="form-group col-md-4">
             <label class="form-control-label" >Password <small>Default (1-6)</small> </label>
             <input type="password" class="form-control" name="password" value="123456" required/>
@@ -48,23 +59,23 @@
             <label class="error" for="password">{{ $errors->first('password') }}</label>
             @endif
           </div>
-      
+          
           <div class="form-group col-md-4">
             <label class="form-control-label">Status</label>
             <div>
               <div class="radio-custom radio-default radio-inline">
-                <input type="radio" id="inputBasicActive" name="is_active" value="1" checked/>
+                <input type="radio" id="inputBasicActive" name="is_active" value="1" @if($user->is_active) checked @endif />
                 <label for="inputBasicActive">Active</label>
               </div>
               <div class="radio-custom radio-default radio-inline">
-                <input type="radio" id="inputBasicInactive" name="is_active" value="0"/>
+                <input type="radio" id="inputBasicInactive" name="is_active" value="0" @if(!$user->is_active) checked @endif/>
                 <label for="inputBasicInactive">Inactive</label>
               </div>
             </div>
           </div>
         </div>
-      
         <hr>
+        
         <div class="form-group row">
           <div class="col-md-4">
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -80,7 +91,8 @@
 
 @section('javascript')
 <script type="text/javascript">
-  $(document).ready(function() { 
+  $(document).ready(function()
+  { 
     $("#userForm").validate({
       rules: {
         first_name: {
@@ -89,7 +101,7 @@
         last_name: {
           required: true
         },
-        @if('')
+        @if(!$user->id)
         email:{
           required: true,
           email:true,

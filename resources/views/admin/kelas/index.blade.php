@@ -72,9 +72,9 @@
 
 @section('javascript')
 <script type="text/javascript">
-    $(document).ready(function()
-    { 
-
-    });
+  $(document).ready(function()
+  { 
+    $('#tblguru').DataTable();
+  });
 </script>
 @endsection
