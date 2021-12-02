@@ -9,14 +9,7 @@ use DB;
 
 class CategoryController extends Controller
 {
-  /**
-   * Function to display the categories for admin
-   *
-   * @param array $request All input values from form
-   *
-   * @return contents to display in categories page
-   */
-  // TODO 
+  // DONE all CategoryController 
   public function index()
   {
     $categories = Category::all();
@@ -35,11 +28,8 @@ class CategoryController extends Controller
 
   public function saveCategory(Request $request)
   {
-    // echo '<pre>';print_r($_POST);exit;
     $category_id = $request->input('category_id');
-
     $validation_rules = ['name' => 'required|string|max:50'];
-
     $validator = Validator::make($request->all(), $validation_rules);
 
     // Stop if validation fails
@@ -49,33 +39,28 @@ class CategoryController extends Controller
 
     if ($category_id) {
       $category = Category::find($category_id);
-      $success_message = 'Category updated successfully';
+      $success_message = 'Berhasil Update Kategori';
     } else {
       $category = new Category();
-      $success_message = 'Category added successfully';
-
+      $success_message = 'Berhasil Menambahkan Kategori';
       //create slug only while add
       $slug = $request->input('name');
       $slug = str_slug($slug, '-');
-
       $results = DB::select(DB::raw("SELECT count(*) as total from categories where slug REGEXP '^{$slug}(-[0-9]+)?$' "));
-
       $finalSlug = ($results['0']->total > 0) ? "{$slug}-{$results['0']->total}" : $slug;
       $category->slug = $finalSlug;
     }
-
+    
     $category->name = $request->input('name');
     $category->icon_class = $request->input('icon_class');
-
     $category->is_active = $request->input('is_active');
     $category->save();
-
     return $this->return_output('flash', 'success', $success_message, 'admin/categories', '200');
   }
 
   public function deleteCategory($category_id)
   {
     Category::destroy($category_id);
-    return $this->return_output('flash', 'success', 'Category deleted successfully', 'admin/categories', '200');
+    return $this->return_output('flash', 'success', 'Berhasil Menghapus Kategori', 'admin/categories', '200');
   }
 }
