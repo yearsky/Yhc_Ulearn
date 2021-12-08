@@ -14,7 +14,7 @@ class CreateInsertGuruProc extends Migration
     public function up()
     {
         $procedure = "
-        CREATE OR REPLACE PROCEDURE insertGuru(n_depan VARCHAR(100), n_belakang VARCHAR(100), mail VARCHAR(100), pass VARCHAR(100), active TINYINT(1), id_role INT(10), id_user INT(10), id_kelas INT(10))
+        CREATE OR REPLACE PROCEDURE public.insertGuru(n_depan VARCHAR(100), n_belakang VARCHAR(100), mail VARCHAR(100), pass VARCHAR(100), active TINYINT(1), id_role INT(10), id_user INT(10), id_kelas INT(10))
         LANGUAGE plpgsql    
         AS $$
         BEGIN
@@ -35,7 +35,7 @@ class CreateInsertGuruProc extends Migration
      */
     public function down()
     {
-        $sql = "DROP PROCEDURE IF EXISTS insertGuru";
+        $sql = "DROP PROCEDURE IF EXISTS public.insertGuru";
         DB::connection()->getPdo()->exec($sql);
     }
 }
