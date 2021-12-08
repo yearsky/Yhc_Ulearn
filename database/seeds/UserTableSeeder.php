@@ -17,9 +17,9 @@ class UserTableSeeder extends Seeder
 
     if (!$is_exist->count()) {
         $student = new User();
-        $student->first_name = 'Osman';
-        $student->last_name = 'Kanu';
-        $student->email = 'student@ulearn.com';
+        $student->first_name = 'Siswa';
+        $student->last_name = 'Gibs';
+        $student->email = 'siswa@eligibs.com';
         $student->password = bcrypt('secret');
         $student->is_active = 1;
         $student->save();
@@ -28,7 +28,7 @@ class UserTableSeeder extends Seeder
         $admin = new User();
         $admin->first_name = 'Admin';
         $admin->last_name = 'A';
-        $admin->email = 'admin@ulearn.com';
+        $admin->email = 'admin@eligibs.com';
         $admin->password = bcrypt('secret');
         $admin->is_active = 1;
         $admin->save();
@@ -39,7 +39,7 @@ class UserTableSeeder extends Seeder
         $instructor_user = new User();
         $instructor_user->first_name = 'Angela';
         $instructor_user->last_name = 'Yu';
-        $instructor_user->email = 'instructor@ulearn.com';
+        $instructor_user->email = 'guru@eligibs.com';
         $instructor_user->password = bcrypt('secret');
         $instructor_user->is_active = 1;
         $instructor_user->save();
@@ -50,7 +50,7 @@ class UserTableSeeder extends Seeder
         $instructor->first_name = 'Angela';
         $instructor->last_name = 'Yu';
         $instructor->instructor_slug = 'angela-yu';
-        $instructor->contact_email = 'instructor@ulearn.com';
+        $instructor->contact_email = 'guru@eligibs.com';
         $instructor->telephone = '+61 (800) 123-54323';
         $instructor->mobile = '+61 800-1233-8766';
         $instructor->biography = '<p>Aenean commodo ligula eget dolor. Aenean massa. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, eta rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis. Lorem ipsum dolor sit amet,Aenean commodo ligula eget dolor. Aenean massa. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p><p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, eta rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis. Lorem ipsum dolor sit amet,Aenean commodo ligula eget dolor. Aenean massa. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>';
