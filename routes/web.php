@@ -168,6 +168,11 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('admin/category-form/{Category_id}', 'Admin\CategoryController@getForm')->name('admin.editCategory');
       Route::post('admin/save-category', 'Admin\CategoryController@saveCategory')->name('admin.saveCategory');
       Route::get('admin/delete-category/{Category_id}', 'Admin\CategoryController@deleteCategory')->name('admin.hapusCategory');
+      // TODO Kelas
+      Route::get('admin/kelas','Admin\KelasController@index')->name('admin.kelas');
+      Route::post('admin/save-kelas','Admin\KelasController@store')->name('admin.saveKelas');
+      Route::post('admin/update-kelas/{id}','Admin\KelasController@update')->name('admin.updateKelas');
+      Route::get('admin/delete-kelas/{id}','Admin\KelasController@destroy')->name('admin.hapusKelas');
 
       Route::get('admin/blogs', 'Admin\BlogController@index')->name('admin.blogs');
       Route::get('admin/blog-form', 'Admin\BlogController@getForm')->name('admin.blogForm');
@@ -255,11 +260,6 @@ Route::group(['middleware' => 'auth'], function () {
           return response()->json($guru);
         });
         
-      // TODO Kelas
-      Route::get('admin/kelas/list','Admin\KelasController@index')->name('admin.kelas.list');
-      Route::post('admin/save-kelas','Admin\KelasController@store')->name('admin.kelas.save');
-      Route::post('admin/update-kelas/{id}','Admin\KelasController@update')->name('admin.kelas.update');
-      Route::get('admin/delete-kelas/{id}','Admin\KelasController@destroy')->name('admin.kelas.delete');
     });
 
     Route::group(['middleware' => 'subscribed'], function () {
