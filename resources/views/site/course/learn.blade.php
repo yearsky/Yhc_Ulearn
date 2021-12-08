@@ -1,27 +1,24 @@
-@extends('layouts.frontend.index')
+@extends('layouts.frontend.v2index')
 @section('content')
 <link rel="stylesheet" href="{{ asset('frontend/vendor/rating/rateyo.css') }}">
 <!-- content start -->
 <div class="container-fluid p-0 home-content">
     <!-- banner start -->
-    <div class="subpage-slide-blue">
-        <div class="container">
-            <h1>Course</h1>
-        </div>
-    </div>
-    <!-- banner end -->
-    
-    <!-- breadcrumb start -->
-        <div class="breadcrumb-container">
+    <div class="subpage-slide-blue-course">
             <div class="container">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('my.courses') }}">My Courses</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $course->course_title }}</li>
-              </ol>
+                <h1>{{$course->course_title}}</h1>
+                
             </div>
+           
+            <!-- <div class="breadcrumbs-container-course">
+                <div class="container">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                  </ol>
+                </div>
+            </div> -->
         </div>
-    
     <!-- breadcrumb end -->
     
     <div class="container">
@@ -36,44 +33,6 @@
                             <span>Created by <b>{{ $course->instructor->first_name.' '.$course->instructor->last_name }}</b></span>
                         </div>
                     </div>
-                    <div class="row cv-header">
-                        
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6  col-6">
-                            <div class="cv-category-icon">
-                                <i class="far fa-bookmark"></i>
-                            </div>
-                            <div class="cv-category-detail">
-                                <span>Category</span>
-                                <br>
-                                {{ $course->category->name }}
-                            </div>
-                        </div>
-
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6  col-6">
-                            <div class="cv-category-detail cv-rating float-lg-left float-md-right float-sm-right">
-                                <span>{{ $course->ratings->count('rating') }} Reviews</span>
-                                <br>
-                                <star class="course-rating">
-                                    @for($r=1;$r<=5;$r++)
-                                        <span class="fa fa-star {{ $r <= $course->ratings->avg('rating') ? 'checked-vpage' : ''}}"></span>
-                                    @endfor
-                                </star>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
-                            <div class="cv-category-detail cv-price">
-                            	@php $course_price = $course->price ? $course->price : '0.00'; @endphp
-                                <h4>{{  config('config.default_currency').$course_price }}</h4>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 float-md-right col-sm-6 float-sm-right col-6">
-                            <div class="cv-category-detail cv-enroll float-lg-right float-md-right float-sm-right">
-                                <a href="javascript::void(0);" class="btn btn-ulearn-cview mt-1" data-toggle="modal" data-target="#rateModal">RATE COURSE</a>
-                            </div>
-                        </div>
-                    </div>
-
                     
                     @if($is_curriculum)
                     <!-- curriculum block start -->
@@ -210,29 +169,7 @@
                 </section>
                 @endif
                 
-                <h6 class="mt-4 underline-heading">COURSE CATEGORIES</h6>
-                <ul class="ul-no-padding">
-                	@php $categories = SiteHelpers::active_categories(); @endphp
-                    @foreach ($categories as $category)
-			            <li class="my-1">
-			                {{ $category->name}}
-			            </li>
-			        @endforeach
-                </ul>
-
-                @if($course->keywords)
-                <section class="tags-container mt-3">
-                    <h6 class="underline-heading">TAGS</h6>
-                    <ul class="list-unstyled tag-list mt-3">
-                    @php
-                    	$tags = explode(',', $course->keywords);
-                    @endphp
-                    @foreach($tags as $tag)
-                        <li><a href="javascript:void();">{{ $tag }}</a></li>
-                    @endforeach
-                    </ul>
-                </section>
-                @endif
+                
             </div>
             <!-- course sidebar end -->
         </div>

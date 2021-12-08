@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +11,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout')->name('logOut');
 Route::get('/login/{social}', 'Auth\LoginController@socialLogin')->where('social', 'twitter|facebook|linkedin|google|github|bitbucket');
@@ -37,111 +40,120 @@ Route::get('blog/{blog_slug}', 'HomeController@blogView')->name('blog.view');
 
 //Functions accessed by only authenticated users
 Route::group(['middleware' => 'auth'], function () {
-  Route::post('delete-photo', 'CourseController@deletePhoto');
-  Route::post('payment-form', 'PaymentController@paymentForm')->name('payment.form');
-  Route::get('payment/success', 'PaymentController@getSuccess')->name('payment.success');
-  Route::get('payment/failure', 'PaymentController@getFailure')->name('payment.failure');
-  
-  //Functions accessed by only students
-  Route::group(['middleware' => 'role:student'], function () {
-    Route::get('course-enroll-api/{course_slug}/{lecture_slug}/{is_sidebar}', 'CourseController@courseEnrollAPI');
-    Route::get('readPDF/{file_id}', 'CourseController@readPDF');
-    Route::get('update-lecture-status/{course_id}/{lecture_id}/{status}', 'CourseController@updateLectureStatus');
-    
-    Route::get('download-resource/{resource_id}/{course_slug}', 'CourseController@getDownloadResource');
-    
-    Route::get('my-courses', 'CourseController@myCourses')->name('my.courses');
-    Route::get('course-learn/{course_slug}', 'CourseController@courseLearn')->name('course.learn');
-    
-    Route::get('dashboard','DashboardController@studentDashboard')->name('student.dashboard');
-    
-    Route::post('course-rate', 'CourseController@courseRate')->name('course.rate');
-    Route::get('delete-rating/{raing_id}', 'CourseController@deleteRating')->name('delete.rating');
-    
-    Route::get('course-enroll-api/{course_slug}/{lecture_slug}/{is_sidebar}', 'CourseController@courseEnrollAPI');
-    Route::get('readPDF/{file_id}', 'CourseController@readPDF');
-    
-    Route::get('profile','DashboardController@studentProfile')->name('student.profile');
-  });
-  
-  //Functions accessed by instructor
-  Route::group(['middleware' => 'role:instructor'], function () {
-    Route::get('instructor-dashboard', 'InstructorController@dashboard')->name('instructor.dashboard');
-    
-    Route::get('instructor-profile', 'InstructorController@getProfile')->name('instructor.profile.get');
-    Route::post('instructor-profile', 'InstructorController@saveProfile')->name('instructor.profile.save');
-    
-    Route::get('course-create', 'CourseController@createInfo')->name('instructor.course.create');
-    Route::get('instructor-course-list', 'CourseController@instructorCourseList')->name('instructor.course.list');
-    Route::get('instructor-course-info', 'CourseController@instructorCourseInfo')->name('instructor.course.info');
-    Route::get('instructor-course-info/{course_id}', 'CourseController@instructorCourseInfo')->name('instructor.course.info.edit');
-    Route::post('instructor-course-info-save', 'CourseController@instructorCourseInfoSave')->name('instructor.course.info.save');
-    
-    Route::get('instructor-course-image', 'CourseController@instructorCourseImage')->name('instructor.course.image');
-    Route::get('instructor-course-image/{course_id}', 'CourseController@instructorCourseImage')->name('instructor.course.image.edit');
-    Route::post('instructor-course-image-save', 'CourseController@instructorCourseImageSave')->name('instructor.course.image.save');
-    
-    Route::get('instructor-course-video/{course_id}', 'CourseController@instructorCourseVideo')->name('instructor.course.video.edit');
-    Route::post('instructor-course-video-save', 'CourseController@instructorCourseVideoSave')->name('instructor.course.video.save');
-    
-    Route::get('instructor-course-curriculum/{course_id}', 'CourseController@instructorCourseCurriculum')->name('instructor.course.curriculum.edit');
-    Route::post('instructor-course-curriculum-save', 'CourseController@instructorCourseCurriculumSave')->name('instructor.course.curriculum.save');
-    
-    Route::get('instructor-credits', 'InstructorController@credits')->name('instructor.credits');
-    
-    Route::post('instructor-withdraw-request', 'InstructorController@withdrawRequest')->name('instructor.withdraw.request');
-    
-    Route::get('instructor-withdraw-requests', 'InstructorController@listWithdrawRequests')->name('instructor.list.withdraw');
-    
-    // Absensi
-    Route::get('instructor-absensi-list','AbsensiController@show')->name('instructor.absensi.list');
-    Route::get('instructor-absensi-add','AbsensiController@add')->name('instructor.absensi.add');
-    Route::post('instructor-absensi-save','AbsensiController@store')->name('instructor.absensi.save');
-    Route::get('instructor-absensi-edit/{id}','AbsensiController@edit')->name('instructor.absensi.edit');
-    Route::get('instructor-absensi-delete/{id}','AbsensiController@destroy')->name('instructor.absensi.delete');
-    
-    //EXAM
-    Route::post('instructor-exam-save','ExamController@save')->name('instructor.exam.save');
-    Route::get('instructor-course-quiz/{course_id}','CourseController@instructorCourseQuiz')->name('instructor.course.quizz.edit');
-    Route::post('intructor-review-questions/{course_name}','QuestionsController@showQuestions')->name('instructor.review.question');
-    
-    //Question
-    Route::post('instructor-question-save','QuestionsController@save')->name('instructor.question.save');
-    Route::get('review-single-question/{id}','QuestionsController@oneQuest')->name('instructor.question.edit');
-    Route::post('instructor-question-update/{id}','QuestionsController@update')->name('instructor.question.update');
-    
-    //Kelas
-    Route::get('guru/getKelas/{id}',function($id){
-      $siswa =  DB::table('users')
-        -> join('role_user','role_user.user_id','=','users.id')
-        ->select('role_user.id',DB::Raw("CONCAT(first_name,' ',last_name)AS siswa"))
-        ->where('kelas_id',$id)
-        ->get();
-        return response()->json($siswa);
-      });
-      
-      // Save Curriculum
-      Route::post('courses/section/save', 'CourseController@postSectionSave');
-      Route::post('courses/section/delete', 'CourseController@postSectionDelete');
-      Route::post('courses/lecture/save', 'CourseController@postLectureSave');
-      Route::post('courses/video', 'CourseController@postVideo');
-      
-      Route::post('courses/lecturequiz/delete', 'CourseController@postLectureQuizDelete');
-      Route::post('courses/lecturedesc/save', 'CourseController@postLectureDescSave');
-      Route::post('courses/lecturepublish/save', 'CourseController@postLecturePublishSave');
-      Route::post('courses/lecturevideo/save/{lid}', 'CourseController@postLectureVideoSave');
-      Route::post('courses/lectureaudio/save/{lid}', 'CourseController@postLectureAudioSave');
-      Route::post('courses/lecturepre/save/{lid}', 'CourseController@postLecturePresentationSave');
-      Route::post('courses/lecturedoc/save/{lid}', 'CourseController@postLectureDocumentSave');
-      Route::post('courses/lectureres/save/{lid}', 'CourseController@postLectureResourceSave');
-      Route::post('courses/lecturetext/save', 'CourseController@postLectureTextSave');
-      Route::post('courses/lectureres/delete', 'CourseController@postLectureResourceDelete');
-      Route::post('courses/lecturelib/save', 'CourseController@postLectureLibrarySave');
-      Route::post('courses/lecturelibres/save', 'CourseController@postLectureLibraryResourceSave');
-      Route::post('courses/lectureexres/save', 'CourseController@postLectureExternalResourceSave');
-      
-      // Sorting Curriculum
-      Route::post('courses/curriculum/sort', 'CourseController@postCurriculumSort');
+
+    Route::post('delete-photo', 'CourseController@deletePhoto');
+    Route::post('payment-form', 'PaymentController@paymentForm')->name('payment.form');
+
+    Route::get('payment/success', 'PaymentController@getSuccess')->name('payment.success');
+    Route::get('payment/failure', 'PaymentController@getFailure')->name('payment.failure');
+
+
+
+    //Functions accessed by only students
+    Route::group(['middleware' => 'role:student'], function () {
+
+        Route::get('course-enroll-api/{course_slug}/{lecture_slug}/{is_sidebar}', 'CourseController@courseEnrollAPI');
+        Route::get('readPDF/{file_id}', 'CourseController@readPDF');
+        Route::get('update-lecture-status/{course_id}/{lecture_id}/{status}', 'CourseController@updateLectureStatus');
+
+        Route::get('download-resource/{resource_id}/{course_slug}', 'CourseController@getDownloadResource');
+
+        Route::get('my-courses', 'CourseController@myCourses')->name('my.courses');
+        Route::get('course-learn/{kelas}/{course_slug}', 'CourseController@courseLearn')->name('course.learn');
+
+        Route::get('dashboard', 'DashboardController@studentDashboard')->name('student.dashboard');
+
+        Route::post('course-rate', 'CourseController@courseRate')->name('course.rate');
+        Route::get('delete-rating/{raing_id}', 'CourseController@deleteRating')->name('delete.rating');
+
+        Route::get('course-enroll-api/{course_slug}/{lecture_slug}/{is_sidebar}', 'CourseController@courseEnrollAPI');
+        Route::get('readPDF/{file_id}', 'CourseController@readPDF');
+
+        Route::get('profile', 'DashboardController@studentProfile')->name('student.profile');
+    });
+
+    //Functions accessed by both student and instructor
+    // Route::group(['middleware' => 'role:student,instructor'], function () {
+    Route::group(['middleware' => 'role:instructor'], function () {
+        Route::get('instructor-dashboard', 'InstructorController@dashboard')->name('instructor.dashboard');
+
+        Route::get('instructor-profile', 'InstructorController@getProfile')->name('instructor.profile.get');
+        Route::post('instructor-profile', 'InstructorController@saveProfile')->name('instructor.profile.save');
+
+        Route::get('course-create', 'CourseController@createInfo')->name('instructor.course.create');
+        Route::get('instructor-course-list', 'CourseController@instructorCourseList')->name('instructor.course.list');
+        Route::get('instructor-course-info', 'CourseController@instructorCourseInfo')->name('instructor.course.info');
+        Route::get('instructor-course-info/{course_id}', 'CourseController@instructorCourseInfo')->name('instructor.course.info.edit');
+        Route::post('instructor-course-info-save', 'CourseController@instructorCourseInfoSave')->name('instructor.course.info.save');
+
+        Route::get('instructor-course-image', 'CourseController@instructorCourseImage')->name('instructor.course.image');
+        Route::get('instructor-course-image/{course_id}', 'CourseController@instructorCourseImage')->name('instructor.course.image.edit');
+        Route::post('instructor-course-image-save', 'CourseController@instructorCourseImageSave')->name('instructor.course.image.save');
+
+        Route::get('instructor-course-video/{course_id}', 'CourseController@instructorCourseVideo')->name('instructor.course.video.edit');
+        Route::post('instructor-course-video-save', 'CourseController@instructorCourseVideoSave')->name('instructor.course.video.save');
+
+        Route::get('instructor-course-curriculum/{course_id}', 'CourseController@instructorCourseCurriculum')->name('instructor.course.curriculum.edit');
+        Route::post('instructor-course-curriculum-save', 'CourseController@instructorCourseCurriculumSave')->name('instructor.course.curriculum.save');
+
+
+        Route::get('instructor-credits', 'InstructorController@credits')->name('instructor.credits');
+
+        Route::post('instructor-withdraw-request', 'InstructorController@withdrawRequest')->name('instructor.withdraw.request');
+
+        Route::get('instructor-withdraw-requests', 'InstructorController@listWithdrawRequests')->name('instructor.list.withdraw');
+
+        // Absensi
+        Route::get('instructor-absensi-list', 'AbsensiController@show')->name('instructor.absensi.list');
+        Route::get('instructor-absensi-add', 'AbsensiController@add')->name('instructor.absensi.add');
+        Route::post('instructor-absensi-save', 'AbsensiController@store')->name('instructor.absensi.save');
+        Route::get('instructor-absensi-edit/{id}', 'AbsensiController@edit')->name('instructor.absensi.edit');
+        Route::get('instructor-absensi-delete/{id}', 'AbsensiController@destroy')->name('instructor.absensi.delete');
+
+        //EXAM
+        Route::post('instructor-exam-save', 'ExamController@save')->name('instructor.exam.save');
+        Route::get('instructor-course-quiz/{course_id}', 'CourseController@instructorCourseQuiz')->name('instructor.course.quizz.edit');
+        Route::post('intructor-review-questions/{course_name}', 'QuestionsController@showQuestions')->name('instructor.review.question');
+
+        //Question
+        Route::post('instructor-question-save', 'QuestionsController@save')->name('instructor.question.save');
+        Route::get('review-single-question/{id}', 'QuestionsController@oneQuest')->name('instructor.question.edit');
+        Route::post('instructor-question-update/{id}', 'QuestionsController@update')->name('instructor.question.update');
+
+        //Kelas
+        Route::get('guru/getKelas/{id}', function ($id) {
+            $siswa =
+                DB::table('users')->join('role_user', 'role_user.user_id', '=', 'users.id')
+                // ->select('users.first_name','users.last_name')
+                ->select('role_user.id', DB::Raw("CONCAT(first_name,' ',last_name)AS siswa"))
+                ->where('kelas_id', $id)
+                ->get();
+            return response()->json($siswa);
+            return $siswa;
+        });
+
+        // Save Curriculum
+        Route::post('courses/section/save', 'CourseController@postSectionSave');
+        Route::post('courses/section/delete', 'CourseController@postSectionDelete');
+        Route::post('courses/lecture/save', 'CourseController@postLectureSave');
+        Route::post('courses/video', 'CourseController@postVideo');
+
+        Route::post('courses/lecturequiz/delete', 'CourseController@postLectureQuizDelete');
+        Route::post('courses/lecturedesc/save', 'CourseController@postLectureDescSave');
+        Route::post('courses/lecturepublish/save', 'CourseController@postLecturePublishSave');
+        Route::post('courses/lecturevideo/save/{lid}', 'CourseController@postLectureVideoSave');
+        Route::post('courses/lectureaudio/save/{lid}', 'CourseController@postLectureAudioSave');
+        Route::post('courses/lecturepre/save/{lid}', 'CourseController@postLecturePresentationSave');
+        Route::post('courses/lecturedoc/save/{lid}', 'CourseController@postLectureDocumentSave');
+        Route::post('courses/lectureres/save/{lid}', 'CourseController@postLectureResourceSave');
+        Route::post('courses/lecturetext/save', 'CourseController@postLectureTextSave');
+        Route::post('courses/lectureres/delete', 'CourseController@postLectureResourceDelete');
+        Route::post('courses/lecturelib/save', 'CourseController@postLectureLibrarySave');
+        Route::post('courses/lecturelibres/save', 'CourseController@postLectureLibraryResourceSave');
+        Route::post('courses/lectureexres/save', 'CourseController@postLectureExternalResourceSave');
+
+        // Sorting Curriculum
+        Route::post('courses/curriculum/sort', 'CourseController@postCurriculumSort');
     });
     
     //Functions accessed by only admin users

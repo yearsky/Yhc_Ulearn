@@ -128,11 +128,35 @@
   <!-- jquery form -->
   <script src="{{ asset('backend/vendor/jquery-form/jquery.form.js?v4.0.2') }}"></script>
   <script src="{{ asset('backend/vendor/tinymce/tinymce.min.js?v4.0.2') }}"></script>
-  <script>
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-Token': $('meta[name=_token]').attr('content')
-      }
+
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyA37Yu8yvwwm_eUVy05i5SIvlzkwXf_lac",
+    authDomain: "yhc-lms.firebaseapp.com",
+    projectId: "yhc-lms",
+    storageBucket: "yhc-lms.appspot.com",
+    messagingSenderId: "178468623678",
+    appId: "1:178468623678:web:915d63d36e0956435e086f",
+    measurementId: "G-GYDTN1204G"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+  
+   <script>
+   $.ajaxSetup({
+       headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
     });
     (function (document, window, $) {
       'use strict';

@@ -100,10 +100,14 @@ class CourseController extends Controller
         return view('site.course.view', compact('course', 'curriculum_sections', 'lectures_count', 'videos_count', 'video', 'course_breadcrumb', 'is_curriculum'));
     }
 
-    public function courseLearn($course_slug = '', Request $request)
+    public function courseLearn($kelas='',$course_slug='', Request $request)
     {   
         $course_breadcrumb = Session::get('course_breadcrumb');
-        $course = Course::where('course_slug', $course_slug)->first();
+
+       
+        $course = Course::where('kelas_id', $kelas)
+                ->where('course_slug',$course_slug)
+                 ->first();
 
         $students_count = $this->model->students_count($course->id);
         $curriculum = $this->model->getcurriculum($course->id);
@@ -121,6 +125,7 @@ class CourseController extends Controller
             $course_rating = $this->getColumnTable('course_ratings');
         }
         return view('site.course.learn', compact('course', 'curriculum_sections', 'lectures_count', 'videos_count', 'video', 'course_breadcrumb', 'is_curriculum', 'course_rating', 'students_count'));
+        // return $course;
     }
 
     public function updateLectureStatus($course_id='', $lecture_id='', $status = '')
