@@ -14,13 +14,12 @@ class CreateInsertUsersProc extends Migration
     public function up()
     {
         $procedure = "
-        CREATE OR REPLACE PROCEDURE insertUsers(IN first_name VARCHAR(255), IN last_name VARCHAR(255), IN email VARCHAR(120), IN password VARCHAR(60), IN is_active TINYINT(1), IN role_id INT(10), IN user_id INT(10), IN kelas_id INT(10))
+        CREATE OR REPLACE PROCEDURE insertUsers(IN first_name VARCHAR, IN last_name VARCHAR, IN email VARCHAR, IN password VARCHAR, IN is_active INT, IN role_id INT, IN id_user INT, IN kelas_id INT)
         LANGUAGE plpgsql    
         AS $$
         BEGIN
-          INSERT INTO users(first_name, last_name, email, password, is_active) VALUES(first_name, last_name, email, password, is_active);
-          SET user_id := LAST_INSERT_ID();
-          INSERT INTO role_user(role_id, user_id, kelas_id) VALUES(role_id, user_id, kelas_id);
+          INSERT INTO users(first_name, last_name, email, password, is_active) VALUES(first_name, last_name, email, password, is_active) RETURNING id INTO id_user;
+          INSERT INTO role_user(role_id, user_id, kelas_id) VALUES(role_id, id_user, kelas_id);
         END;$$
         ";
 

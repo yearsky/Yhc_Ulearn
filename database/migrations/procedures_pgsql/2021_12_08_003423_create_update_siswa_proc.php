@@ -14,11 +14,12 @@ class CreateUpdateSiswaProc extends Migration
     public function up()
     {
         $procedure = "
-        CREATE OR REPLACE PROCEDURE updateSiswa(IN n_depan VARCHAR(100), IN n_belakang VARCHAR(100), IN s_email VARCHAR(100), IN s_password VARCHAR(100), IN s_active TINYINT(1), IN role_id INT(10), IN user_id INT(10), IN kelas_id INT(10))
+        CREATE OR REPLACE PROCEDURE updateSiswa(IN n_depan VARCHAR, IN n_belakang VARCHAR, IN s_email VARCHAR, IN s_password VARCHAR, IN s_active INT, IN role_id INT, IN id_user INT, IN kelas_id INT)
         LANGUAGE plpgsql    
         AS $$
         BEGIN
-          UPDATE users AS A INNER JOIN role_user AS B ON A.id=B.user_id SET A.first_name=n_depan, A.last_name=n_belakang, A.email=s_email, A.password=s_password, A.is_active=s_active, B.role_id=role_id, B.user_id=user_id, B.kelas_id=kelas_id WHERE A.id=user_id;
+          UPDATE users SET first_name = n_depan, last_name = n_belakang, email = s_email, password = s_password, is_active = s_active WHERE id=id_user;
+          UPDATE role_user SET role_id = role_id, user_id = id_user, kelas_id = kelas_id FROM role_user WHERE user_id = id_user;
         END;$$
         ";
 

@@ -16,14 +16,14 @@ class UserTableSeeder extends Seeder
     $is_exist = User::all();
 
     if (!$is_exist->count()) {
-        $student = new User();
-        $student->first_name = 'Siswa';
-        $student->last_name = 'Gibs';
-        $student->email = 'siswa@eligibs.com';
-        $student->password = bcrypt('secret');
-        $student->is_active = 1;
-        $student->save();
-        $student->roles()->attach($role_student);
+        // $student = new User();
+        // $student->first_name = 'Siswa';
+        // $student->last_name = 'Gibs';
+        // $student->email = 'siswa@eligibs.com';
+        // $student->password = bcrypt('secret');
+        // $student->is_active = 1;
+        // $student->save();
+        // $student->roles()->attach($role_student);
 
         $admin = new User();
         $admin->first_name = 'Admin';
@@ -43,7 +43,7 @@ class UserTableSeeder extends Seeder
         $instructor_user->password = bcrypt('secret');
         $instructor_user->is_active = 1;
         $instructor_user->save();
-        $instructor_user->roles()->attach($role_student);
+        $instructor_user->roles()->attach($role_instructor);
         
         $instructor = new Instructor();
         $instructor->user_id = $instructor_user->id;
@@ -56,8 +56,6 @@ class UserTableSeeder extends Seeder
         $instructor->biography = '<p>Aenean commodo ligula eget dolor. Aenean massa. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, eta rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis. Lorem ipsum dolor sit amet,Aenean commodo ligula eget dolor. Aenean massa. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p><p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, eta rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis. Lorem ipsum dolor sit amet,Aenean commodo ligula eget dolor. Aenean massa. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>';
         $instructor->instructor_image = 'instructor/1/angela.jpg';
         $instructor->save();
-        $instructor_user->roles()->attach($role_instructor);
-
         
     }
   }

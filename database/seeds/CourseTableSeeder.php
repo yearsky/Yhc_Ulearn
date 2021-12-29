@@ -60,7 +60,7 @@ class CourseTableSeeder extends Seeder
                     $curriculum_sections['sort_order'] = $s_key;
                     $curriculum_sections['createdOn'] = date("Y-m-d H:i:s");   
                     $curriculum_sections['updatedOn'] = date("Y-m-d H:i:s");
-                    $section_id = DB::table('curriculum_sections')->insertGetId($curriculum_sections);
+                    $section_id = DB::table('curriculum_sections')->insertGetId($curriculum_sections, 'section_id');
 
                     $curriculum_lectures_quiz['section_id'] = $section_id;
                     $curriculum_lectures_quiz['title'] = 'Installing a text editor';
@@ -217,39 +217,39 @@ class CourseTableSeeder extends Seeder
           $course_taken->save();
         }
 
-        $is_transaction_taken_exist = Transaction::all();
-        if (!$is_transaction_taken_exist->count()) {
-          $transaction = new Transaction();
-          $transaction->user_id = $user_id;
-          $transaction->course_id = $course_id;
-          $transaction->amount = 0.00;
-          $transaction->status = 'completed';
-          $transaction->payment_method = 'paypal_express_checkout';
-          $transaction->order_details = '{"TOKEN":"success","status":"succeeded","Timestamp":1561787415,"ACK":"Success"}';
-          $transaction->save();
-        }
+        // $is_transaction_taken_exist = Transaction::all();
+        // if (!$is_transaction_taken_exist->count()) {
+        //   $transaction = new Transaction();
+        //   $transaction->user_id = $user_id;
+        //   $transaction->course_id = $course_id;
+        //   $transaction->amount = 0.00;
+        //   $transaction->status = 'completed';
+        //   $transaction->payment_method = 'paypal_express_checkout';
+        //   $transaction->order_details = '{"TOKEN":"success","status":"succeeded","Timestamp":1561787415,"ACK":"Success"}';
+        //   $transaction->save();
+        // }
 
-        $is_credits_taken_exist = Credit::all();
-        if (!$is_credits_taken_exist->count()) {
-          $credits = new Credit();
-          $credits->transaction_id = $transaction->id;
-          $credits->instructor_id = $instructor_id;
-          $credits->user_id = $user_id;
-          $credits->course_id = $course_id;
-          $credits->credit = $course->price;
-          $credits->credits_for = 1;
-          $credits->is_admin = 0;
+        // $is_credits_taken_exist = Credit::all();
+        // if (!$is_credits_taken_exist->count()) {
+        //   $credits = new Credit();
+        //   $credits->transaction_id = $transaction->id;
+        //   $credits->instructor_id = $instructor_id;
+        //   $credits->user_id = $user_id;
+        //   $credits->course_id = $course_id;
+        //   $credits->credit = $course->price;
+        //   $credits->credits_for = 1;
+        //   $credits->is_admin = 0;
 
-          $credits = new Credit();
-          $credits->transaction_id = $transaction->id;
-          $credits->instructor_id = 0;
-          $credits->user_id = $user_id;
-          $credits->course_id = $course_id;
-          $credits->credit = $course->price;
-          $credits->credits_for = 2;
-          $credits->is_admin = 1;
+        //   $credits = new Credit();
+        //   $credits->transaction_id = $transaction->id;
+        //   $credits->instructor_id = 0;
+        //   $credits->user_id = $user_id;
+        //   $credits->course_id = $course_id;
+        //   $credits->credit = $course->price;
+        //   $credits->credits_for = 2;
+        //   $credits->is_admin = 1;
 
-          $credits->save();
-        }
+        //   $credits->save();
+        // }
     }
 }

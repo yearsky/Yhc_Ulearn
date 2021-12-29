@@ -14,12 +14,11 @@ class CreateInsertGuruProc extends Migration
     public function up()
     {
         $procedure = "
-        CREATE OR REPLACE PROCEDURE public.insertGuru(n_depan VARCHAR(100), n_belakang VARCHAR(100), mail VARCHAR(100), pass VARCHAR(100), active TINYINT(1), id_role INT(10), id_user INT(10), id_kelas INT(10))
+        CREATE OR REPLACE PROCEDURE insertGuru(n_depan VARCHAR, n_belakang VARCHAR, mail VARCHAR, pass VARCHAR, active INT, id_role INT, id_user INT, id_kelas INT)
         LANGUAGE plpgsql    
         AS $$
         BEGIN
-          INSERT INTO Users(first_name, last_name, email, password, is_active) VALUES(n_depan, n_belakang, mail, pass, active);
-          SET id_user := LAST_INSERT_ID();
+          INSERT INTO Users(first_name, last_name, email, password, is_active) VALUES(n_depan, n_belakang, mail, pass, active) RETURNING id INTO id_user;
           INSERT INTO role_user(role_id, user_id, kelas_id) VALUES (id_role,id_user,kelas_id);
           INSERT INTO instructors(user_id, first_name, last_name, contact_email) VALUES (id_user, n_depan, n_belakang, mail);
         END;$$

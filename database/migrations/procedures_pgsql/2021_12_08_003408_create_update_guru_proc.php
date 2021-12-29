@@ -14,11 +14,13 @@ class CreateUpdateGuruProc extends Migration
     public function up()
     {
         $procedure = "
-        CREATE OR REPLACE PROCEDURE updateGuru(IN n_depan VARCHAR(100), IN n_belakang VARCHAR(100), IN email VARCHAR(100), IN pass VARCHAR(100), IN active TINYINT(1), IN id_role INT(10), IN id_user INT(10), IN id_kelas INT(10))
+        CREATE OR REPLACE PROCEDURE updateGuru(IN n_depan VARCHAR, IN n_belakang VARCHAR, IN n_email VARCHAR, IN pass VARCHAR, IN active INT, IN id_role INT, IN id_user INT, IN id_kelas INT)
         LANGUAGE plpgsql    
         AS $$
         BEGIN
-          UPDATE users AS a INNER JOIN role_user AS b ON a.id = b.user_id INNER JOIN instructors AS c ON a.id = c.user_id SET a.first_name = n_depan, a.last_name = n_belakang, a.email = email, a.password = pass, a.is_active = active, b.role_id = id_role, b.user_id = id_user, b.kelas_id = id_kelas, c.first_name = n_depan, c.last_name = n_belakang, c.contact_email = email WHERE a.id = id_user;
+          UPDATE users SET first_name = n_depan, last_name = n_belakang, email = n_email, password = pass, is_active = active WHERE id = id_user;
+          UPDATE role_user SET role_id = id_role, user_id = id_user, kelas_id = id_kelas WHERE user_id = id_user;
+          UPDATE instructors SET first_name = n_depan, last_name = n_belakang, contact_email = n_email WHERE user_id = id_user;
         END;$$
         ";
 

@@ -14,7 +14,7 @@ class CreateAbsWhereProc extends Migration
     public function up()
     {
         $procedure = "
-        CREATE OR REPLACE PROCEDURE Abs_Where(IN AbsensiId VARCHAR(30))
+        CREATE OR REPLACE PROCEDURE Abs_Where(IN AbsensiId VARCHAR)
         LANGUAGE plpgsql    
         AS $$
         BEGIN

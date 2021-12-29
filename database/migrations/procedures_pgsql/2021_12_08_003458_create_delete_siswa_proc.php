@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDeleteGuruProc extends Migration
+class CreateDeleteSiswaProc extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,12 @@ class CreateDeleteGuruProc extends Migration
     public function up()
     {
         $procedure = "
-        CREATE OR REPLACE PROCEDURE deleteGuru(id_user INT(10))
+        CREATE OR REPLACE PROCEDURE deleteSiswa(id_user INT)
         LANGUAGE plpgsql    
         AS $$
         BEGIN
-          DELETE users, role_user, instructors FROM users INNER JOIN role_user ON users.id = role_user.user_id INNER JOIN instructors ON users.id=instructors.user_id WHERE users.id = id_user;
+          DELETE FROM users WHERE id = id_user;
+          DELETE FROM role_user WHERE user_id = id_user;
         END;$$
         ";
 
@@ -32,7 +33,7 @@ class CreateDeleteGuruProc extends Migration
      */
     public function down()
     {
-        $sql = "DROP PROCEDURE IF EXISTS deleteGuru";
+        $sql = "DROP PROCEDURE IF EXISTS deleteSiswa";
         DB::connection()->getPdo()->exec($sql);
     }
 }

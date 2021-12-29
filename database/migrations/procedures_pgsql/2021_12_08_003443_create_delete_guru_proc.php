@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGetMapelProc extends Migration
+class CreateDeleteGuruProc extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,13 @@ class CreateGetMapelProc extends Migration
     public function up()
     {
         $procedure = "
-        CREATE OR REPLACE PROCEDURE GetMapel(IN instructorId VARCHAR(50))
+        CREATE OR REPLACE PROCEDURE deleteGuru(id_user INT)
         LANGUAGE plpgsql    
         AS $$
         BEGIN
-          SELECT course_title AS Maple, CONCAT(first_name, ' ',last_name) AS Nama FROM courses INNER JOIN instructors ON courses.instructor_id = instructors.id WHERE instructors.id = instructorId;
+          DELETE FROM users WHERE id = id_user;
+          DELETE FROM role_user WHERE user_id = id_user;
+          DELETE FROM instructors WHERE user_id = id_user;
         END;$$
         ";
 
@@ -32,7 +34,7 @@ class CreateGetMapelProc extends Migration
      */
     public function down()
     {
-        $sql = "DROP PROCEDURE IF EXISTS GetMapel";
+        $sql = "DROP PROCEDURE IF EXISTS deleteGuru";
         DB::connection()->getPdo()->exec($sql);
     }
 }
